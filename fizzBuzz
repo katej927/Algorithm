@@ -1,3 +1,5 @@
+/*Fizzbuzz 알고리즘은 나열된 숫자에서 특정 조건에 부합하는 숫자가 나타날 경우 Fizz, 또는 Buzz를 출력합니다. 예를들어, 1에서 30의 수가 있을 경우 3의 배수이면 Fizz, 5의 배수이면 Buzz, 3과 5의 배수이면 PizzBuzz가 출력됩니다.*/
+
 function fizzBuzz(num) {
   for (var i = 1; i <= num; i++) {
     if (i % 15 === 0 ) console.log('FizzBuzz');
