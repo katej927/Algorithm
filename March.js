@@ -1,4 +1,5 @@
   /* ['21.3.21] 프로그래머스_주식가격 */
+
   public static int[] solution2(int[] prices) {
 		int[] answer = new int[prices.length];
 
