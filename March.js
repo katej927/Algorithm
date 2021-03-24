@@ -62,3 +62,8 @@ int solution(string numbers) {
     
     return answer;
 }
+
+/* ['21.3.24] Programmers level 1_ Deduplication*/
+function solution(arr) {
+  return arr.filter((v, i) => v !== arr[i + 1]);
+}
