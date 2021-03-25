@@ -67,3 +67,25 @@ int solution(string numbers) {
 function solution(arr) {
   return arr.filter((v, i) => v !== arr[i + 1]);
 }
+
+/* ['21.3.25] Code Kata_week2_day4 */
+function topK(nums, k) {
+    let obj = {};
+    let arr = [];
+    
+    nums.forEach(el => {
+        if (obj[el]) {
+            obj[el]++;
+        } else {
+            obj[el] = 1;
+        }
+    });
+    
+    for (let properyName in obj) {
+        arr.push([properyName, obj[properyName]]);
+    }
+    
+    return arr.sort((a, b) => (b[1] - a[1])).slice(0,k).map(el => Number(el[0]));
+}
+
+topK([1,2,2,2,3,4,4,4,4] , 2);
