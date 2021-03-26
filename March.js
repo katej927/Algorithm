@@ -89,3 +89,16 @@ function topK(nums, k) {
 }
 
 topK([1,2,2,2,3,4,4,4,4] , 2);
+
+/*['21.3.26] Code Kata_Week2_day5*/
+function getMaxArea(height) {
+    let size = 0;
+    
+    for (let i = 0; i < height.length; i++) {
+        for (let j = i+1; j < height.length; j++) {
+            size = Math.max(Math.min(height[i], height[j]) * (j-i), size);
+        }
+    }
+    
+    return size;
+}
