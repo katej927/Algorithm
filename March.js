@@ -103,4 +103,15 @@ function getMaxArea(height) {
     return size;
 }
 
-/**/
+/* ['21.3.27] Code Kata_Week3_day1*/
+const complexNumberMultiply = (a, b) => {
+  let firstArr = a.substring(0, a.length-1).split('+');
+  const a1 = Number(firstArr[0])
+  const a2 = Number(firstArr[1])
+
+  let secondArr = b.substring(0, b.length-1).split('+');
+  const b1 = Number(secondArr[0])
+  const b2 = Number(secondArr[1])
+
+  return `${a1 * b1 - a2 * b2}+${a1 * b2 + a2 * b1}i`
+}
