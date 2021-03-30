@@ -115,3 +115,33 @@ const complexNumberMultiply = (a, b) => {
 
   return `${a1 * b1 - a2 * b2}+${a1 * b2 + a2 * b1}i`
 }
+
+/* ['21.3.30] LeetCode_1365 */
+var smallerNumbersThanCurrent = function(nums) {
+   
+    const result = nums.map(num => {
+         let count = 0
+         for(let i=0; i < nums.length; i++) {
+            if (num > nums[i]) {
+                count++;
+            }
+        }
+        return count
+    })
+    
+    return result;
+}
+
+/* ['21.3.30] LeetCode_1603 */
+var ParkingSystem = function(big, medium, small) {
+    this.parking = [null, big, medium, small];
+};
+
+ParkingSystem.prototype.addCar = function(carType) {
+    if(this.parking[carType] > 0) {
+		this.parking[carType]--;
+		return true;
+	}
+	return false;
+
+};
