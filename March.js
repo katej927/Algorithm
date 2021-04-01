@@ -146,6 +146,6 @@ ParkingSystem.prototype.addCar = function(carType) {
 
 };
 
-/* ['21.4.1] */
+/* ['21.4.1] LeetCode 1684*/
 const countConsistentStrings = (allowed, words, chars = new Set(allowed)) => 
   words.filter(word => [...word].every(char => chars.has(char))).length;
