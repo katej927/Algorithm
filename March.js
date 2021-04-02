@@ -145,3 +145,26 @@ ParkingSystem.prototype.addCar = function(carType) {
 	return false;
 
 };
+
+/* ['21.4.1] LeetCode 1684*/
+const countConsistentStrings = (allowed, words, chars = new Set(allowed)) => 
+  words.filter(word => [...word].every(char => chars.has(char))).length;
+
+/*['21.4.2] LeetCode 1688*/
+var numberOfMatches = function(n) {
+  let collectResult = 0;
+  let matches=n;
+  
+  while (matches!=1) {
+    if (matches%2!==0) {
+      collectResult+=(matches-1)/2
+      matches=(matches+1)/2
+    } else {
+      collectResult+=matches/2
+      matches=matches/2
+    }
+  }
+  
+  return collectResult
+
+};
