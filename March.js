@@ -178,3 +178,6 @@ let runningSum = function(nums) {
     }
     return nums;
 };
+
+/* ['21.4.4] leetCode 1108*/
+var defangIPaddr = function(address) { return address.split('.').join('[.]'); };
