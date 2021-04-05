@@ -181,3 +181,32 @@ let runningSum = function(nums) {
 
 /* ['21.4.4] leetCode 1108*/
 var defangIPaddr = function(address) { return address.split('.').join('[.]'); };
+
+/* ['21.4.5] leetCode 1732*/
+var largestAltitude = function(gain) {
+    let newArr= [0];
+  let newgain = gain
+
+  
+  for(let i=0;i<gain.length;i++) {
+    
+    newArr.push(gain[i]+newArr[i])
+    
+    
+  }
+ return Math.max(...newArr)
+};
+
+/* ['21.4.5] leetCode 1266*/
+var minTimeToVisitAllPoints = function(points) {
+    let result=0;
+    
+    for (let i=0;i<points.length-1;i++) {
+        let firstIdxGap = Math.abs(points[i][0]-points[i+1][0])
+        let secondIdxGap = Math.abs(points[i][1]-points[i+1][1])
+        
+        result += Math.max(firstIdxGap, secondIdxGap)
+    }
+    
+    return result
+};
