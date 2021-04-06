@@ -211,7 +211,19 @@ var minTimeToVisitAllPoints = function(points) {
     return result
 };
 
-/* ['21.4.5] leetCode 832 */
+/* ['21.4.6] leetCode 832 */
 var flipAndInvertImage = function(image) {
     return image.map((eachImg)=>eachImg.reverse().map((el)=> el===0?1:0))
 };
+
+/* ['21.4.6] leetCode 1295 */
+var findNumbers = function(nums) {
+    const newArr = nums.filter((num)=>{
+      return num.toString().length%2===0
+    })
+  return newArr.length
+};
+
+/* ['21.4.6] leetCode 1816 */
+var truncateSentence = (s, k) => s.split(' ').slice(0, k).join(' ')
+
