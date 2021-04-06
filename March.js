@@ -210,3 +210,8 @@ var minTimeToVisitAllPoints = function(points) {
     
     return result
 };
+
+/* ['21.4.5] leetCode 832 */
+var flipAndInvertImage = function(image) {
+    return image.map((eachImg)=>eachImg.reverse().map((el)=> el===0?1:0))
+};
