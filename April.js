@@ -104,3 +104,25 @@ function solution(new_id) {
     // 1~3단계
     new_id.toLowerCase().replace(/[^\w-_.]/g, '').replace(/\.+/g, ".")
 }
+
+/* ['21.4.8] Programmers 가운데 글자 가져오기 */
+function solution(s) {
+  return s.substr(Math.ceil(s.length/2)-1,s.length%2===0? 2:1)
+}
+
+/* ['21.4.8] Programmers 모의고사 */
+const solution = (answers) => {
+  let students = [[1,2,3,4,5],[2,1,2,3,2,4,2,5],[3,3,1,1,2,2,4,4,5,5]];
+  let answer = [];
+  
+  for(let student of students) {
+      answer.push(answers.reduce((acc,cur,idx) => (cur==student[idx % student.length] ? acc++ : acc,acc),0))
+  }  
+  return answer.reduce((acc,cur,idx) => (cur === Math.max(...answer) ? acc.push(idx+1) : acc,acc),[])
+}
+
+/* ['21.4.10] leetCode 1431 */
+var kidsWithCandies = function(candies, extraCandies) {
+  const result = candies.map((data)=>data+extraCandies);
+  return result.map((data)=>data>=Math.max(...candies) ? true : false);
+  };
