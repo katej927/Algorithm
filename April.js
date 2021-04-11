@@ -126,3 +126,14 @@ var kidsWithCandies = function(candies, extraCandies) {
   const result = candies.map((data)=>data+extraCandies);
   return result.map((data)=>data>=Math.max(...candies) ? true : false);
   };
+
+/* ['21.4.10] leetCode 771 */
+  var numJewelsInStones = function(J, S) {
+    let result = 0
+    for(let i = 0; i < J.length; i++) {
+         for(let k = 0; k < S.length; k++) {
+            if(J[i] === S[k]) result++
+        }   
+    }
+    return result
+};
