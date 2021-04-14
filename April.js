@@ -137,3 +137,17 @@ var kidsWithCandies = function(candies, extraCandies) {
     }
     return result
 };
+
+/* ['21.4.14] leetCode 1512 */
+var numIdenticalPairs = function(nums) {
+  const indexArr = nums.map((data,index)=>[index,data]);
+  let result=0;
+  for(let i = 0 ; i<indexArr.length-1; i ++){
+      for(let j = i+1; j<indexArr.length; j++){
+          if(indexArr[i][1]===indexArr[j][1]){
+              result++;
+          }
+      }
+  } 
+  return result;
+};
