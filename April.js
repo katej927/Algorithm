@@ -174,3 +174,14 @@ var maximumWealth = function (accounts) {
   const result = accounts.map((data) => data.reduce((acc, curr) => acc + curr));
   return Math.max(...result);
 };
+
+/* ['21.4.17] leetCode 1470 */
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length; i; i -= 1) {
+    j = Math.floor(Math.random() * i);
+    x = a[i - 1];
+    a[i - 1] = a[j];
+    a[j] = x;
+  }
+}
