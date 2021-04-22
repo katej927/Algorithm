@@ -185,3 +185,10 @@ function shuffle(a) {
     a[j] = x;
   }
 }
+
+/* ['21.4.22] leetCode 1528 */
+var restoreString = function (s, indices) {
+  const result = Array.from({ length: s.length }).fill(0);
+  indices.forEach((data, index) => (result[data] = [...s][index]));
+  return result.join("");
+};
