@@ -192,3 +192,24 @@ var restoreString = function (s, indices) {
   indices.forEach((data, index) => (result[data] = [...s][index]));
   return result.join("");
 };
+
+/* ['21.4.23] leetCode 1812 */
+var squareIsWhite = function (coordinates) {
+  let values = coordinates.split("");
+  let obj = {
+    a: 0,
+    b: 1,
+    c: 2,
+    d: 3,
+    e: 4,
+    f: 5,
+    g: 6,
+    h: 7,
+  };
+  let value = obj[values[0]] + parseInt(values[1]);
+  return isEven(value);
+};
+
+var isEven = (num) => {
+  return num % 2 === 0;
+};
