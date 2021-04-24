@@ -192,3 +192,39 @@ var restoreString = function (s, indices) {
   indices.forEach((data, index) => (result[data] = [...s][index]));
   return result.join("");
 };
+
+/* ['21.4.23] leetCode 1812 */
+var squareIsWhite = function (coordinates) {
+  let values = coordinates.split("");
+  let obj = {
+    a: 0,
+    b: 1,
+    c: 2,
+    d: 3,
+    e: 4,
+    f: 5,
+    g: 6,
+    h: 7,
+  };
+  let value = obj[values[0]] + parseInt(values[1]);
+  return isEven(value);
+};
+
+var isEven = (num) => {
+  return num % 2 === 0;
+};
+
+/* ['21.4.24] leetCode 1342 */
+var numberOfSteps = function (num) {
+  let reduceCount = 0;
+  while (num > 0) {
+    if (num % 2 === 0) {
+      num /= 2;
+      ++reduceCount;
+    } else {
+      num -= 1;
+      ++reduceCount;
+    }
+  }
+  return reduceCount;
+};
