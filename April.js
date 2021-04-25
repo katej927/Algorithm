@@ -213,7 +213,6 @@ var squareIsWhite = function (coordinates) {
 var isEven = (num) => {
   return num % 2 === 0;
 };
-<<<<<<< HEAD
 
 /* ['21.4.24] leetCode 1342 */
 var numberOfSteps = function (num) {
@@ -229,5 +228,11 @@ var numberOfSteps = function (num) {
   }
   return reduceCount;
 };
-=======
->>>>>>> 03c3f5fa8be2821dc76c333e625e6ed02a1ed500
+
+/* ['21.4.25] leetCode 1281 */
+var subtractProductAndSum = function (n) {
+  const result = [...String(n)].map((data) => parseInt(data, 10));
+  const pDigit = result.reduce((a, b) => a * b);
+  const sDigit = result.reduce((a, b) => a + b);
+  return pDigit - sDigit;
+};
