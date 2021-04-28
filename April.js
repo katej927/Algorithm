@@ -246,3 +246,11 @@ var decompressRLElist = function (nums) {
   }
   return result;
 };
+
+/* ['21.4.25] leetCode 1678 */
+var interpret = function (command) {
+  const re1 = new RegExp("\\((al)\\)", "g");
+  const re2 = new RegExp("\\(()\\)", "g");
+  const result = command.replace(re1, "al").replace(re2, "o");
+  return result;
+};
