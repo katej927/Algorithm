@@ -254,3 +254,13 @@ var interpret = function (command) {
   const result = command.replace(re1, "al").replace(re2, "o");
   return result;
 };
+
+/* ['21.4.25] leetCode 1720 */
+var decode = function (encoded, first) {
+  const result = new Array(encoded.length).fill(0);
+  result[0] = first;
+  for (let i = 0; i < encoded.length; i++) {
+    result[i + 1] = encoded[i] ^ result[i];
+  }
+  return result;
+};
