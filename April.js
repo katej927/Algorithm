@@ -284,3 +284,14 @@ var countMatches = function (items, ruleKey, ruleValue) {
   const result = items.filter((data) => data[itemsType] === ruleValue).length;
   return result;
 };
+
+/* ['21.4.25] leetCode 1832 */
+var checkIfPangram = function (sentence) {
+  var a = [];
+  for (var x of sentence) {
+    if (a.indexOf(x) == -1) {
+      a.push(x);
+    }
+  }
+  return a.length == 26 ? true : false;
+};
