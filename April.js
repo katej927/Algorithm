@@ -264,3 +264,23 @@ var decode = function (encoded, first) {
   }
   return result;
 };
+
+/* ['21.4.25] leetCode 1773 */
+var countMatches = function (items, ruleKey, ruleValue) {
+  let itemsType = 0;
+  switch (ruleKey) {
+    case "type":
+      itemsType = 0;
+      break;
+    case "color":
+      itemsType = 1;
+      break;
+    case "name":
+      itemsType = 2;
+      break;
+    default:
+      itemsType = 0;
+  }
+  const result = items.filter((data) => data[itemsType] === ruleValue).length;
+  return result;
+};
