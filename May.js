@@ -17,3 +17,10 @@ var xorOperation = function (n, start) {
     .reduce((a, b) => a ^ b, 0);
   return result;
 };
+
+/* ['21.5.2] leetCode 938 */
+var rangeSumBST = function (root, L, R) {
+  let d = (r) =>
+    !r ? 0 : (L <= r.val && r.val <= R ? r.val : 0) + d(r.left) + d(r.right);
+  return d(root);
+};
