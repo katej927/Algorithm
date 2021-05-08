@@ -45,3 +45,9 @@ var replaceDigits = function (s) {
   let result = chs.join("");
   return result;
 };
+
+/* ['21.5.8] leetCode 1662 */
+var arrayStringsAreEqual = function (word1, word2) {
+  const result = word1.join("") === word2.join("") ? true : false;
+  return result;
+};
