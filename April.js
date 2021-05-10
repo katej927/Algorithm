@@ -229,7 +229,7 @@ var numberOfSteps = function (num) {
   return reduceCount;
 };
 
-/* ['21.4.25] leetCode 1281 */
+/* ['21.4.26] leetCode 1281 */
 var subtractProductAndSum = function (n) {
   const result = [...String(n)].map((data) => parseInt(data, 10));
   const pDigit = result.reduce((a, b) => a * b);
@@ -237,7 +237,7 @@ var subtractProductAndSum = function (n) {
   return pDigit - sDigit;
 };
 
-/* ['21.4.25] leetCode 1313 */
+/* ['21.4.27] leetCode 1313 */
 var decompressRLElist = function (nums) {
   const result = [];
   for (let i = 0; i < nums.length; i = i + 2) {
@@ -247,7 +247,7 @@ var decompressRLElist = function (nums) {
   return result;
 };
 
-/* ['21.4.25] leetCode 1678 */
+/* ['21.4.28] leetCode 1678 */
 var interpret = function (command) {
   const re1 = new RegExp("\\((al)\\)", "g");
   const re2 = new RegExp("\\(()\\)", "g");
@@ -255,7 +255,7 @@ var interpret = function (command) {
   return result;
 };
 
-/* ['21.4.25] leetCode 1720 */
+/* ['21.4.29] leetCode 1720 */
 var decode = function (encoded, first) {
   const result = new Array(encoded.length).fill(0);
   result[0] = first;
@@ -265,7 +265,7 @@ var decode = function (encoded, first) {
   return result;
 };
 
-/* ['21.4.25] leetCode 1773 */
+/* ['21.4.30] leetCode 1773 */
 var countMatches = function (items, ruleKey, ruleValue) {
   let itemsType = 0;
   switch (ruleKey) {
@@ -283,15 +283,4 @@ var countMatches = function (items, ruleKey, ruleValue) {
   }
   const result = items.filter((data) => data[itemsType] === ruleValue).length;
   return result;
-};
-
-/* ['21.4.25] leetCode 1832 */
-var checkIfPangram = function (sentence) {
-  var a = [];
-  for (var x of sentence) {
-    if (a.indexOf(x) == -1) {
-      a.push(x);
-    }
-  }
-  return a.length == 26 ? true : false;
 };

@@ -51,3 +51,12 @@ var arrayStringsAreEqual = function (word1, word2) {
   const result = word1.join("") === word2.join("") ? true : false;
   return result;
 };
+
+/* ['21.5.8] leetCode 1290 */
+let result = 0
+    while (head) {
+        result = result * 2 + head.val;
+        head = head.next
+    }
+    return result
+};
