@@ -81,3 +81,25 @@ var countGoodTriplets = function (arr, a, b, c) {
   }
   return result.length;
 };
+
+/* ['21.5.13] leetCode 1534 */
+var countGoodTriplets = function (array, a, b, c) {
+  count = 0;
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    for (let j = i + 1; j < array.length; j++) {
+      const element2 = array[j];
+      for (let k = j + 1; k < array.length; k++) {
+        const element3 = array[k];
+        if (
+          Math.abs(element - element2) <= a &&
+          Math.abs(element2 - element3) <= b &&
+          Math.abs(element - element3) <= c
+        ) {
+          count++;
+        }
+      }
+    }
+  }
+  return count;
+};
