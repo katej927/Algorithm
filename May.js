@@ -103,3 +103,13 @@ var countGoodTriplets = function (array, a, b, c) {
   }
   return count;
 };
+
+/* ['21.5.14] leetCode 1021 */
+const removeOuterParentheses = (s, res = "", depth = 0) =>
+  0 === s.length
+    ? res
+    : removeOuterParentheses(
+        s.slice(1),
+        res + (0 === depth || (1 === depth && ")" === s[0]) ? "" : s[0]),
+        depth + ("(" === s[0] ? 1 : -1)
+      );
