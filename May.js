@@ -113,3 +113,44 @@ const removeOuterParentheses = (s, res = "", depth = 0) =>
         res + (0 === depth || (1 === depth && ")" === s[0]) ? "" : s[0]),
         depth + ("(" === s[0] ? 1 : -1)
       );
+
+/* ['21.5.16] leetCode 1021 */
+var uniqueMorseRepresentations = function (words) {
+  const morseCode = {
+    a: ".-",
+    b: "-...",
+    c: "-.-.",
+    d: "-..",
+    e: ".",
+    f: "..-.",
+    g: "--.",
+    h: "....",
+    i: "..",
+    j: ".---",
+    k: "-.-",
+    l: ".-..",
+    m: "--",
+    n: "-.",
+    o: "---",
+    p: ".--.",
+    q: "--.-",
+    r: ".-.",
+    s: "...",
+    t: "-",
+    u: "..-",
+    v: "...-",
+    w: ".--",
+    x: "-..-",
+    y: "-.--",
+    z: "--..",
+  };
+  const num = new Set();
+  for (let item of words) {
+    let str = "";
+    for (let i = 0; i < item.length; i++) {
+      str += morseCode[item[i]];
+    }
+    num.add(str);
+  }
+  return num.size;
+};
