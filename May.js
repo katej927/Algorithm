@@ -114,7 +114,7 @@ const removeOuterParentheses = (s, res = "", depth = 0) =>
         depth + ("(" === s[0] ? 1 : -1)
       );
 
-/* ['21.5.16] leetCode 1021 */
+/* ['21.5.16] leetCode 804 */
 var uniqueMorseRepresentations = function (words) {
   const morseCode = {
     a: ".-",
@@ -153,4 +153,13 @@ var uniqueMorseRepresentations = function (words) {
     num.add(str);
   }
   return num.size;
+};
+
+/* ['21.5.19] leetCode 1859 */
+var sortSentence = function (s) {
+  s = s.split(" ").map((w) => [w.substr(0, w.length - 1), w.substr(-1)]);
+  s.sort((a, b) => {
+    return a[1].localeCompare(b[1]);
+  });
+  return s.map((w) => w[0]).join(" ");
 };
