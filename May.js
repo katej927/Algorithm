@@ -163,3 +163,57 @@ var sortSentence = function (s) {
   });
   return s.map((w) => w[0]).join(" ");
 };
+
+/* ['21.5.20] leetCode 1704 */
+var halvesAreAlike = function (s) {
+  let n = s.length;
+  let vowels = new Set();
+  vowels.add("a");
+  vowels.add("e");
+  vowels.add("i");
+  vowels.add("o");
+  vowels.add("u");
+  vowels.add("A");
+  vowels.add("E");
+  vowels.add("I");
+  vowels.add("O");
+  vowels.add("U");
+  let count = 0;
+
+  for (let i = 0; i < n / 2; i++) {
+    if (vowels.has(s[i])) {
+      count++;
+    }
+  }
+  for (let i = n / 2; i < n; i++) {
+    if (vowels.has(s[i])) {
+      count--;
+    }
+  }
+  return count === 0;
+};
+
+/* ['21.5.22] leetCode 1252 */
+var oddCells = function (m, n, indices) {
+  const matrix = new Array(m).fill(0).map(() => new Array(n).fill(0));
+
+  indices.forEach((index) => {
+    let row = index[0];
+    let col = index[1];
+
+    for (let i = 0; i < m; i++) {
+      matrix[i][col]++;
+    }
+    for (let i = 0; i < n; i++) {
+      matrix[row][i]++;
+    }
+  });
+
+  let count = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] % 2) count++;
+    }
+  }
+  return count;
+};
