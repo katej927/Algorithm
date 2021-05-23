@@ -217,3 +217,17 @@ var oddCells = function (m, n, indices) {
   }
   return count;
 };
+
+/* ['21.5.23] leetCode 1827 */
+var minOperations = function (nums) {
+  let answer = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] >= nums[i + 1]) {
+      while (nums[i] >= nums[i + 1]) {
+        nums[i + 1]++;
+        answer++;
+      }
+    }
+  }
+  return answer;
+};
