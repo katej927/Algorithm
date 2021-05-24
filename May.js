@@ -231,3 +231,17 @@ var minOperations = function (nums) {
   }
   return answer;
 };
+
+/* ['21.5.24] leetCode 1725 */
+var countGoodRectangles = function (rectangles) {
+  let minVal = [];
+  rectangles.forEach((el) => {
+    minVal.push(Math.min(...el));
+  });
+  let count = 0;
+  let maxVal = Math.max(...minVal);
+  for (let i = 0; i < minVal.length; i++) {
+    if (minVal[i] === maxVal) count++;
+  }
+  return count;
+};
