@@ -245,3 +245,8 @@ var countGoodRectangles = function (rectangles) {
   }
   return count;
 };
+
+/* ['21.5.25] leetCode 1323 */
+var maximum69Number = function (num) {
+  return String(num).replace("6", "9");
+};
