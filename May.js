@@ -250,3 +250,14 @@ var countGoodRectangles = function (rectangles) {
 var maximum69Number = function (num) {
   return String(num).replace("6", "9");
 };
+
+/* ['21.5.26] leetCode 1572 */
+var diagonalSum = function (arr) {
+  let answer = 0;
+  const arrLen = arr.length;
+  const arrHalf = Math.floor(arrLen / 2);
+  for (let = 0; i < arrLen; i++) {
+    answer += arr[i][i] + arr[i][arrLen - 1 - i];
+  }
+  return arrLen % 2 === 1 ? answer - arr[arrHalf][arrHalf] : answer;
+};
