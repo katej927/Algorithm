@@ -300,3 +300,32 @@ var freqAlphabets = function (s) {
   }
   return answer;
 };
+
+/* ['21.5.28] leetCode 1370 */
+var sortString = function (s) {
+  const arr = s.split("").sort((x, y) => {
+    if (x < y) return -1;
+    if (x > y) return 1;
+  });
+
+  return getMaxOrMin(arr).join("");
+};
+
+function getMaxOrMin(arr) {
+  if (!arr.length) return [];
+  const ret = [];
+  const deleteIndex = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== arr[i - 1]) {
+      ret.push(arr[i]);
+      deleteIndex.push(i);
+    }
+  }
+
+  return [
+    ...ret,
+    ...getMaxOrMin(
+      arr.filter((v, index) => deleteIndex.indexOf(index) === -1).reverse()
+    ),
+  ];
+}
