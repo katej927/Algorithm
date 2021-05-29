@@ -329,3 +329,32 @@ function getMaxOrMin(arr) {
     ),
   ];
 }
+
+/* ['21.5.29] leetCode 1436 */
+var destCity = function (paths) {
+  let takeoffCities = [];
+  let destinationCities = [];
+  function pathCounter(array) {
+    for (let i = 0; i < array.length; i++) {
+      i % 2 == 0
+        ? takeoffCities.push(array[i])
+        : destinationCities.push(array[i]);
+    }
+  }
+  for (let i = 0; i < paths.length; i++) {
+    pathCounter(paths[i]);
+  }
+  let theCity = "";
+  for (let i = 0; i < destinationCities.length; i++) {
+    let matchCounter = 0;
+    for (let j = 0; j < takeoffCities.length; j++) {
+      if (destinationCities[i] === takeoffCities[j]) {
+        matchCounter++;
+      }
+    }
+    if (matchCounter === 0) {
+      theCity = destinationCities[i];
+    }
+  }
+  return theCity;
+};
