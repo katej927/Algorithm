@@ -375,3 +375,12 @@ var maxProduct = function (nums) {
   }
   return result;
 };
+
+/* ['21.5.31] leetCode 1374 */
+var generateTheString = function (n) {
+  if (n % 2 === 0) {
+    return "a".repeat(n - 1) + "b";
+  } else {
+    return "a".repeat(n);
+  }
+};
