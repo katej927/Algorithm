@@ -358,3 +358,20 @@ var destCity = function (paths) {
   }
   return theCity;
 };
+
+/* ['21.5.30] leetCode 1464 */
+var maxProduct = function (nums) {
+  let prevMax = nums[0];
+  let prevMin = nums[0];
+  let result = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    let curMax = Math.max(nums[i] * prevMax, nums[i], nums[i] * prevMin);
+    let curMin = Math.min(nums[i] * prevMax, nums[i], nums[i] * prevMin);
+
+    prevMax = curMax;
+    prevMin = curMin;
+
+    result = Math.max(curMax, result);
+  }
+  return result;
+};
