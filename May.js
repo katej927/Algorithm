@@ -398,3 +398,24 @@ var busyStudent = function (startTime, endTime, queryTime) {
 
   return busyStudentCount;
 };
+
+/* ['21.6.2] leetCode 1304 */
+const sumZero = (n) => {
+  let number = n,
+    flag = false;
+  const result = [];
+  for (let i = 0; i < n; i++) {
+    if (flag) {
+      result.push(-number);
+      number--;
+      flag = false;
+    } else {
+      result.push(number);
+      flag = true;
+    }
+  }
+  if (result.length % 2 === 1) {
+    result[result.length - 1] = 0;
+  }
+  return result;
+};
