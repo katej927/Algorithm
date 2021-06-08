@@ -384,38 +384,3 @@ var generateTheString = function (n) {
     return "a".repeat(n);
   }
 };
-
-/* ['21.6.1] leetCode 1450 */
-var busyStudent = function (startTime, endTime, queryTime) {
-  const timeLength = startTime.length;
-  let busyStudentCount = 0;
-
-  for (let i = 0; i < timeLength; i++) {
-    if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-      busyStudentCount++;
-    }
-  }
-
-  return busyStudentCount;
-};
-
-/* ['21.6.2] leetCode 1304 */
-const sumZero = (n) => {
-  let number = n,
-    flag = false;
-  const result = [];
-  for (let i = 0; i < n; i++) {
-    if (flag) {
-      result.push(-number);
-      number--;
-      flag = false;
-    } else {
-      result.push(number);
-      flag = true;
-    }
-  }
-  if (result.length % 2 === 1) {
-    result[result.length - 1] = 0;
-  }
-  return result;
-};
