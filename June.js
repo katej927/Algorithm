@@ -74,3 +74,15 @@ var countNegatives = function (grid) {
   }
   return result;
 };
+
+/* ['21.6.11] leetCode 905 */
+var sortArrayByParity = function (nums) {
+  let even = [];
+  let odd = [];
+  for (let x of nums) {
+    if (x % 2) odd.push(x);
+    else even.push(x);
+  }
+  let answer = [...even, ...odd];
+  return answer;
+};
