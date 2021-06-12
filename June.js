@@ -86,3 +86,15 @@ var sortArrayByParity = function (nums) {
   let answer = [...even, ...odd];
   return answer;
 };
+
+/* ['21.6.12] leetCode 1837 */
+var sumBase = function (n, k) {
+  // for n = 36, k = 5, below will convert 36 (base 10) into 121 (base 5)
+  var resultStr = n.toString(k);
+  var sum = 0;
+  // now iterate the string with each character and keep adding the numbers
+  for (var i = 0; i < resultStr.length; i++) {
+    sum += +resultStr[i];
+  }
+  return sum;
+};
