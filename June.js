@@ -98,3 +98,20 @@ var sumBase = function (n, k) {
   }
   return sum;
 };
+
+/* ['21.6.13] leetCode 897 */
+var increasingBST = function (root) {
+  var arr = [];
+  // 중위순회
+  inorder(root, arr);
+
+  var newRoot = new TreeNode(0);
+  var curNode = newRoot;
+
+  for (var i = 0; i < arr.length; i++) {
+    curNode.right = new TreeNode(arr[i]);
+    curNode = curNode.right;
+  }
+
+  return newRoot.right;
+};
