@@ -149,3 +149,23 @@ var finalPrices = function (prices) {
   arr.push(prices[prices.length - 1]);
   return arr;
 };
+
+/* ['21.6.15] leetCode 1475 */
+var sumOfUnique = function (nums) {
+  var unique = [...new Set(nums)];
+  var map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (!map.has(nums[i])) {
+      map.set(nums[i], { value: 0 });
+    } else {
+      map.set(nums[i], { value: 1 });
+    }
+  }
+  var sum = 0;
+  for (let i = 0; i < unique.length; i++) {
+    if (map.get(unique[i]).value == 1) sum -= unique[i];
+    sum += unique[i];
+  }
+
+  return sum;
+};
