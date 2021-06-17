@@ -150,7 +150,7 @@ var finalPrices = function (prices) {
   return arr;
 };
 
-/* ['21.6.15] leetCode 1475 */
+/* ['21.6.16] leetCode 1748 */
 var sumOfUnique = function (nums) {
   var unique = [...new Set(nums)];
   var map = new Map();
@@ -168,4 +168,15 @@ var sumOfUnique = function (nums) {
   }
 
   return sum;
+};
+
+/* ['21.6.17] leetCode 589 */
+var preorderTraversal = function (root) {
+  var array = [];
+  if (!(root == null)) {
+    array.push(root.val);
+    preorderTraversal(root.left);
+    preorderTraversal(root.right);
+  }
+  return array;
 };
