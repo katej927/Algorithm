@@ -180,3 +180,37 @@ var preorderTraversal = function (root) {
   }
   return array;
 };
+
+/* ['21.6.18] leetCode 657 */
+var judgeCircle = function (moves) {
+  // record the number of characters appeared udrl
+  var uNum = 0,
+    dNum = 0,
+    rNum = 0,
+    lNum = 0;
+
+  // string traversal moves
+  for (var i = 0; i < moves.length; i++) {
+    switch (moves[i]) {
+      case "L":
+        lNum++;
+        break;
+      case "R":
+        rNum++;
+        break;
+      case "U":
+        uNum++;
+        break;
+      case "D":
+        dNum++;
+        break;
+    }
+  }
+
+  // If equal number of left and right and up and down the number of times equal returns true, false otherwise
+  if (lNum === rNum && dNum === uNum) {
+    return true;
+  } else {
+    return false;
+  }
+};
