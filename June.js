@@ -229,3 +229,21 @@ var postorder = function (root) {
     res.push(node.val);
   }
 };
+
+/* ['21.6.20] leetCode 1768 */
+var mergeAlternately = function (word1, word2) {
+  let merged = "";
+
+  const longer = Math.max(word1.length, word2.length);
+
+  for (let i = 0; i < longer; i++) {
+    if (word1[i] && word2[i]) {
+      merged = merged.concat(word1[i], word2[i]);
+    } else if (!word1[i]) {
+      merged = merged.concat(word2[i]);
+    } else if (!word2[i]) {
+      merged = merged.concat(word1[i]);
+    }
+  }
+  return merged;
+};
