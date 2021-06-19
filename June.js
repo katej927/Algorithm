@@ -214,3 +214,18 @@ var judgeCircle = function (moves) {
     return false;
   }
 };
+
+/* ['21.6.19] leetCode 657 */
+var postorder = function (root) {
+  const res = [];
+  traverse(root);
+  return res;
+
+  function traverse(node) {
+    if (!node) return;
+    for (child of node.children) {
+      traverse(child);
+    }
+    res.push(node.val);
+  }
+};
