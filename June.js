@@ -247,3 +247,13 @@ var mergeAlternately = function (word1, word2) {
   }
   return merged;
 };
+
+/* ['21.6.21] leetCode 561 */
+var arrayPairSum = function (nums) {
+  nums = nums.sort((a, b) => a - b);
+  let result = 0;
+  for (let i = 0; i < nums.length; i += 2) {
+    result += nums[i];
+  }
+  return result;
+};
