@@ -257,3 +257,24 @@ var arrayPairSum = function (nums) {
   }
   return result;
 };
+
+/* ['21.6.22] leetCode 700 */
+var searchBST = function (root, val) {
+  let result = null;
+  function search(node) {
+    if (!node) {
+      return;
+    }
+
+    if (node.val === val) {
+      result = node;
+      return;
+    }
+
+    search(node.left);
+    search(node.right);
+  }
+
+  search(root);
+  return result;
+};
