@@ -278,3 +278,32 @@ var searchBST = function (root, val) {
   search(root);
   return result;
 };
+
+/* ['21.6.23] leetCode 461 */
+var hammingDistance = function (x, y) {
+  function quyufa(num) {
+    var arr = [];
+    while (num !== 0) {
+      arr.push(num % 2);
+      num = Math.floor(num / 2);
+    }
+    return arr;
+  }
+
+  var arrX = quyufa(x),
+    arrY = quyufa(y),
+    result = 0;
+
+  while (arrX.length !== arrY.length) {
+    var shortArr = arrX.length > arrY.length ? arrY : arrX;
+    shortArr.push(0);
+  }
+
+  for (var i = 0; i < arrX.length; i++) {
+    if (arrX[i] !== arrY[i]) {
+      result++;
+    }
+  }
+
+  return result;
+};
