@@ -307,3 +307,19 @@ var hammingDistance = function (x, y) {
 
   return result;
 };
+
+/* ['21.6.24] leetCode 461 */
+var countBalls = function (lowLimit, highLimit) {
+  let box = {};
+  for (let i = lowLimit; i <= highLimit; ++i) {
+    let n = getSum(i);
+    box[n] = (box[n] || 0) + 1;
+  }
+  let max = 0;
+  for (let k in box) {
+    if (box[k] > max) {
+      max = box[k];
+    }
+  }
+  return max;
+};
