@@ -345,3 +345,12 @@ function sumOfDigits(n) {
   }
   return sum;
 }
+
+/* ['21.6.27] leetCode 557 */
+var reverseWords = function (s) {
+  let arr = s.split(" ");
+  let result = arr.map((item) => {
+    return item.split("").reverse().join("");
+  });
+  return result.join(" ");
+};
