@@ -354,3 +354,28 @@ var reverseWords = function (s) {
   });
   return result.join(" ");
 };
+
+/* ['21.6.29] leetCode 1051 */
+var heightChecker = function (heights) {
+  let movedStudents = 0;
+  const heightsOrigin = [...heights];
+  heights.sort((a, b) => {
+    if (a > b) {
+      return 1;
+    }
+
+    if (a < b) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+  for (let i = 0; i < heights.length; i++) {
+    if (heightsOrigin[i] != heights[i]) {
+      movedStudents++;
+    }
+  }
+
+  return movedStudents;
+};
