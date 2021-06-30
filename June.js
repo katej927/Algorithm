@@ -379,3 +379,16 @@ var heightChecker = function (heights) {
 
   return movedStudents;
 };
+
+/* ['21.6.30] leetCode 933 */
+RecentCounter.prototype.ping = function (t) {
+  if (0 < this.queue.length) {
+    while (3000 < t - this.queue[0]) {
+      this.queue.shift();
+    }
+  }
+
+  this.queue.push(t);
+
+  return this.queue.length;
+};
