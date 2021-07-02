@@ -1,4 +1,4 @@
-/* ['21.6.30] leetCode 933 */
+/* ['21.7.1] leetCode 1710 */
 var maximumUnits = function (boxTypes, truckSize) {
   let totalUnits = 0,
     sorted = boxTypes.sort((a, b) => b[1] - a[1]),
@@ -13,4 +13,11 @@ var maximumUnits = function (boxTypes, truckSize) {
     }
   });
   return totalUnits;
+};
+
+/* ['21.7.2] leetCode 1460 */
+var canBeEqual = function (target, arr) {
+  return (
+    target.sort((a, b) => a - b).join("") === arr.sort((a, b) => a - b).join("")
+  );
 };
