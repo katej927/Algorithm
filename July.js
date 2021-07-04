@@ -60,3 +60,24 @@ var subdomainVisits = function (cpdomains) {
   });
   return aResult;
 };
+
+/* ['21.7.4] leetCode 1207 */
+var uniqueOccurrences = function (arr) {
+  var obj = {},
+    obj1 = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (!obj[arr[i]]) {
+      obj[arr[i]] = 1;
+    } else {
+      obj[arr[i]]++;
+    }
+  }
+  for (var key in obj) {
+    if (obj1[obj[key]]) {
+      return false;
+    } else {
+      obj1[obj[key]] = true;
+    }
+  }
+  return true;
+};
