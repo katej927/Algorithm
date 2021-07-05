@@ -81,3 +81,19 @@ var uniqueOccurrences = function (arr) {
   }
   return true;
 };
+
+/* ['21.7.5] leetCode 1337 */
+var kWeakestRows = function (mat, k) {
+  const m = mat.length;
+
+  const indexWithCnt = mat.map((arr, i) => {
+    let count = 0;
+    for (const n of arr) if (n) count++;
+    return [i, count];
+  });
+
+  return indexWithCnt
+    .sort((a, b) => a[1] - b[1])
+    .slice(0, k)
+    .map((el) => el[0]);
+};
