@@ -97,3 +97,17 @@ var kWeakestRows = function (mat, k) {
     .slice(0, k)
     .map((el) => el[0]);
 };
+
+/* ['21.7.6] leetCode 1022 */
+var sumRootToLeaf = function (root, val = "") {
+  if (root == null) return 0;
+  let result = 0;
+  if (root.left != null) result += sumRootToLeaf(root.left, val + root.val);
+  if (root.right != null) result += sumRootToLeaf(root.right, val + root.val);
+
+  if (root.left == null && root.right == null) {
+    return parseInt(val + root.val, 2);
+  }
+
+  return result;
+};
