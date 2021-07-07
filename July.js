@@ -111,3 +111,20 @@ var sumRootToLeaf = function (root, val = "") {
 
   return result;
 };
+
+/* ['21.7.7] leetCode 1022 */
+var minSubsequence = function (nums) {
+  let arr = [];
+  let arrSum = 0;
+  let sum = nums.reduce((acc, x) => x + acc, 0);
+  nums.sort((a, b) => b - a);
+
+  while (arrSum <= sum) {
+    let curr = nums.shift();
+    sum -= curr;
+    arrSum += curr;
+    arr.push(curr);
+  }
+
+  return arr;
+};
