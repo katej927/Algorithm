@@ -163,3 +163,16 @@ var isSumEqual = function (firstWord, secondWord, targetWord) {
   );
   return target == first + second;
 };
+
+/* ['21.7.9] leetCode 1047 */
+var removeDuplicates = function (S) {
+  const stack = [];
+
+  for (const char of S) {
+    // console.log("char: " + char);
+    stack[stack.length - 1] === char ? stack.pop() : stack.push(char);
+    // console.log("stack: " + stack);
+  }
+
+  return stack.join("");
+};
