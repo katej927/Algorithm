@@ -169,10 +169,13 @@ var removeDuplicates = function (S) {
   const stack = [];
 
   for (const char of S) {
-    // console.log("char: " + char);
     stack[stack.length - 1] === char ? stack.pop() : stack.push(char);
-    // console.log("stack: " + stack);
   }
 
   return stack.join("");
+};
+
+/* ['21.7.11] leetCode 852 */
+var peakIndexInMountainArray = function (A) {
+  return A.indexOf(Math.max(...A));
 };
