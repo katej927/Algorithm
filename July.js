@@ -179,3 +179,8 @@ var removeDuplicates = function (S) {
 var peakIndexInMountainArray = function (A) {
   return A.indexOf(Math.max(...A));
 };
+
+/* ['21.7.12] leetCode 977 */
+var sortedSquares = function (nums) {
+  return nums.map(squareNum).sort((l, r) => l - r);
+};
