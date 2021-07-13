@@ -184,3 +184,8 @@ var peakIndexInMountainArray = function (A) {
 var sortedSquares = function (nums) {
   return nums.map(squareNum).sort((l, r) => l - r);
 };
+
+/* ['21.7.13] leetCode 977 */
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
