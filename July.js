@@ -185,7 +185,12 @@ var sortedSquares = function (nums) {
   return nums.map(squareNum).sort((l, r) => l - r);
 };
 
-/* ['21.7.13] leetCode 977 */
+/* ['21.7.13] leetCode 344 */
 function reverseString(str) {
   return str.split("").reverse().join("");
 }
+
+/* ['21.7.14] leetCode 338 */
+var countBits = function (n) {
+  return n.toString(2).replace(/0/g, "").length;
+};
