@@ -194,3 +194,21 @@ function reverseString(str) {
 var countBits = function (n) {
   return n.toString(2).replace(/0/g, "").length;
 };
+
+/* ['21.7.19] leetCode 922 */
+var sortArrayByParityII = function (A) {
+  let result = Array(A.length);
+  let odd = 1,
+    even = 0;
+  A.forEach((el) => {
+    if (el % 2 === 0) {
+      // even
+      result[even] = el;
+      even += 2;
+    } else {
+      result[odd] = el;
+      odd += 2;
+    }
+  });
+  return result;
+};
