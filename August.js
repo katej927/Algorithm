@@ -21,3 +21,24 @@ var minDeletionSize = function (strs) {
   }
   return count;
 };
+
+/* ['21.8.4] leetCode 1380 */
+var luckyNumbers = function (matrix) {
+  const n = matrix[0].length;
+  const m = matrix.length;
+  let res = [];
+  for (let i = 0; i < m; i++) {
+    let minIndex = matrix[i].indexOf(Math.min(...matrix[i]));
+    let isMax = true;
+    for (let j = 0; j < m; j++) {
+      if (matrix[j][minIndex] > matrix[i][minIndex]) {
+        isMax = false;
+        break;
+      }
+    }
+    if (isMax) {
+      res.push(matrix[i][minIndex]);
+    }
+  }
+  return res;
+};
