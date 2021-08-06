@@ -42,3 +42,21 @@ var luckyNumbers = function (matrix) {
   }
   return res;
 };
+
+/* ['21.8.4] leetCode 1502 */
+var canMakeArithmeticProgression = function (arr) {
+  if (arr.length == 2) return true;
+
+  var sortedArray = arr.sort(function (a, b) {
+    return a - b;
+  });
+
+  var diffValue = sortedArray[1] - sortedArray[0];
+
+  for (var i = 2; i < arr.length; i++) {
+    if (sortedArray[i] - sortedArray[i - 1] !== diffValue) {
+      return false;
+    }
+  }
+  return true;
+};
