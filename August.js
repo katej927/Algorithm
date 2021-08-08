@@ -60,3 +60,22 @@ var canMakeArithmeticProgression = function (arr) {
   }
   return true;
 };
+
+/* ['21.8.8] leetCode 559 */
+var maxDepth = function (root) {
+  if (!root.length) return 0;
+  let tree = new TreeNode(root[0]);
+
+  let recursion = (ele) => {
+    if (!ele.left) {
+      recursion(ele.left);
+    }
+  };
+
+  for (let i = 3; i < root.length; i++) {
+    if (tree.left === null) {
+      tree.left = root[i];
+    } else if (tree.right === null) {
+    }
+  }
+};
