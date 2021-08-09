@@ -79,3 +79,14 @@ var maxDepth = function (root) {
     }
   }
 };
+
+/* ['21.8.8] leetCode 876 */
+var middleNode = function (head) {
+  let slow,
+    fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+};
