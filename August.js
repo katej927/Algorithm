@@ -90,3 +90,5 @@ var middleNode = function (head) {
   }
   return slow;
 };
+
+/* ['21.8.8] leetCode 876 */
