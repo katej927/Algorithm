@@ -6,3 +6,17 @@ var buildArray = function (nums) {
   }
   return result;
 };
+
+// ['21.9.20] leetcode 2011
+var finalValueAfterOperations = function (operations) {
+  let element = 0;
+
+  operations.forEach((e) => {
+    if (e.includes("--")) {
+      element--;
+    } else {
+      element++;
+    }
+  });
+  return element;
+};
