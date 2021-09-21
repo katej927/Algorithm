@@ -20,3 +20,8 @@ var finalValueAfterOperations = function (operations) {
   });
   return element;
 };
+
+// ['21.9.21] leetcode 1929
+var getConcatenation = function (nums) {
+  return nums.concat(nums);
+};
