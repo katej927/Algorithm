@@ -25,3 +25,11 @@ var finalValueAfterOperations = function (operations) {
 var getConcatenation = function (nums) {
   return nums.concat(nums);
 };
+
+// ['21.9.22] leetcode 1480
+const runningSum = nums => {
+  nums.reduce((a,c,i,arr)=>
+    nums[i]+=a
+  )
+  return nums
+}
