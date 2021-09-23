@@ -27,9 +27,12 @@ var getConcatenation = function (nums) {
 };
 
 // ['21.9.22] leetcode 1480
-const runningSum = nums => {
-  nums.reduce((a,c,i,arr)=>
-    nums[i]+=a
-  )
-  return nums
-}
+const runningSum = (nums) => {
+  nums.reduce((a, c, i, arr) => (nums[i] += a));
+  return nums;
+};
+
+// ['21.9.23] leetcode 1108
+var defangIPaddr = function (address) {
+  return address.replace(/\./g, "[.]");
+};
