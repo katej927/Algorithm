@@ -80,7 +80,7 @@ var maxDepth = function (root) {
   }
 };
 
-/* ['21.8.8] leetCode 876 */
+/* ['21.8.9] leetCode 876 */
 var middleNode = function (head) {
   let slow,
     fast = head;
@@ -90,5 +90,3 @@ var middleNode = function (head) {
   }
   return slow;
 };
-
-/* ['21.8.8] leetCode 876 */
