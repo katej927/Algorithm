@@ -55,3 +55,27 @@ function solution(participant, completion) {
   });
   return (findResult.length ? findResult : duplicatedEls).toString();
 }
+
+// ['21.9.26] Refactor: programmers 완주하지 못한 선수
+function solution(participant, completion) {
+  // participant 에 대한 for문 순회를 위한 변수
+  const total = participant.length;
+  // 정답 변수
+  var answer = "";
+
+  // sort() : participant와 completion을 순서대로 정렬하여 비교하기 위함.
+  participant.sort();
+  completion.sort();
+
+  // 순회하며 요소 하나씩 비교할 것
+  for (let i = 0; i < total; i++) {
+    // 정답(일치하지 않는 요소) 찾아냄 -> 배열의 요소를 순서대로 정렬했기 때문
+    if (participant[i] !== completion[i]) {
+      // answer(정답 변수)에 해당 요소를 담음
+      answer = participant[i];
+
+      // 정답 반환
+      return answer;
+    }
+  }
+}
