@@ -79,3 +79,15 @@ function solution(participant, completion) {
     }
   }
 }
+
+// ['21.9.28] leetcode 1672
+var maximumWealth = function (accounts) {
+  // 내부 배열 요소들의 합에 대한 새 배열을 만들기 위한 map
+  const outArrEl = accounts.map((outEls) =>
+    // 내부 배열 요소들의 합
+    outEls.reduce((stack, el) => stack + el, 0)
+  );
+
+  // 외부 배열 요소들 중 최댓값
+  return Math.max(...outArrEl);
+};
