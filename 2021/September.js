@@ -91,3 +91,14 @@ var maximumWealth = function (accounts) {
   // 외부 배열 요소들 중 최댓값
   return Math.max(...outArrEl);
 };
+
+// ['21.9.29] leetcode 1470
+var shuffle = function (nums, n) {
+  let backNArr = nums.splice(n);
+  let odd = 1;
+  backNArr.forEach((el) => {
+    nums.splice(odd, 0, el);
+    odd += 2;
+  });
+  return nums;
+};
