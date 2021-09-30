@@ -102,3 +102,7 @@ var shuffle = function (nums, n) {
   });
   return nums;
 };
+
+// ['21.9.30] leetcode 1431
+const kidsWithCandies = (candies, extraCandies, max = Math.max(...candies)) =>
+  candies.map((candy) => candy + extraCandies >= max);
