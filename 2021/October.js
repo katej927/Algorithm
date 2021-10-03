@@ -13,3 +13,9 @@ var numIdenticalPairs = function (nums) {
 };
 
 numIdenticalPairs(nums);
+
+// ['21.10.3] leetcode 771
+var numJewelsInStones = function (J, S) {
+  const jewels = new Set(J);
+  return [...S].reduce((arr, cur) => arr + jewels.has(cur), 0);
+};
