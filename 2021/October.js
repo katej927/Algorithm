@@ -19,3 +19,12 @@ var numJewelsInStones = function (J, S) {
   const jewels = new Set(J);
   return [...S].reduce((arr, cur) => arr + jewels.has(cur), 0);
 };
+
+// ['21.10.4] leetcode 1528
+var restoreString = function (s, indices) {
+  const resArr = [];
+  for (let j = 0; j < s.length; j++) {
+    resArr[indices[j]] = s[j];
+  }
+  return resArr.join("");
+};
