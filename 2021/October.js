@@ -28,3 +28,10 @@ var restoreString = function (s, indices) {
   }
   return resArr.join("");
 };
+
+// ['21.10.5] leetcode 1720
+var decode = function (encoded, first) {
+  const result = [first];
+  encoded.forEach((el, i) => result.push(result[i] ^ el));
+  return result;
+};
