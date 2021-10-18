@@ -35,3 +35,18 @@ var decode = function (encoded, first) {
   encoded.forEach((el, i) => result.push(result[i] ^ el));
   return result;
 };
+
+// ['21.10.18] Algorithm
+const tmp = (data) => {
+  let AddedWeight = 0;
+  for (const line of data) {
+    if (line.includes("kg")) {
+      const kgToG = line.split("kg")[0] * 1000;
+      AddedWeight += kgToG;
+    } else if (line.includes("g")) {
+      const g = Number(line.split("g")[0]);
+      AddedWeight += g;
+    }
+  }
+  return Math.floor(AddedWeight / 100 - 1);
+};
