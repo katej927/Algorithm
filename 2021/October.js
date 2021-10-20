@@ -50,3 +50,11 @@ const tmp = (data) => {
   }
   return Math.floor(AddedWeight / 100 - 1);
 };
+
+// ['21.10.20] leetcode 1281
+var subtractProductAndSum = function (n) {
+  const eachNum = Array.from(String(n), Number);
+  const add = eachNum.reduce((acc, cur) => acc + cur);
+  const multiply = eachNum.reduce((acc, cur) => acc * cur);
+  return multiply - add;
+};
