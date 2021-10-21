@@ -58,3 +58,12 @@ var subtractProductAndSum = function (n) {
   const multiply = eachNum.reduce((acc, cur) => acc * cur);
   return multiply - add;
 };
+
+// ['21.10.21] leetcode 1313
+var decompressRLElist = function (nums) {
+  return nums.reduce(
+    (acc, cur, i) =>
+      i % 2 !== 0 ? [...acc, ...Array(nums[i - 1]).fill(cur)] : acc,
+    []
+  );
+};
