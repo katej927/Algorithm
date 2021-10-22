@@ -67,3 +67,8 @@ var decompressRLElist = function (nums) {
     []
   );
 };
+
+// ['21.10.22] leetcode 1342
+var numberOfSteps = function (num) {
+  return !num ? 0 : numberOfSteps(num % 2 === 0 ? num / 2 : num - 1) + 1;
+};
