@@ -72,3 +72,10 @@ var decompressRLElist = function (nums) {
 var numberOfSteps = function (num) {
   return !num ? 0 : numberOfSteps(num % 2 === 0 ? num / 2 : num - 1) + 1;
 };
+
+// ['21.10.23] leetcode 1389
+var createTargetArray = function (nums, index) {
+  let result = [];
+  for (let i = 0; i < nums.length; i++) result.splice(index[i], 0, nums[i]);
+  return result;
+};
