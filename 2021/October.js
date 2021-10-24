@@ -79,3 +79,8 @@ var createTargetArray = function (nums, index) {
   for (let i = 0; i < nums.length; i++) result.splice(index[i], 0, nums[i]);
   return result;
 };
+
+// ['21.10.24] leetcode 1678
+var interpret = function (command) {
+  return command.replaceAll("()", "o").replaceAll("(al)", "al");
+};
