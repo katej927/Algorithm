@@ -84,3 +84,18 @@ var createTargetArray = function (nums, index) {
 var interpret = function (command) {
   return command.replaceAll("()", "o").replaceAll("(al)", "al");
 };
+
+// ['21.10.26] leetcode 1221
+var balancedStringSplit = function (s) {
+  let isSameQuant = 0;
+  let balanceCount = 0;
+
+  s.split("").forEach((el) => {
+    el === "R" ? (isSameQuant += 1) : (isSameQuant -= 1);
+
+    if (isSameQuant === 0) {
+      balanceCount += 1;
+    }
+  });
+  return balanceCount;
+};
