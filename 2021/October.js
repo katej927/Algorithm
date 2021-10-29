@@ -99,3 +99,12 @@ var balancedStringSplit = function (s) {
   });
   return balanceCount;
 };
+
+// ['21.10.29] leetcode 1720 (Refactor)
+var decode = function (encoded, first) {
+  let result = [first];
+  encoded.forEach((el, i) => {
+    result.push(el ^ result[i]);
+  });
+  return result;
+};
