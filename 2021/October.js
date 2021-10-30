@@ -108,3 +108,17 @@ var decode = function (encoded, first) {
   });
   return result;
 };
+
+// ['21.10.30] leetcode 1773 (Refactor)
+var countMatches = function (items, ruleKey, ruleValue) {
+  let keyIdx = {
+    type: 0,
+    color: 1,
+    name: 2,
+  };
+
+  return items.reduce(
+    (acc, cur) => (cur[keyIdx[ruleKey]] === ruleValue ? acc + 1 : acc),
+    0
+  );
+};
