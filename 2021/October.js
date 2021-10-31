@@ -122,3 +122,10 @@ var countMatches = function (items, ruleKey, ruleValue) {
     0
   );
 };
+
+// ['21.10.31] leetcode 2037
+var minMovesToSeat = function (seats, students) {
+  seats.sort((a, b) => b - a);
+  students.sort((a, b) => b - a);
+  return students.reduce((a, c, i) => (a += Math.abs(c - seats[i])), 0);
+};
