@@ -8,3 +8,14 @@ var countKDifference = function (nums, k) {
   }
   return count;
 };
+
+// ['21.11.3] programmers 로또의 최고 순위와 최저 순위
+function solution(lottos, win_nums) {
+  const rank = [6, 6, 5, 4, 3, 2, 1];
+
+  const minCount = lottos.filter((num) => win_nums.includes(num)).length;
+  const zeroCount = lottos.filter((num) => !num).length;
+  const maxCount = minCount + zeroCount;
+
+  return [rank[maxCount], rank[minCount]];
+}
