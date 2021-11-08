@@ -28,3 +28,12 @@ var xorOperation = function (n, start) {
   }
   return result;
 };
+
+// ['21.11.8] leetcode 1859
+var sortSentence = function (s) {
+  return s
+    .split(" ")
+    .sort((a, b) => a[a.length - 1] - b[b.length - 1])
+    .map((el) => el.slice(0, el.length - 1))
+    .join(" ");
+};
