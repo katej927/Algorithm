@@ -37,3 +37,22 @@ var sortSentence = function (s) {
     .map((el) => el.slice(0, el.length - 1))
     .join(" ");
 };
+
+// ['21.11.9] programmers 기능개발
+function solution(progresses, speeds) {
+  let result = [0];
+  let devDays = progresses.map((progress, i) =>
+    Math.ceil((100 - progress) / speeds[i])
+  );
+  let maxDay = devDays[0];
+
+  for (let i = 0, j = 0; i < devDays.length; i++) {
+    if (devDays[i] <= maxDay) {
+      result[j] += 1;
+    } else {
+      maxDay = devDays[i];
+      result[++j] = 1;
+    }
+  }
+  return result;
+}
