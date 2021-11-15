@@ -59,11 +59,23 @@ function solution(progresses, speeds) {
 
 // ['21.11.11] programmers 가장 큰 수
 function solution(numbers) {
-  // 모든 number들을 str으로 바꾸고, 그대로 연결한 수(`${b}${a}`) - 바꿔 연결한 수 (`${a}${b}`)가 양수면 
+  // 모든 number들을 str으로 바꾸고, 그대로 연결한 수(`${b}${a}`) - 바꿔 연결한 수 (`${a}${b}`)가 양수면
   // ex) `${b(3)}${a(30)}` - `${a(30)}${b(3)}` => 330 - 303 = 양수
   //순서 그대로 유지
-  const result = numbers.sort((a,b)=>`${b}${a}`-`${a}${b}`).join('')
+  const result = numbers.sort((a, b) => `${b}${a}` - `${a}${b}`).join("");
 
   // 모든 수가 0인 경우 000이 나오지 않게 0을 출력
-  return result[0]==='0'? '0':result
+  return result[0] === "0" ? "0" : result;
 }
+
+// ['21.11.15] leetcode 1614
+const maxDepth = (s) => {
+  let l = 0,
+    r = 0;
+  return s.split("").reduce((depth, c) => {
+    if (c === "(") l++;
+    if (c === ")") r++;
+
+    return Math.max(l - r, depth);
+  }, 0);
+};
