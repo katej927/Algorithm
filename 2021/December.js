@@ -22,3 +22,8 @@ var sumOddLengthSubarrays = function (arr) {
   }
   return resultArr.flat().reduce((a, c) => a + c, 0);
 };
+
+// ['21.12.3] leetcode 1662
+var arrayStringsAreEqual = function (word1, word2) {
+  return word1.join("") === word2.join("");
+};
