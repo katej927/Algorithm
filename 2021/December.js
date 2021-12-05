@@ -27,3 +27,17 @@ var sumOddLengthSubarrays = function (arr) {
 var arrayStringsAreEqual = function (word1, word2) {
   return word1.join("") === word2.join("");
 };
+
+// ['21.12.5] leetcode 1290
+const getDecimalArr = (head) => {
+  let a = [];
+  while (head) {
+    a.push(head.val);
+    head = head.next;
+  }
+  return a;
+};
+const getDecimalValue = (head) =>
+  getDecimalArr(head)
+    .reverse()
+    .reduce((acc, cur, i) => (acc += cur * 2 ** i), 0);
