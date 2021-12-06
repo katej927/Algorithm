@@ -41,3 +41,10 @@ const getDecimalValue = (head) =>
   getDecimalArr(head)
     .reverse()
     .reduce((acc, cur, i) => (acc += cur * 2 ** i), 0);
+
+// ['21.12.6] leetcode 1832
+var checkIfPangram = function (sentence) {
+  return "abcdefghijklmnopqrstuvwxyz"
+    .split("")
+    .every((alphabet) => sentence.search(alphabet) >= 0);
+};
