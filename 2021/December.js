@@ -46,3 +46,10 @@ const getDecimalValue = (head) =>
 var checkIfPangram = function (sentence) {
   return new Set(sentence).size === 26;
 };
+
+// ['21.12.7] leetcode 1913
+var maxProductDifference = function (nums) {
+  nums.sort((a, b) => a - b);
+
+  return nums[nums.length - 1] * nums[nums.length - 2] - nums[0] * nums[1];
+};
