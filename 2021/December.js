@@ -44,7 +44,5 @@ const getDecimalValue = (head) =>
 
 // ['21.12.6] leetcode 1832
 var checkIfPangram = function (sentence) {
-  return "abcdefghijklmnopqrstuvwxyz"
-    .split("")
-    .every((alphabet) => sentence.search(alphabet) >= 0);
+  return new Set(sentence).size === 26;
 };
