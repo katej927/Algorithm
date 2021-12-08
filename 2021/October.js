@@ -129,15 +129,3 @@ var minMovesToSeat = function (seats, students) {
   students.sort((a, b) => b - a);
   return students.reduce((a, c, i) => (a += Math.abs(c - seats[i])), 0);
 };
-
-// ['21.12.8] leetcode 1844
-var replaceDigits = function (s) {
-  const alphabets = "abcdefghijklmnopqrstuvwxyz";
-  return s
-    .split("")
-    .reduce((acc, cur, idx) =>
-      !isNaN(cur)
-        ? (acc += alphabets[alphabets.indexOf(s[idx - 1]) + Number(cur)])
-        : (acc += cur)
-    );
-};

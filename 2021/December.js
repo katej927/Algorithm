@@ -53,3 +53,15 @@ var maxProductDifference = function (nums) {
 
   return nums[nums.length - 1] * nums[nums.length - 2] - nums[0] * nums[1];
 };
+
+// ['21.12.8] leetcode 1844
+var replaceDigits = function (s) {
+  const alphabets = "abcdefghijklmnopqrstuvwxyz";
+  return s
+    .split("")
+    .reduce((acc, cur, idx) =>
+      !isNaN(cur)
+        ? (acc += alphabets[alphabets.indexOf(s[idx - 1]) + Number(cur)])
+        : (acc += cur)
+    );
+};
