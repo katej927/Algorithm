@@ -65,3 +65,41 @@ var replaceDigits = function (s) {
         : (acc += cur)
     );
 };
+
+// ['21.12.9] leetcode 804
+var uniqueMorseRepresentations = function (words) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const mos = [
+    ".-",
+    "-...",
+    "-.-.",
+    "-..",
+    ".",
+    "..-.",
+    "--.",
+    "....",
+    "..",
+    ".---",
+    "-.-",
+    ".-..",
+    "--",
+    "-.",
+    "---",
+    ".--.",
+    "--.-",
+    ".-.",
+    "...",
+    "-",
+    "..-",
+    "...-",
+    ".--",
+    "-..-",
+    "-.--",
+    "--..",
+  ];
+  const transMos = (word) =>
+    word
+      .split("")
+      .reduce((acc, cur) => (acc += mos[alphabet.indexOf(cur)]), "");
+  return new Set(words.map((word) => transMos(word))).size;
+};
