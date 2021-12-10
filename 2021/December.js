@@ -68,38 +68,38 @@ var replaceDigits = function (s) {
 
 // ['21.12.9] leetcode 804
 var uniqueMorseRepresentations = function (words) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const mos = [
-    ".-",
-    "-...",
-    "-.-.",
-    "-..",
-    ".",
-    "..-.",
-    "--.",
-    "....",
-    "..",
-    ".---",
-    "-.-",
-    ".-..",
-    "--",
-    "-.",
-    "---",
-    ".--.",
-    "--.-",
-    ".-.",
-    "...",
-    "-",
-    "..-",
-    "...-",
-    ".--",
-    "-..-",
-    "-.--",
-    "--..",
-  ];
-  const transMos = (word) =>
-    word
-      .split("")
-      .reduce((acc, cur) => (acc += mos[alphabet.indexOf(cur)]), "");
-  return new Set(words.map((word) => transMos(word))).size;
+  const alphabets = {
+    a: ".-",
+    b: "-...",
+    c: "-.-.",
+    d: "-..",
+    e: ".",
+    f: "..-.",
+    g: "--.",
+    h: "....",
+    i: "..",
+    j: ".---",
+    k: "-.-",
+    l: ".-..",
+    m: "--",
+    n: "-.",
+    o: "---",
+    p: ".--.",
+    q: "--.-",
+    r: ".-.",
+    s: "...",
+    t: "-",
+    u: "..-",
+    v: "...-",
+    w: ".--",
+    x: "-..-",
+    y: "-.--",
+    z: "--..",
+  };
+
+  return new Set(
+    words.map((word) =>
+      word.split("").reduce((acc, cur) => (acc += alphabets[cur]), "")
+    )
+  ).size;
 };
