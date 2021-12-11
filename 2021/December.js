@@ -103,3 +103,18 @@ var uniqueMorseRepresentations = function (words) {
     )
   ).size;
 };
+
+// ['21.12.11] leetcode 1021
+var removeOuterParentheses = function (s) {
+  let count = 0,
+    sliceIdx = 0,
+    result = [];
+  s.split("").forEach((cur, i) => {
+    cur === "(" ? count++ : count--;
+    if (count === 0) {
+      result.push(s.slice(sliceIdx + 1, i));
+      sliceIdx = i + 1;
+    }
+  });
+  return result.join("");
+};
