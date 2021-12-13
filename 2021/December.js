@@ -113,3 +113,12 @@ var removeOuterParentheses = (s, res = "", depth = 0) =>
         res + (depth === 0 || (depth === 1 && s[0] === ")") ? "" : s[0]),
         depth + (s[0] === "(" ? 1 : -1)
       );
+
+// ['21.12.13] leetcode 1725
+var countGoodRectangles = function (rectangles) {
+  const selectedSquare = rectangles.map((inArr) => Math.min(...inArr));
+  return selectedSquare.reduce(
+    (acc, cur) => (Math.max(...selectedSquare) === cur ? (acc += 1) : acc),
+    0
+  );
+};
