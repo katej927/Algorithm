@@ -122,3 +122,7 @@ var countGoodRectangles = function (rectangles) {
     0
   );
 };
+
+// ['21.12.15] leetcode 1967
+var numOfStrings = (patterns, word) =>
+  patterns.reduce((acc, cur) => (word.includes(cur) ? (acc += 1) : acc), 0);
