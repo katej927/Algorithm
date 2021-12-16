@@ -128,13 +128,12 @@ var numOfStrings = (patterns, word) =>
   patterns.reduce((acc, cur) => (word.includes(cur) ? (acc += 1) : acc), 0);
 
 // ['21.12.16] leetcode 1704
-var halvesAreAlike = function (s) {
-  const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
-  const splitedWord = s.split("");
-  const countVowels = (arr) =>
-    arr.filter((letter) => vowels.includes(letter)).length;
-  return (
-    countVowels(splitedWord.splice(0, s.length / 2)) ===
-    countVowels(splitedWord)
-  );
+var halvesAreAlike = function (S) {
+  let vowels = "aeiouAEIOU",
+    mid = S.length / 2,
+    res = 0;
+  for (let i = 0, j = mid; i < mid; i++, j++) {
+    res += vowels.includes(S[i]) - vowels.includes(S[j]);
+  }
+  return res === 0;
 };
