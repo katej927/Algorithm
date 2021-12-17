@@ -137,3 +137,21 @@ var halvesAreAlike = function (S) {
   }
   return res === 0;
 };
+
+// ['21.12.17] leetcode 1370
+var sortString = (s, result = "", isReverse = false) => {
+  const sortedS = s.split("").sort();
+  // s배열에서 중복되지 않는 값만 저장 (순서대로)
+  const deduplicatedS = [...new Set(sortedS)].join("");
+  // 기존 결과 값(문자)에 합침
+  result += isReverse ? [...deduplicatedS].reverse().join("") : deduplicatedS;
+  return s.length === 0
+    ? result
+    : sortString(
+        sortedS
+          .filter((letter, idx) => idx !== sortedS.indexOf(letter))
+          .join(""),
+        result,
+        !isReverse
+      );
+};
