@@ -155,3 +155,21 @@ var sortString = (s, result = "", isReverse = false) => {
         !isReverse
       );
 };
+
+// ['21.12.19] leetcode 1323
+var maximum69Number = function (num) {
+  const numToArr = Array.from(String(num));
+  let copiedNumArr = [...numToArr];
+
+  return Math.max(
+    ...numToArr.reduce(
+      (acc, cur, i) => {
+        cur === "9" ? (copiedNumArr[i] = "6") : (copiedNumArr[i] = "9");
+        acc.push(Number(copiedNumArr.join("")));
+        copiedNumArr = [...numToArr];
+        return acc;
+      },
+      [num]
+    )
+  );
+};
