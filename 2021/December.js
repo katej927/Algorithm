@@ -157,4 +157,13 @@ var sortString = (s, result = "", isReverse = false) => {
 };
 
 // ['21.12.19] leetcode 1323
-const maximum69Number = num => Number(num.toString().replace('6','9'))
+const maximum69Number = (num) => Number(num.toString().replace("6", "9"));
+
+// ['21.12.20] leetcode 1941
+var areOccurrencesEqual = (s) => {
+  let count = s.split("").reduce((obj, cur) => {
+    obj[cur] = (obj[cur] || 0) + 1;
+    return obj;
+  }, {});
+  return new Set(Object.values(count)).size === 1;
+};
