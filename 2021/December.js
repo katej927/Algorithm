@@ -167,3 +167,19 @@ var areOccurrencesEqual = (s) => {
   }, {});
   return new Set(Object.values(count)).size === 1;
 };
+
+// ['21.12.20] leetcode 1979
+var findGCD = function (nums) {
+  let factors = (num) =>
+    [...Array(num)]
+      .map((v, i) => i + 1)
+      .reduce((acc, cur) => {
+        num % cur === 0 ? acc.push(cur) : acc;
+        return acc;
+      }, []);
+  return Math.max(
+    ...factors(Math.max(...nums)).filter((maxNum) =>
+      factors(Math.min(...nums)).includes(maxNum)
+    )
+  );
+};
