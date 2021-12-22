@@ -183,3 +183,8 @@ var findGCD = function (nums) {
     )
   );
 };
+
+// ['21.12.22] leetcode 1572
+var diagonalSum = (mat) =>
+  mat.reduce((acc, cur, i) => (acc += cur[i] + cur[mat.length - 1 - i]), 0) -
+  (mat.length % 2 === 1 ? mat[(mat.length - 1) / 2][(mat.length - 1) / 2] : 0);
