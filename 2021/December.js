@@ -55,6 +55,7 @@ var maxProductDifference = function (nums) {
 };
 
 // ['21.12.8] leetcode 1844
+// ver1
 var replaceDigits = function (s) {
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
   return s
@@ -65,6 +66,16 @@ var replaceDigits = function (s) {
         : (acc += cur)
     );
 };
+
+// ver2
+var replaceDigits = (s) =>
+  s
+    .split("")
+    .reduce((acc, cur, i) =>
+      !isNaN(cur)
+        ? (acc += String.fromCharCode(s[i - 1].charCodeAt() + Number(s[i])))
+        : (acc += cur)
+    );
 
 // ['21.12.9] leetcode 804
 var uniqueMorseRepresentations = function (words) {
