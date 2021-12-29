@@ -179,8 +179,13 @@ var areOccurrencesEqual = (s) => {
 };
 
 // ['21.12.20] leetcode 1979 (Refactored)
-var findGCD = (nums, a = Math.max(...nums), b = Math.min(...nums)) =>
-  b ? findGCD(nums, b, a % b) : a;
+var findGCD = function (
+  nums,
+  a = Math.max.apply(Math, nums),
+  b = Math.min.apply(Math, nums)
+) {
+  return b ? findGCD(nums, b, a % b) : a;
+};
 
 // ['21.12.22] leetcode 1572
 // ver 1
