@@ -203,3 +203,20 @@ var diagonalSum = (mat, sum = 0, j = mat[0].length - 1) => {
   }
   return sum;
 };
+
+// ['21.12.30] leetcode 1534
+var countGoodTriplets = function (arr, a, b, c) {
+  let count = 0;
+  for (var i = 0; i < arr.length - 2; i++) {
+    for (var j = i + 1; j < arr.length - 1; j++) {
+      for (var k = j + 1; k < arr.length; k++) {
+        let condition =
+          Math.abs(arr[i] - arr[j]) <= a &&
+          Math.abs(arr[j] - arr[k]) <= b &&
+          Math.abs(arr[i] - arr[k]) <= c;
+        condition ? count++ : count;
+      }
+    }
+  }
+  return count;
+};
