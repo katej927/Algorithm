@@ -26,7 +26,7 @@ function hasAnotherReserve(lost, reserve) {
 // ['22.1.16] programmers 위장
 function solution(clothes) {
   // 객체에 종류별로 갯수를 카운팅한다.
-  // 경우의 수를 통해 모든 경우의 수를 구한다.
+  // 경우의 수(곱의 법칙)를 통해 모든 경우의 수를 구한다.
   // cur + 1에서 1의 의미: 입지 않았던 경우의 수
   // reduce에서 -1을 한 이유: 모두 입지 않았던 경우의 수를 빼준다.
 
