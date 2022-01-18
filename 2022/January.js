@@ -39,8 +39,21 @@ function solution(clothes) {
 }
 
 // ['22.1.18] leetcode 2000
+// ver 1
 var reversePrefix = function (word, ch) {
   word = word.split("");
   const chIdx = word.indexOf(ch) + 1;
   return [...word.splice(0, chIdx).reverse(), ...word].join("");
+};
+
+// ver 2
+var reversePrefix = function (word, ch) {
+  const chPosition = word.indexOf(ch);
+  return (
+    word
+      .slice(0, chPosition + 1)
+      .split("")
+      .reverse()
+      .join("") + word.slice(chPosition + 1)
+  );
 };
