@@ -37,3 +37,10 @@ function solution(clothes) {
   });
   return Object.values(count).reduce((acc, cur) => acc * (cur + 1), 1) - 1;
 }
+
+// ['22.1.18] leetcode 2000
+var reversePrefix = function (word, ch) {
+  word = word.split("");
+  const chIdx = word.indexOf(ch) + 1;
+  return [...word.splice(0, chIdx).reverse(), ...word].join("");
+};
