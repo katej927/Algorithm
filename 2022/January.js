@@ -57,3 +57,17 @@ var reversePrefix = function (word, ch) {
       .join("") + word.slice(chPosition + 1)
   );
 };
+
+// ['22.1.21] leetcode 1309
+var freqAlphabets = function (s) {
+  const positionOfs = [...s].reduce((acc, cur, i) => {
+    cur === "#" ? acc.splice(-2, 2, s[i - 2] + s[i - 1]) : acc.push(cur);
+    return acc;
+  }, []);
+
+  return positionOfs.reduce(
+    (acc, cur) => (acc += String.fromCharCode(96 + ~~cur)),
+    ""
+  );
+};
+freqAlphabets("1326#");
