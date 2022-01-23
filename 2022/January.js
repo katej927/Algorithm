@@ -59,14 +59,14 @@ var reversePrefix = function (word, ch) {
 };
 
 // ['22.1.21] leetcode 1309
-var freqAlphabets = function (s) {
-  const positionOfs = [...s].reduce((acc, cur, i) => {
-    cur === "#" ? acc.splice(-2, 2, s[i - 2] + s[i - 1]) : acc.push(cur);
-    return acc;
-  }, []);
-
-  return positionOfs.reduce(
-    (acc, cur) => (acc += String.fromCharCode(96 + ~~cur)),
+var freqAlphabets = function (s, sToArr = [...s]) {
+  return sToArr.reduce(
+    (acc, cur, i) =>
+      (acc +=
+        sToArr[i + 2] === "#"
+          ? (sToArr.splice(i, 3, sToArr[i] + sToArr[i + 1]),
+            String.fromCharCode(96 + ~~sToArr[i]))
+          : String.fromCharCode(96 + ~~cur)),
     ""
   );
 };
