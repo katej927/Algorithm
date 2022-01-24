@@ -71,3 +71,7 @@ var freqAlphabets = function (s, sToArr = [...s]) {
   );
 };
 freqAlphabets("1326#");
+
+// ['22.1.24] leetcode 1464
+const maxProduct = (nums) => nums.sort((a,b)=>a-b).splice(-2).reduce((i,j)=>(i-1)*(j-1))
+maxProduct([1,5,4,5])
