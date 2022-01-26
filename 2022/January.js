@@ -73,5 +73,23 @@ var freqAlphabets = function (s, sToArr = [...s]) {
 freqAlphabets("1326#");
 
 // ['22.1.24] leetcode 1464
-const maxProduct = (nums) => nums.sort((a,b)=>a-b).splice(-2).reduce((i,j)=>(i-1)*(j-1))
-maxProduct([1,5,4,5])
+const maxProduct = (nums) =>
+  nums
+    .sort((a, b) => a - b)
+    .splice(-2)
+    .reduce((i, j) => (i - 1) * (j - 1));
+maxProduct([1, 5, 4, 5]);
+
+// ['22.1.26] leetcode 1436
+var destCity = function (paths) {
+  const count = paths.reduce((acc, cur, i) => {
+    cur.forEach((el) => (acc[el] = acc[el] ? 2 : 1));
+    return acc;
+  }, {});
+  return paths.find((el) => count[el[1]] === 1)[1];
+};
+destCity([
+  ["B", "C"],
+  ["D", "B"],
+  ["C", "A"],
+]);
