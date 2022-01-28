@@ -81,6 +81,7 @@ const maxProduct = (nums) =>
 maxProduct([1, 5, 4, 5]);
 
 // ['22.1.26] leetcode 1436
+// ver 1
 var destCity = function (paths) {
   const count = paths.reduce((acc, cur, i) => {
     cur.forEach((el) => (acc[el] = acc[el] ? 2 : 1));
@@ -93,3 +94,12 @@ destCity([
   ["D", "B"],
   ["C", "A"],
 ]);
+
+// ver 2
+const destCity = function (paths) {
+  const pathsToMap = new Map(paths);
+
+  for (let value of pathsToMap.values()) {
+    if (!pathsToMap.has(value)) return value;
+  }
+};
