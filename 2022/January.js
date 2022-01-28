@@ -103,3 +103,9 @@ const destCity = function (paths) {
     if (!pathsToMap.has(value)) return value;
   }
 };
+
+// ver 3
+const destCity = (paths) => {
+  const start = paths.reduce((acc, cur) => acc.add(cur[0]), new Set());
+  return paths.find((path) => !start.has(path[1]))[1];
+};
