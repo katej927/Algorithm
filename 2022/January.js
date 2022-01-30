@@ -109,3 +109,9 @@ const destCity = (paths) => {
   const start = paths.reduce((acc, cur) => acc.add(cur[0]), new Set());
   return paths.find((path) => !start.has(path[1]))[1];
 };
+
+// ['22.1.30] leetcode 1812
+var squareIsWhite = function (coordinates) {
+  return coordinates.charCodeAt(0) % 2 !== coordinates[1] % 2;
+};
+squareIsWhite("c7");
