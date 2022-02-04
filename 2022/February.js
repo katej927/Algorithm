@@ -17,3 +17,11 @@ function solution(citations) {
 // Refactor 2
 const solution = (citations) =>
   citations.sort((a, b) => b - a).filter((el, idx) => el >= idx + 1).length;
+
+// ['22.2.4] leetcode 557
+var reverseWords = (s) => {
+  return s
+    .split(" ")
+    .map((el) => el.split("").reverse().join(""))
+    .join(" ");
+};
