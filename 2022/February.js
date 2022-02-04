@@ -13,3 +13,7 @@ function solution(citations) {
   while (h + 1 <= citations.sort((a, b) => b - a)[h]) h++;
   return h;
 }
+
+// Refactor 2
+const solution = (citations) =>
+  citations.sort((a, b) => b - a).filter((el, idx) => el >= idx + 1).length;
