@@ -5,3 +5,11 @@ function solution(citations) {
   }
   return 0;
 }
+solution([3, 1, 1, 1, 4]);
+
+// Refactor
+function solution(citations) {
+  let h = 0;
+  while (h + 1 <= citations.sort((a, b) => b - a)[h]) h++;
+  return h;
+}
