@@ -26,7 +26,7 @@ var reverseWords = (s) => {
     .join(" ");
 };
 
-// ['22.2.9] Programmers 다리를 지나는 트럭
+// ['22.2.9] Programmers 다리를 지나는 트럭 (Refactored)
 function solution(bridge_length, weight, truck_weights) {
   let time = 1,
     idx = 1,
@@ -52,6 +52,9 @@ function solution(bridge_length, weight, truck_weights) {
         weight: truck_weights[idx],
       });
       idx++;
+    } else if (passing.length) {
+      // [시간 단축] 다음 트럭을 못 올리는 상태(시간)로 시간만 보낼 경우, 맨 앞 트럭이 나갈 시간으로 앞당겨라 (다 지나간 경우 제외) -> 최대 35ms 단축 성공.
+      time = passing[0].doneTime - 1;
     }
   }
   return time;
