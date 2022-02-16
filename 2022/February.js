@@ -98,6 +98,7 @@ console.log(BFS(graph, "A"));
 // ["A", "B", "C", "D", "G", "H", "I", "E", "F", "J"]
 
 // ['22.2.16] DFS 구현 연습
+// ver 1
 const DFS = (graph, startNode) => {
   const visited = []; // 탐색을 마친 노드들
   let needVisit = []; // 탐색해야할 노드들
@@ -112,6 +113,23 @@ const DFS = (graph, startNode) => {
       visited.push(node);
       needVisit = [...graph[node], ...needVisit];
     }
+  }
+  return visited;
+};
+
+// Refactored 2
+const DFS = (graph, startNode) => {
+  let visited = [],
+    needToVisited = [];
+
+  needToVisited.push(startNode);
+
+  while (needToVisited.length) {
+    let node = needToVisited.shift();
+    visited.push(node);
+    needToVisited = [...graph[node], ...needToVisited].filter(
+      (node) => !visited.includes(node)
+    );
   }
   return visited;
 };
