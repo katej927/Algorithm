@@ -11,3 +11,14 @@ var prefixCount = function (words, pref) {
     0
   );
 };
+
+// ['22.3.18] leetcode 728
+var selfDividingNumbers = function (left, right) {
+  let answer = [];
+  for (let i = left; i <= right; i++) {
+    if (![...(i + "")].map((el) => i % el === 0).includes(false)) {
+      answer.push(i);
+    }
+  }
+  return answer;
+};
