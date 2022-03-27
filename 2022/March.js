@@ -26,7 +26,7 @@ var selfDividingNumbers = function (left, right) {
 // ['22.3.27] leetcode 2206
 var divideArray = function (numbers) {
   while (numbers.length) {
-    sameIdx = numbers.indexOf(numbers.shift());
+    let sameIdx = numbers.indexOf(numbers.shift());
     if (sameIdx === -1) return false;
     numbers.splice(sameIdx, 1);
   }
