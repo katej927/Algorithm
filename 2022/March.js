@@ -22,3 +22,18 @@ var selfDividingNumbers = function (left, right) {
   }
   return answer;
 };
+
+// ['22.3.27] leetcode 2206
+var divideArray = function (numbers) {
+  while (numbers.length) {
+    sameIdx = numbers.indexOf(numbers.shift());
+    if (sameIdx === -1) return false;
+    numbers.splice(sameIdx, 1);
+  }
+  return true;
+};
+divideArray([
+  7, 15, 4, 4, 15, 2, 16, 6, 14, 15, 15, 14, 16, 19, 9, 16, 3, 9, 12, 13, 7, 4,
+  18, 7, 3, 17, 1, 11, 7, 2, 20, 13, 16, 17, 2, 9, 12, 19, 12, 3, 3, 2, 11, 6,
+  16, 1, 19, 16, 9, 4, 15, 1, 13, 7, 18, 3,
+]);
