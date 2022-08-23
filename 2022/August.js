@@ -29,3 +29,29 @@ function solution(X, Y) {
   else if (isAll0) return '0'
   else return commonNums.sort((a, b) => b - a).join('')
 }
+
+// ['22.8.23] 프로그래머스 코딩테스트 실전 대비 모의고사 1차 문제집_2번 문제
+function solution(want, number, discount) {
+  let result = 0,
+    startIdx = 0,
+    exactWant = {}
+  const sortObject = (target) => Object.fromEntries(Object.entries(target).sort())
+
+  for (i = 0; i < want.length; i++) {
+    exactWant[want[i]] = number[i]
+  }
+  exactWant = sortObject(exactWant)
+
+  while (startIdx <= discount.length - 10) {
+    const convertDiscountWithNum = sortObject(
+      discount.slice(startIdx, startIdx + 10).reduce((acc, cur, idx) => {
+        return { ...acc, [cur]: (acc[cur] || 0) + 1 }
+      }, {})
+    )
+
+    if (JSON.stringify(convertDiscountWithNum) === JSON.stringify(exactWant)) result++
+    startIdx++
+  }
+
+  return result
+}
