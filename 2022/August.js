@@ -55,3 +55,14 @@ function solution(want, number, discount) {
 
   return result
 }
+
+// ['22.8.27] algorithm
+const findIt = (cards) => {
+  const findLostCard = cards.reduce((acc, cur) => {
+    acc[cur] === 1 ? delete acc[cur] : (acc[cur] = (acc[cur] || 0) + 1)
+    return acc
+  }, {})
+
+  return Number(Object.keys(findLostCard)[0])
+}
+findIt([1, 3, 2, 2, 5, 5, 1])
