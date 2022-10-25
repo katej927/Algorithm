@@ -56,7 +56,7 @@ function solution(want, number, discount) {
   return result
 }
 
-// ['22.8.27] algorithm
+// ['22.8.27] findLostCard
 const findIt = (cards) => {
   const findLostCard = cards.reduce((acc, cur) => {
     acc[cur] === 1 ? delete acc[cur] : (acc[cur] = (acc[cur] || 0) + 1)
