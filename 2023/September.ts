@@ -12,3 +12,26 @@ var twoSum = function (nums, target) {
     }
   }
 }
+
+// ['23.9.6] leetcode 14. Longest Common Prefix
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function (strs) {
+  const SHORTEST_STRING_LENGTH = Math.min(...strs.map((str) => str.length)),
+    LAST_IDX = strs.length - 1
+  if (!SHORTEST_STRING_LENGTH) return ''
+  if (!LAST_IDX) return strs[0]
+
+  let result = ''
+
+  for (let i = 0; i < SHORTEST_STRING_LENGTH; i++) {
+    for (let j = 0; j <= LAST_IDX; j++) {
+      const letterOfFirstStr = strs[0][i]
+
+      if (letterOfFirstStr !== strs[j][i]) return result
+      else if (j === LAST_IDX) result += letterOfFirstStr
+    }
+  }
+}
