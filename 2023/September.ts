@@ -26,13 +26,15 @@ var longestCommonPrefix = function (strs) {
 
   let result = ''
 
-  for (let i = 0; i < SHORTEST_STRING_LENGTH; i++) {
-    for (let j = 0; j <= LAST_IDX; j++) {
-      const letterOfFirstStr = strs[0][i]
+  for (let letterIdx = 0; letterIdx < SHORTEST_STRING_LENGTH; letterIdx++) {
+    const letterOfFirstStr = strs[0][letterIdx]
 
-      if (letterOfFirstStr !== strs[j][i]) return result
-      else if (j === LAST_IDX) result += letterOfFirstStr
+    for (let elIdx = 1; elIdx <= LAST_IDX; elIdx++) {
+      if (letterOfFirstStr !== strs[elIdx][letterIdx]) return result
+      else if (elIdx === LAST_IDX) result += letterOfFirstStr
     }
+
+    if (letterIdx === SHORTEST_STRING_LENGTH - 1) return result
   }
 }
 
