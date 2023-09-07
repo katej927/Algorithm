@@ -35,3 +35,10 @@ var longestCommonPrefix = function (strs) {
     }
   }
 }
+
+// ['23.9.7] leetcode 9. Palindrome Number
+var isPalindrome = function (x) {
+  const REVERSED = `${x}`.split('').reverse().join('')
+
+  return `${x}` === REVERSED
+}
