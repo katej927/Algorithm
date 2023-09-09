@@ -44,3 +44,34 @@ var isPalindrome = function (x) {
 
   return `${x}` === REVERSED
 }
+
+// ['23.9.9] leetcode 15. 3Sum
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+
+type numberTriplets = [number, number, number]
+
+var threeSum = function (nums: number[]) {
+  let allTripletsReturnZero: numberTriplets[] = []
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      for (let k = j + 1; k < nums.length; k++) {
+        const isSumReturnZero = nums[i] + nums[j] + nums[k] == 0
+
+        if (isSumReturnZero) {
+          const currentTriplets: numberTriplets = [nums[i], nums[j], nums[k]]
+          const isDuplicateTriplets = allTripletsReturnZero.some((e) => {
+            return e.sort().toString() === currentTriplets.sort().toString()
+          })
+
+          if (!isDuplicateTriplets) allTripletsReturnZero.push(currentTriplets)
+        }
+      }
+    }
+  }
+
+  return allTripletsReturnZero
+}
