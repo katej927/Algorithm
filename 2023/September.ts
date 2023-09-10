@@ -75,3 +75,47 @@ var threeSum = function (nums: number[]) {
 
   return allTripletsReturnZero
 }
+
+// ['23.9.10] P: how many potion left
+function solution(potionInfo, initialLives, attackInfo) {
+  let time = 0,
+    nextAttackIdx = 0,
+    leftLives = initialLives,
+    continuedSuccessCount = 0
+  const FINAL_ATTACK_TIME = attackInfo[attackInfo.length - 1][0],
+    HEAL_BY_SEC = potionInfo[1],
+    MAX_SUCCESS_COUNT = potionInfo[0],
+    BONUS_HEAL = potionInfo[2]
+
+  while (time <= FINAL_ATTACK_TIME) {
+    const nextAttackTime = attackInfo[nextAttackIdx][0],
+      nextAttackDamage = attackInfo[nextAttackIdx][1]
+    const isTimeToAttack = time === nextAttackTime
+
+    if (isTimeToAttack) {
+      leftLives -= nextAttackDamage
+      ++nextAttackIdx
+      continuedSuccessCount = 0
+
+      if (leftLives <= 0) {
+        return -1
+      }
+    } else {
+      const isSumOveredInitialLives = (heal) => leftLives + heal > initialLives
+      const isMaxSuccessCount = MAX_SUCCESS_COUNT === continuedSuccessCount
+      if (isMaxSuccessCount) {
+        leftLives = isSumOveredInitialLives(HEAL_BY_SEC + BONUS_HEAL)
+          ? initialLives
+          : leftLives + HEAL_BY_SEC + BONUS_HEAL
+
+        continuedSuccessCount = 0
+      } else {
+        leftLives = isSumOveredInitialLives(HEAL_BY_SEC) ? initialLives : leftLives + HEAL_BY_SEC
+
+        continuedSuccessCount++
+      }
+    }
+    time++
+  }
+  return leftLives
+}
