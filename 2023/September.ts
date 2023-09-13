@@ -75,3 +75,44 @@ var threeSum = function (nums: number[]) {
 
   return allTripletsReturnZero
 }
+
+// ['23.9.13] leetcode 66. Plus One
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function (digits) {
+  const add1OnDigits = BigInt(digits.join('')) + 1n
+  return Array.from(String(add1OnDigits), Number)
+}
+
+const TESTS = [
+  {
+    params: [1, 2, 3],
+    result: [1, 2, 4],
+  },
+  {
+    params: [4, 3, 2, 1],
+    result: [4, 3, 2, 2],
+  },
+  {
+    params: [9],
+    result: [1, 0],
+  },
+  {
+    params: [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3],
+    result: [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 4],
+  },
+]
+
+for (let i = 0; i < TESTS.length; i++) {
+  const { params, result } = TESTS[i]
+  const res = plusOne(params)
+  const isSuccess = JSON.stringify(res) === JSON.stringify(result)
+
+  if (isSuccess) {
+    console.log(`${i + 1}번째 case: SUCCESS`)
+  } else {
+    console.log(`${i + 1}번째 case: FAILURE`)
+  }
+}
