@@ -154,7 +154,7 @@ const TESTS2 = [
   },
 ]
 
-for (let i = 0; i < TESTS.length; i++) {
+for (let i = 0; i < TESTS2.length; i++) {
   const { params, result } = TESTS2[i]
   const res = maxProfit(params)
   const isSuccess = res === result
