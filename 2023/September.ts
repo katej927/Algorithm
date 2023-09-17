@@ -116,3 +116,48 @@ for (let i = 0; i < TESTS.length; i++) {
     console.log(`${i + 1}번째 case: FAILURE`)
   }
 }
+
+// ['23.9.17] leetcode 121. Best Time to Buy and Sell Stock
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+  if (!prices.length) return 0
+
+  const copiedPrices = [...prices]
+
+  const maxProfit = prices.reduce((acc, cur) => {
+    copiedPrices.shift()
+    const maxOfSellingPrices = Math.max(...copiedPrices)
+    const maxProfitsOfcurrentBuyingDay = maxOfSellingPrices - cur
+    const isOccuredProfit = maxProfitsOfcurrentBuyingDay > 0
+
+    if (!isOccuredProfit) return acc
+
+    const isBiggerProfit = acc < maxProfitsOfcurrentBuyingDay
+    if (isBiggerProfit) acc = maxProfitsOfcurrentBuyingDay
+    return acc
+  }, 0)
+
+  return maxProfit
+}
+
+const TESTS2 = [
+  {
+    params: [7, 1, 5, 3, 6, 4],
+    result: 5,
+  },
+  {
+    params: [7, 6, 4, 3, 1],
+    result: 0,
+  },
+]
+
+for (let i = 0; i < TESTS.length; i++) {
+  const { params, result } = TESTS2[i]
+  const res = maxProfit(params)
+  const isSuccess = res === result
+
+  console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+}
