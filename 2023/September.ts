@@ -161,3 +161,49 @@ for (let i = 0; i < TESTS2.length; i++) {
 
   console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
 }
+
+// ['23.9.19] leetcode 217. Contains Duplicate
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function (nums) {
+  const SORTED_NUMS = nums.sort()
+  const restNums = [...SORTED_NUMS]
+  let result = false
+
+  for (const currentNum of SORTED_NUMS) {
+    restNums.shift()
+    const isContainDuplicate = restNums.some((restNum) => restNum === currentNum)
+    if (isContainDuplicate) {
+      result = true
+      break
+    }
+  }
+  return result
+}
+
+const TESTS3 = [
+  {
+    params: [1, 2, 3, 1],
+    result: true,
+  },
+  {
+    params: [1, 2, 3, 4],
+    result: false,
+  },
+  {
+    params: [1, 1, 1, 3, 3, 4, 3, 2, 4, 2],
+    result: true,
+  },
+]
+
+;(function () {
+  for (let i = 0; i < TESTS3.length; i++) {
+    const { params, result } = TESTS3[i]
+    const res = containsDuplicate(params)
+    const isSuccess = res === result
+
+    console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
