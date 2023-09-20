@@ -125,22 +125,13 @@ for (let i = 0; i < TESTS.length; i++) {
 var maxProfit = function (prices) {
   if (!prices.length) return 0
 
-  const copiedPrices = [...prices]
+  let minSellingPrice = prices[0],
+    maxProfit = 0
 
-  const maxProfit = prices.reduce((acc, cur) => {
-    copiedPrices.shift()
-    const maxOfSellingPrices = Math.max(...copiedPrices)
-    const maxProfitsOfcurrentBuyingDay = maxOfSellingPrices - cur
-    const isOccuredProfit = maxProfitsOfcurrentBuyingDay > 0
-
-    if (!isOccuredProfit) return acc
-
-    const isBiggerProfit = acc < maxProfitsOfcurrentBuyingDay
-    if (isBiggerProfit) acc = maxProfitsOfcurrentBuyingDay
-    return acc
-  }, 0)
-
-  return maxProfit
+  for (const newSellingPrice of prices) {
+    if (minSellingPrice === newSellingPrice) continue
+    else if (minSellingPrice > newSellingPrice) minSellingPrice = newSellingPrice
+  }
 }
 
 const TESTS2 = [
