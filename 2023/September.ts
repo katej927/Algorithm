@@ -128,10 +128,17 @@ var maxProfit = function (prices) {
   let minSellingPrice = prices[0],
     maxProfit = 0
 
-  for (const newSellingPrice of prices) {
-    if (minSellingPrice === newSellingPrice) continue
-    else if (minSellingPrice > newSellingPrice) minSellingPrice = newSellingPrice
+  for (let i = 1; i < prices.length; i++) {
+    let currentPrice = prices[i]
+
+    if (minSellingPrice === currentPrice) continue
+    else if (minSellingPrice > currentPrice) minSellingPrice = currentPrice
+    else {
+      const currnetMargin = currentPrice - minSellingPrice
+      if (maxProfit < currnetMargin) maxProfit = currnetMargin
+    }
   }
+  return maxProfit
 }
 
 const TESTS2 = [
