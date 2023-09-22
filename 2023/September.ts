@@ -50,11 +50,8 @@ var isPalindrome = function (x) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-
-type numberTriplets = [number, number, number]
-
-var threeSum = function (nums: number[]) {
-  let allTripletsReturnZero: numberTriplets[] = []
+var threeSum = function (nums) {
+  let allTripletsReturnZero: number[][] = []
 
   for (let i = 0; i < nums.length; i++) {
     for (let j = i + 1; j < nums.length; j++) {
@@ -62,12 +59,15 @@ var threeSum = function (nums: number[]) {
         const isSumReturnZero = nums[i] + nums[j] + nums[k] == 0
 
         if (isSumReturnZero) {
-          const currentTriplets: numberTriplets = [nums[i], nums[j], nums[k]]
+          const currentTriplets = [nums[i], nums[j], nums[k]].sort()
           const isDuplicateTriplets = allTripletsReturnZero.some((e) => {
-            return e.sort().toString() === currentTriplets.sort().toString()
+            return e.toString() === currentTriplets.toString()
           })
 
-          if (!isDuplicateTriplets) allTripletsReturnZero.push(currentTriplets)
+          if (!isDuplicateTriplets) {
+            allTripletsReturnZero.push(currentTriplets)
+            allTripletsReturnZero.sort()
+          }
         }
       }
     }
@@ -75,6 +75,34 @@ var threeSum = function (nums: number[]) {
 
   return allTripletsReturnZero
 }
+
+const TESTS4 = [
+  {
+    params: [-1, 0, 1, 2, -1, -4],
+    result: [
+      [-1, -1, 2],
+      [-1, 0, 1],
+    ],
+  },
+  {
+    params: [0, 1, 1],
+    result: [],
+  },
+  {
+    params: [0, 0, 0],
+    result: [[0, 0, 0]],
+  },
+]
+
+;(function () {
+  for (let i = 0; i < TESTS4.length; i++) {
+    const { params, result } = TESTS4[i]
+    const res = threeSum(params)
+    const isSuccess = result.sort().toString() == res.sort().toString()
+
+    console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
 
 // ['23.9.13] leetcode 66. Plus One
 /**
