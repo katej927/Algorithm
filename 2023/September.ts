@@ -233,3 +233,39 @@ const TESTS3 = [
     console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.9.24] leetcode 70. Climbing Stairs
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var climbStairs = function (n: number) {
+  let count = 0
+
+  const loop = (climbedStairs) => {
+    const isArrivedAtTop = climbedStairs === n
+    // if (isArrivedAtTop)
+  }
+  return 0
+}
+
+const TESTS5 = [
+  {
+    params: 2,
+    result: 2,
+  },
+  {
+    params: 3,
+    result: 3,
+  },
+]
+
+;(function () {
+  for (let i = 0; i < TESTS5.length; i++) {
+    const { params, result } = TESTS5[i]
+    const res = climbStairs(params)
+    const isSuccess = res === result
+
+    console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
