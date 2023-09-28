@@ -240,27 +240,19 @@ const TESTS3 = [
  * @return {number}
  */
 var climbStairs = function (n) {
-  let count = 0
-  let tmpCount = 0
+  if (n <= 2) return n
 
-  const loop = (climbedStairs) => {
-    const isArrivedAtTop = climbedStairs === n
-    if (isArrivedAtTop) {
-      count++
-    } else {
-      let stairsOptions = [1, 2]
-      if (!stairsOptions.length) return
+  let prev1 = 1,
+    prev2 = 2
 
-      let currentStairOption = stairsOptions.shift()
-      let currentClimbedStairs = climbedStairs + currentStairOption
+  for (let i = 3; i <= n; i++) {
+    const current = prev1 + prev2
 
-      tmpCount++
-      if (tmpCount === 10) return
-
-      loop(currentClimbedStairs)
-    }
+    prev1 = prev2
+    prev2 = current
   }
-  return 0
+
+  return prev2
 }
 
 const TESTS5 = [
