@@ -275,3 +275,43 @@ const TESTS5 = [
     console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.9.24] leetcode 125. Valid Palindrome
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+  const convertedParam = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+
+  const isLengthOdd = !!(convertedParam.length % 2)
+  if (isLengthOdd) {
+    const medianValueIdx = Math.floor(convertedParam.length / 2)
+  }
+  return false
+}
+
+const RESULTS6 = [
+  {
+    params: 'A man, a plan, a canal: Panama',
+    result: true,
+  },
+  {
+    params: 'race a car',
+    result: false,
+  },
+  {
+    params: ' ',
+    result: true,
+  },
+]
+
+;(function () {
+  for (let i = 0; i < RESULTS6.length; i++) {
+    const { params, result } = RESULTS6[i]
+    const res = isPalindrome(params)
+    const isSucceed = res === result
+
+    console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
