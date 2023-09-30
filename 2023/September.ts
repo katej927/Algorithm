@@ -285,10 +285,16 @@ var isPalindrome = function (s) {
   const convertedParam = s.toLowerCase().replace(/[^a-z0-9]/g, '')
 
   const isLengthOdd = !!(convertedParam.length % 2)
-  if (isLengthOdd) {
-    const medianValueIdx = Math.floor(convertedParam.length / 2)
-  }
-  return false
+  const medianValueIdx = Math.floor(convertedParam.length / 2)
+
+  const forwardWord = convertedParam.slice(0, medianValueIdx)
+  const backwardWord = convertedParam
+    .slice(medianValueIdx + (isLengthOdd ? 1 : 0))
+    .split('')
+    .reverse()
+    .join('')
+
+  return forwardWord === backwardWord
 }
 
 const RESULTS6 = [
