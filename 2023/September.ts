@@ -283,18 +283,13 @@ const TESTS5 = [
  */
 var isPalindrome = function (s) {
   const convertedParam = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  let forwardIdx = -1,
+    backwardIdx = convertedParam.length
 
-  const isLengthOdd = !!(convertedParam.length % 2)
-  const medianValueIdx = Math.floor(convertedParam.length / 2)
-
-  const forwardWord = convertedParam.slice(0, medianValueIdx)
-  const backwardWord = convertedParam
-    .slice(medianValueIdx + (isLengthOdd ? 1 : 0))
-    .split('')
-    .reverse()
-    .join('')
-
-  return forwardWord === backwardWord
+  while (++forwardIdx < backwardIdx--) {
+    if (convertedParam[forwardIdx] !== convertedParam[backwardIdx]) return false
+  }
+  return true
 }
 
 const RESULTS6 = [
