@@ -8,14 +8,16 @@ var isAnagram = function (s, t) {
   if (s.length !== t.length) return false
 
   const convertCharCount = (param) => {
+    const sortedParam = param.split('').sort().join('')
     let countingObj = {}
-    for (let el of param) {
+
+    for (let el of sortedParam) {
       countingObj[el] = countingObj[el] ? ++countingObj[el] : 1
     }
-    return countingObj
+    return JSON.stringify(countingObj)
   }
-  const sCharCount = convertCharCount(s)
-  const tCharCount = convertCharCount(t)
+
+  return convertCharCount(s) === convertCharCount(t)
 }
 
 const TESTS1 = [
