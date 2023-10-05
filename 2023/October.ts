@@ -1,4 +1,4 @@
-// ['23.9.24] leetcode 242. Valid Anagram
+// ['23.10.2] leetcode 242. Valid Anagram
 /**
  * @param {string} s
  * @param {string} t
