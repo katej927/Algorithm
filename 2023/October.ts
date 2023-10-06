@@ -59,6 +59,22 @@ const TESTS1 = [
 var coinChange = function (coins, amount) {
   if (!amount) return 0
   const sortedCoins = coins.sort((a, b) => b - a)
+  let restAmount = amount
+
+  const result = sortedCoins.reduce((acc, cur, idx, src) => {
+    const currentRound = Math.floor(restAmount / cur)
+    const currentRemainder = restAmount % cur
+    restAmount = currentRemainder
+
+    const isLastElement = idx === src.length - 1
+
+    if (isLastElement && restAmount) return -1
+
+    acc += currentRound
+    return acc
+  }, 0)
+
+  return result
 }
 
 const TEST_231005 = [
@@ -82,6 +98,13 @@ const TEST_231005 = [
       amount: 0,
     },
     result: 0,
+  },
+  {
+    params: {
+      coins: [186, 419, 83, 408],
+      amount: 6249,
+    },
+    result: 20,
   },
 ]
 
