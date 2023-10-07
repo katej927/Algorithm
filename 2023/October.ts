@@ -59,22 +59,23 @@ const TESTS1 = [
 var coinChange = function (coins, amount) {
   if (!amount) return 0
   const sortedCoins = coins.sort((a, b) => b - a)
-  let restAmount = amount
+  let restAmount = amount,
+    countCoins = 0
 
-  const result = sortedCoins.reduce((acc, cur, idx, src) => {
-    const currentRound = Math.floor(restAmount / cur)
-    const currentRemainder = restAmount % cur
+  for (let idx = 0; idx < sortedCoins.length; idx++) {
+    const currentCoin = sortedCoins[idx]
+    const currentRound = Math.floor(restAmount / currentCoin)
+    const currentRemainder = restAmount % currentCoin
     restAmount = currentRemainder
 
-    const isLastElement = idx === src.length - 1
+    countCoins += currentRound
 
-    if (isLastElement && restAmount) return -1
+    const isLastElement = idx === sortedCoins.length - 1
 
-    acc += currentRound
-    return acc
-  }, 0)
-
-  return result
+    if (isLastElement && restAmount) {
+    }
+  }
+  return countCoins
 }
 
 const TEST_231005 = [
@@ -117,6 +118,6 @@ const TEST_231005 = [
     const res = coinChange(coins, amount)
     const isSuccess = res === result
 
-    console.log(`${i}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+    console.log(`${i}번째 case: res는 ${res}, result는 ${result}, ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
