@@ -60,21 +60,30 @@ var coinChange = function (coins, amount) {
   if (!amount) return 0
   const sortedCoins = coins.sort((a, b) => b - a)
   let restAmount = amount,
-    countCoins = 0
+    countCoins = 0,
+    loopNumOfLargestCoin = 0
 
-  for (let idx = 0; idx < sortedCoins.length; idx++) {
-    const currentCoin = sortedCoins[idx]
-    const currentRound = Math.floor(restAmount / currentCoin)
-    const currentRemainder = restAmount % currentCoin
-    restAmount = currentRemainder
+  const loop = () => {
+    for (let idx = 0; idx < sortedCoins.length; idx++) {
+      const currentCoin = sortedCoins[idx]
+      const currentRound = Math.floor(restAmount / currentCoin)
+      const custumedCurrentRound = currentRound - loopNumOfLargestCoin
+      const currentRemainder = restAmount - currentCoin * custumedCurrentRound
+      restAmount = currentRemainder
 
-    countCoins += currentRound
+      countCoins += custumedCurrentRound
 
-    const isLastElement = idx === sortedCoins.length - 1
+      const isLastElement = idx === sortedCoins.length - 1
 
-    if (isLastElement && restAmount) {
+      if (isLastElement && restAmount) {
+        const needLargestCoinRemoval = currentRound - ++loopNumOfLargestCoin === 0
+        if (needLargestCoinRemoval) {
+        }
+      }
     }
   }
+  loop()
+
   return countCoins
 }
 
