@@ -142,3 +142,52 @@ const TEST_231005 = [
     console.log(`${i}번째 case: res는 ${res}, result는 ${result}, ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.10.15] leetcode 724. Find Pivot Index
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var pivotIndex = function (nums) {
+  let loopIdx = 0,
+    targetIdx = 0,
+    leftSum = 0
+
+  while (loopIdx < nums.length) {
+    const isOneLoopFinished = loopIdx === nums.length - 1
+    console.log('loopIdx', loopIdx, 'isOneLoopFinished', isOneLoopFinished)
+
+    if (isOneLoopFinished) {
+      console.log('isOneLoopFinished 내부')
+      const hasNotPivotIdx = targetIdx === nums.length - 1
+      console.log('hasNotPivotIdx', hasNotPivotIdx)
+      if (hasNotPivotIdx) return -1
+    }
+    loopIdx++
+  }
+}
+
+const TESTS231015 = [
+  {
+    nums: [1, 7, 3, 6, 5, 6],
+    result: 3,
+  },
+  {
+    nums: [1, 2, 3],
+    result: -1,
+  },
+  {
+    nums: [2, 1, -1],
+    result: 0,
+  },
+]
+
+;(function () {
+  for (let i = 0; i < TESTS231015.length; i++) {
+    const { nums, result } = TESTS231015[i]
+    const res = pivotIndex(nums)
+    const isSucceed = res === result
+
+    console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
