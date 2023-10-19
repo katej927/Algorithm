@@ -149,22 +149,27 @@ const TEST_231005 = [
  * @return {number}
  */
 var pivotIndex = function (nums) {
-  let loopIdx = 0,
-    targetIdx = 0,
-    leftSum = 0
+  let leftSum, rightSum
 
-  while (loopIdx < nums.length) {
-    const isOneLoopFinished = loopIdx === nums.length - 1
-    console.log('loopIdx', loopIdx, 'isOneLoopFinished', isOneLoopFinished)
+  const result: number = nums.findIndex((el, idx, arr) => {
+    if (idx === 0) {
+      leftSum = 0
+      rightSum = rightSum = nums.reduce((acc, cur, idx) => {
+        if (idx === 0) return acc
+        acc += cur
+        return acc
+      }, 0)
 
-    if (isOneLoopFinished) {
-      console.log('isOneLoopFinished 내부')
-      const hasNotPivotIdx = targetIdx === nums.length - 1
-      console.log('hasNotPivotIdx', hasNotPivotIdx)
-      if (hasNotPivotIdx) return -1
+      return leftSum === rightSum
     }
-    loopIdx++
-  }
+
+    leftSum += arr[idx - 1]
+    rightSum -= el
+
+    return leftSum === rightSum
+  })
+
+  return result
 }
 
 const TESTS231015 = [
@@ -188,6 +193,6 @@ const TESTS231015 = [
     const res = pivotIndex(nums)
     const isSucceed = res === result
 
-    console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+    console.log('res', res, `${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
