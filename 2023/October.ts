@@ -193,6 +193,6 @@ const TESTS231015 = [
     const res = pivotIndex(nums)
     const isSucceed = res === result
 
-    console.log('res', res, `${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+    console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
