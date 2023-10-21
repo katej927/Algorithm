@@ -196,3 +196,62 @@ const TESTS231015 = [
     console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.10.21] leetcode 925. Long Pressed Name
+/**
+ * @param {string} name
+ * @param {string} typed
+ * @return {boolean}
+ */
+var isLongPressedName = function (name, typed) {
+  let customedTypedIdx = 0,
+    hasCharacter = false
+
+  for (let nameIdx = 0; nameIdx < name.length; nameIdx++) {
+    for (let typedIdx = customedTypedIdx; typedIdx < typed.length; typedIdx++) {
+      const currnetNameCharacter = name[nameIdx]
+      const currnetTypedCharacter = typed[typedIdx]
+      const isSameCharacter = currnetNameCharacter === currnetTypedCharacter
+
+      if (!isSameCharacter) {
+        if (!hasCharacter) return hasCharacter
+
+        customedTypedIdx = typedIdx
+        hasCharacter = false
+      } else {
+        hasCharacter = true
+      }
+    }
+  }
+}
+
+const TESTS231021 = [
+  {
+    params: {
+      name: 'alex',
+      typed: 'aaleex',
+    },
+    result: true,
+  },
+  {
+    params: {
+      name: 'saeed',
+      typed: 'ssaaedd',
+    },
+    result: false,
+  },
+]
+
+;(function () {
+  for (let i = 0; i < TESTS231021.length; i++) {
+    const {
+      params: { name, typed },
+      result,
+    } = TESTS231021[i]
+
+    const res = isLongPressedName(name, typed)
+    const isSucceed = res === result
+
+    console.log(`${i}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
