@@ -214,15 +214,19 @@ var isLongPressedName = function (name, typed) {
       const isSameCharacter = currnetNameCharacter === currnetTypedCharacter
 
       if (!isSameCharacter) {
-        if (!hasCharacter) return hasCharacter
+        if (!hasCharacter) {
+          return hasCharacter
+        }
 
         customedTypedIdx = typedIdx
         hasCharacter = false
+        break
       } else {
         hasCharacter = true
       }
     }
   }
+  return hasCharacter
 }
 
 const TESTS231021 = [
@@ -239,6 +243,13 @@ const TESTS231021 = [
       typed: 'ssaaedd',
     },
     result: false,
+  },
+  {
+    params: {
+      name: 'leelee',
+      typed: 'lleeelee',
+    },
+    result: true,
   },
 ]
 
