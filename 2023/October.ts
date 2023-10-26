@@ -204,29 +204,19 @@ const TESTS231015 = [
  * @return {boolean}
  */
 var isLongPressedName = function (name, typed) {
-  let customedTypedIdx = 0,
-    hasCharacter = false
+  const splitText = (text) =>
+    text.split('').reduce((acc, cur, idx, src) => {
+      let lastStrOfAcc = acc[acc?.length - 1]
+      const isPrevStringSame = acc && cur === lastStrOfAcc
 
-  for (let nameIdx = 0; nameIdx < name.length; nameIdx++) {
-    for (let typedIdx = customedTypedIdx; typedIdx < typed.length; typedIdx++) {
-      const currnetNameCharacter = name[nameIdx]
-      const currnetTypedCharacter = typed[typedIdx]
-      const isSameCharacter = currnetNameCharacter === currnetTypedCharacter
-
-      if (!isSameCharacter) {
-        if (!hasCharacter) {
-          return hasCharacter
-        }
-
-        customedTypedIdx = typedIdx
-        hasCharacter = false
-        break
+      if (isPrevStringSame) {
+        acc[acc?.length - 1] += cur
       } else {
-        hasCharacter = true
+        acc.push(cur)
       }
-    }
-  }
-  return hasCharacter
+      return acc
+    }, [])
+  return true
 }
 
 const TESTS231021 = [
