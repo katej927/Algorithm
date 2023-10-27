@@ -205,9 +205,9 @@ const TESTS231015 = [
  */
 var isLongPressedName = function (name, typed) {
   const splitText = (text) =>
-    text.split('').reduce((acc, cur, idx, src) => {
-      let lastStrOfAcc = acc[acc?.length - 1]
-      const isPrevStringSame = acc && cur === lastStrOfAcc
+    text.split('').reduce((acc, cur) => {
+      let lastStrOfAcc = acc.length ? acc[acc.length - 1].slice(-1)[0] : ''
+      const isPrevStringSame = acc.length && cur === lastStrOfAcc
 
       if (isPrevStringSame) {
         acc[acc?.length - 1] += cur
@@ -216,6 +216,24 @@ var isLongPressedName = function (name, typed) {
       }
       return acc
     }, [])
+
+  const splitedName = splitText(name)
+  const splitedTyped = splitText(typed)
+
+  if (splitedName.length !== splitedTyped.length) return false
+
+  for (let idx = 0; idx < splitedName?.length; idx++) {
+    const currentNameText = splitedName[idx]
+    const currentTypedText = splitedTyped[idx]
+
+    const isSameText = currentNameText[0] === currentTypedText[0]
+    const isLengthAbove = currentNameText.length <= currentTypedText.length
+
+    const passCondition = isSameText && isLengthAbove
+
+    if (!passCondition) return false
+  }
+
   return true
 }
 
@@ -240,6 +258,13 @@ const TESTS231021 = [
       typed: 'lleeelee',
     },
     result: true,
+  },
+  {
+    params: {
+      name: 'alex',
+      typed: 'aaleexa',
+    },
+    result: false,
   },
 ]
 
