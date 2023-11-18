@@ -198,43 +198,23 @@ const TESTS231015 = [
 })()
 
 // ['23.10.21] leetcode 925. Long Pressed Name
+
 /**
  * @param {string} name
  * @param {string} typed
  * @return {boolean}
  */
 var isLongPressedName = function (name, typed) {
-  const splitText = (text) =>
-    text.split('').reduce((acc, cur) => {
-      let lastStrOfAcc = acc.length ? acc[acc.length - 1].slice(-1)[0] : ''
-      const isPrevStringSame = acc.length && cur === lastStrOfAcc
-
-      if (isPrevStringSame) {
-        acc[acc?.length - 1] += cur
-      } else {
-        acc.push(cur)
-      }
-      return acc
-    }, [])
-
-  const splitedName = splitText(name)
-  const splitedTyped = splitText(typed)
-
-  if (splitedName.length !== splitedTyped.length) return false
-
-  for (let idx = 0; idx < splitedName?.length; idx++) {
-    const currentNameText = splitedName[idx]
-    const currentTypedText = splitedTyped[idx]
-
-    const isSameText = currentNameText[0] === currentTypedText[0]
-    const isLengthAbove = currentNameText.length <= currentTypedText.length
-
-    const passCondition = isSameText && isLengthAbove
-
-    if (!passCondition) return false
+  let j = 0
+  for (let i = 0; i < typed.length; i++) {
+    if (name[j] === typed[i]) {
+      j++
+    } else if (name[j - 1] === typed[i]) {
+      continue
+    } else return false
   }
 
-  return true
+  return j === name.length
 }
 
 const TESTS231021 = [
@@ -263,6 +243,20 @@ const TESTS231021 = [
     params: {
       name: 'alex',
       typed: 'aaleexa',
+    },
+    result: false,
+  },
+  {
+    params: {
+      name: 'alexd',
+      typed: 'ale',
+    },
+    result: false,
+  },
+  {
+    params: {
+      name: 'alex',
+      typed: 'aaleeexa',
     },
     result: false,
   },
