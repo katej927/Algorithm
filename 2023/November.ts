@@ -3,16 +3,21 @@
 const lengthOfLongestSubstring = function (s) {
   if (!s.length) return 0
 
-  let subStr = new Set()
-  let lengthOfLongestSubstr = subStr.size
+  let subStr = [s[0]]
+  let longestLengthOfSubStr = 0
 
   for (let el of s) {
-    if (!subStr.has(el)) {
-      subStr.add(el)
-      lengthOfLongestSubstr = subStr.size
-    } else {
-    }
+    if (subStr[0] === el) {
+      subStr.shift()
+      subStr.push(el)
+    } else if (subStr.includes(el)) {
+      if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
+      subStr = []
+    } else subStr.push(el)
   }
+  if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
+
+  return longestLengthOfSubStr
 }
 
 const TESTS = [
