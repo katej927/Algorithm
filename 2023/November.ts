@@ -6,13 +6,15 @@ const lengthOfLongestSubstring = function (s) {
   let subStr = [s[0]]
   let longestLengthOfSubStr = 0
 
-  for (let el of s) {
+  for (let el in s) {
     if (subStr[0] === el) {
       subStr.shift()
       subStr.push(el)
     } else if (subStr.includes(el)) {
       if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
-      subStr = []
+
+      const unDuplicatedStrOfPrevSubStr = subStr.slice(subStr.indexOf(el) + 1)
+      subStr = [...unDuplicatedStrOfPrevSubStr, el]
     } else subStr.push(el)
   }
   if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
