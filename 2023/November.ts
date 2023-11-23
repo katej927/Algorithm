@@ -1,25 +1,23 @@
 // ['23.11.19] leetcode 3. Longest Substring Without Repeating Characters
 
-const lengthOfLongestSubstring = function (s) {
-  if (!s.length) return 0
+var lengthOfLongestSubstring = function (s) {
+  let set = new Set()
+  let maxSize = 0
+  let left = 0
 
-  let subStr = [s[0]]
-  let longestLengthOfSubStr = 0
+  if (s.length === 0) return 0
+  if (s.length === 1) return 1
 
-  for (let el in s) {
-    if (subStr[0] === el) {
-      subStr.shift()
-      subStr.push(el)
-    } else if (subStr.includes(el)) {
-      if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
-
-      const unDuplicatedStrOfPrevSubStr = subStr.slice(subStr.indexOf(el) + 1)
-      subStr = [...unDuplicatedStrOfPrevSubStr, el]
-    } else subStr.push(el)
+  for (let idx in s) {
+    while (set.has(s[idx])) {
+      set.delete(s[left])
+      left++
+    }
+    set.add(s[idx])
+    maxSize = Math.max(maxSize, set.size)
   }
-  if (subStr.length > longestLengthOfSubStr) longestLengthOfSubStr = subStr.length
 
-  return longestLengthOfSubStr
+  return maxSize
 }
 
 const TESTS = [
