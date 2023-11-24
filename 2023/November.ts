@@ -45,3 +45,58 @@ const TESTS = [
     console.log(`${i + 1}번째 case : ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.11.24] leetcode 3. Longest Substring Without Repeating Characters
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function (nums) {
+  const smallestNum = Math.min(...nums)
+  let subSequence = [smallestNum]
+
+  const makingSubSequence = (target, arr) => {
+    const targetIdx = arr.indexOf(target)
+
+    if (targetIdx >= arr.length - 1) {
+      return subSequence.length
+    }
+
+    const slicedNums = arr.slice(targetIdx + 1)
+    const newTarget = Math.min(...slicedNums)
+
+    if (newTarget > target) {
+      subSequence.push(newTarget)
+      return makingSubSequence(newTarget, slicedNums)
+    } else {
+      return subSequence.length
+    }
+  }
+
+  return makingSubSequence(smallestNum, nums)
+}
+
+const TESTS24 = [
+  {
+    params: [10, 9, 2, 5, 3, 7, 101, 18],
+    result: 4,
+  },
+  {
+    params: [0, 1, 0, 3, 2, 3],
+    result: 4,
+  },
+  {
+    params: [7, 7, 7, 7, 7, 7, 7],
+    result: 1,
+  },
+]
+
+;(function () {
+  for (let idx = 0; idx < TESTS.length; idx++) {
+    const { params, result } = TESTS24[idx]
+    const res = lengthOfLIS(params)
+    const isSuccess = res === result
+
+    console.log(`${idx}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
