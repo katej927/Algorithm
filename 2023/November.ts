@@ -69,7 +69,9 @@ var lengthOfLIS = function (nums) {
       subSequence.push(newTarget)
       return makingSubSequence(newTarget, slicedNums)
     } else {
-      return subSequence.length
+      const slicedNumsFilteredNewTarget = slicedNums.filter((el) => el !== newTarget)
+
+      return makingSubSequence(newTarget, slicedNumsFilteredNewTarget)
     }
   }
 
