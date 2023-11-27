@@ -52,30 +52,17 @@ const TESTS = [
  * @return {number}
  */
 var lengthOfLIS = function (nums) {
-  const smallestNum = Math.min(...nums)
-  let subSequence = [smallestNum]
+  const dp = new Array(nums.length).fill(1)
 
-  const makingSubSequence = (target, arr) => {
-    const targetIdx = arr.indexOf(target)
-
-    if (targetIdx >= arr.length - 1) {
-      return subSequence.length
-    }
-
-    const slicedNums = arr.slice(targetIdx + 1)
-    const newTarget = Math.min(...slicedNums)
-
-    if (newTarget > target) {
-      subSequence.push(newTarget)
-      return makingSubSequence(newTarget, slicedNums)
-    } else {
-      const slicedNumsFilteredNewTarget = slicedNums.filter((el) => el !== newTarget)
-
-      return makingSubSequence(newTarget, slicedNumsFilteredNewTarget)
+  for (let curIdx = 1; curIdx < nums.length; curIdx++) {
+    for (let prevIdx = 0; prevIdx < curIdx; prevIdx++) {
+      if (nums[curIdx] > nums[prevIdx]) {
+        dp[curIdx] = Math.max(dp[prevIdx] + 1, dp[curIdx])
+      }
     }
   }
 
-  return makingSubSequence(smallestNum, nums)
+  return Math.max(...dp)
 }
 
 const TESTS24 = [
