@@ -89,3 +89,78 @@ const TESTS24 = [
     console.log(`${idx}번째 case: ${isSuccess ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['23.11.28] leetcode 1143. Longest Common Subsequence
+/**
+ * @param {string} text1
+ * @param {string} text2
+ * @return {number}
+ */
+var longestCommonSubsequence = function (text1, text2) {
+  let commonSubsCount = 0,
+    targetIdx = -1
+  const compareLength = text1.length < text2.length
+  const shorterText = compareLength ? text1 : text2
+  const longerText = compareLength ? text2 : text1
+
+  for (let char of shorterText) {
+    const commonIdx = longerText.indexOf(char)
+    if (targetIdx < commonIdx) {
+      targetIdx = longerText.indexOf(char)
+      commonSubsCount++
+    } else continue
+  }
+
+  return commonSubsCount
+}
+
+const TESTS1128 = [
+  {
+    params: {
+      text1: 'abcde',
+      text2: 'ace',
+    },
+    result: 3,
+  },
+  {
+    params: {
+      text1: 'abc',
+      text2: 'abc',
+    },
+    result: 3,
+  },
+  {
+    params: {
+      text1: 'abc',
+      text2: 'def',
+    },
+    result: 0,
+  },
+  {
+    params: {
+      text1: 'abcde',
+      text2: 'acef',
+    },
+    result: 3,
+  },
+  {
+    params: {
+      text1: 'oxcpqrsvwf',
+      text2: 'shmtulqrypy',
+    },
+    result: 2,
+  },
+]
+
+;(function () {
+  for (let idx in TESTS1128) {
+    const {
+      params: { text1, text2 },
+      result,
+    } = TESTS1128[idx]
+    const res = longestCommonSubsequence(text1, text2)
+    const isSucceed = res === result
+
+    console.log(`${idx}번째 case: ${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
