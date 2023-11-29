@@ -97,21 +97,20 @@ const TESTS24 = [
  * @return {number}
  */
 var longestCommonSubsequence = function (text1, text2) {
-  let commonSubsCount = 0,
-    targetIdx = -1
   const compareLength = text1.length < text2.length
   const shorterText = compareLength ? text1 : text2
   const longerText = compareLength ? text2 : text1
+  const commonCount = new Array(shorterText.length).fill(0)
 
-  for (let char of shorterText) {
-    const commonIdx = longerText.indexOf(char)
-    if (targetIdx < commonIdx) {
-      targetIdx = longerText.indexOf(char)
-      commonSubsCount++
-    } else continue
+  for (let i = 0; i < shorterText.length; i++) {
+    for (let j = 0; j < longerText.length; j++) {
+      if (shorterText[i] === longerText[j]) {
+        commonCount[i]++
+      }
+    }
   }
 
-  return commonSubsCount
+  return Math.max(...commonCount)
 }
 
 const TESTS1128 = [
