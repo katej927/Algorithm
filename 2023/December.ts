@@ -23,3 +23,18 @@ const a = parseInt(line[0])
 const b = parseInt(line[1])
 
 console.log(a * b)
+
+// ['23.12.14] baekjoon 2588. 곱셈
+const fs3 = require('fs')
+const input3 = fs3.readFileSync('/dev/stdin').toString().split('\n')
+
+const firstNum = Number(input3[0])
+const secondNums = input3[1]
+
+const splitedSecondNums = secondNums.split('').reverse()
+
+for (const secNum of splitedSecondNums) {
+  console.log(firstNum * Number(secNum))
+}
+
+console.log(firstNum * Number(secondNums))
