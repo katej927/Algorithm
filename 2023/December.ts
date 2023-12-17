@@ -60,3 +60,19 @@ const convertToGrade = (line) => {
 }
 
 convertToGrade(score)
+
+// ['23.12.17] baekjoon 2884. 알람 시계
+const fs5 = require('fs')
+const input5 = fs5.readFileSync('input.txt').toString().split('\n')
+
+const times = input5[0].split(' ')
+
+const solution = (hours, minutes) => {
+  if (minutes >= 45) {
+    console.log(`${hours} ${minutes - 45}`)
+  } else {
+    console.log(`${hours - 1 < 0 ? 23 : hours - 1} ${60 - 45 + minutes}`)
+  }
+}
+
+solution(Number(times[0]), Number(times[1]))
