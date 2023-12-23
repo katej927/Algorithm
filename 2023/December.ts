@@ -76,3 +76,26 @@ const solution = (hours, minutes) => {
 }
 
 solution(Number(times[0]), Number(times[1]))
+
+// ['23.12.23] baekjoon 2525. 오븐 시계
+const fs6 = require('fs')
+const input6 = fs6.readFileSync('input.txt').toString().split(' ')
+
+const combinedTimes = [input6[0], ...input6[1].split('\n')]
+const digitizedTimes = combinedTimes.map((time) => Number(time))
+
+const hours = digitizedTimes[0]
+const minutes = digitizedTimes[1]
+const addMinutes = digitizedTimes[2]
+
+const addTime = minutes + addMinutes
+const quotient = Math.floor(addTime / 60)
+const remainder = addTime % 60
+
+const totalHours = hours + quotient
+
+if (totalHours >= 24) {
+  console.log(totalHours - 24 + ' ' + remainder)
+} else {
+  console.log(totalHours + ' ' + remainder)
+}
