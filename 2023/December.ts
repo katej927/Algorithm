@@ -89,3 +89,27 @@ const hour = Math.floor(totalMin / 60)
 const min = totalMin % 60
 
 console.log(hour + ' ' + min)
+
+// ['23.12.25] baekjoon 2480. 주사위 세 개
+const fs7 = require('fs')
+const input7 = fs7.readFileSync('input.txt').toString().split(' ')
+
+const scaleToNum = input7.map(Number)
+let countSameScale = 1
+let sameScale
+
+console.log(
+  'reduce',
+  scaleToNum.reduce((acc, cur) => {
+    console.log('cur', cur)
+    if (acc[cur]) {
+      acc[cur] = ++acc[cur]
+      countSameScale++
+      sameScale = cur
+    } else {
+      acc[cur] = 1
+    }
+
+    return acc
+  }, {})
+)
