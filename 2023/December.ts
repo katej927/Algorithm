@@ -94,22 +94,10 @@ console.log(hour + ' ' + min)
 const fs7 = require('fs')
 const input7 = fs7.readFileSync('input.txt').toString().split(' ')
 
-const scaleToNum = input7.map(Number)
-let countSameScale = 1
-let sameScale
+const [first, second, third] = input7.map(Number)
 
-console.log(
-  'reduce',
-  scaleToNum.reduce((acc, cur) => {
-    console.log('cur', cur)
-    if (acc[cur]) {
-      acc[cur] = ++acc[cur]
-      countSameScale++
-      sameScale = cur
-    } else {
-      acc[cur] = 1
-    }
-
-    return acc
-  }, {})
-)
+if (first === second && second === third) console.log(10000 + first * 1000)
+else if (first === second) console.log(1000 + first * 100)
+else if (first === third) console.log(1000 + first * 100)
+else if (second === third) console.log(1000 + second * 100)
+else console.log(Math.max(first, second, third) * 100)
