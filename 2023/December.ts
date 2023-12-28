@@ -108,4 +108,4 @@ const input8 = fs8.readFileSync('/dev/stdin').toString()
 
 const limit = Number(input8)
 
-console.log([...Array(limit + 1).keys()].reduce((acc, cur) => acc + cur, 0))
+console.log((limit * (1 + limit)) / 2)
