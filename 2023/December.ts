@@ -109,3 +109,14 @@ const input8 = fs8.readFileSync('/dev/stdin').toString()
 const limit = Number(input8)
 
 console.log((limit * (1 + limit)) / 2)
+
+// ['23.12.31] baekjoon 2739. 구구단
+const fs9 = require('fs')
+const input9 = fs9.readFileSync('/dev/stdin').toString()
+
+const inputNum = Number(input9)
+const mutipleNums = Array.from({ length: 9 }, (_, i) => i + 1)
+
+mutipleNums.forEach((num) => {
+  console.log(`${inputNum} * ${num} = ${inputNum * num}`)
+})
