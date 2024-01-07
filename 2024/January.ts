@@ -1,4 +1,4 @@
-// ['23.1.3] baekjoon 2438. 별 찍기 - 1
+// ['24.1.3] baekjoon 2438. 별 찍기 - 1
 
 const fs1 = require('fs')
 const input = fs1.readFileSync('/dev/stdin').toString()
@@ -12,7 +12,7 @@ for (let i = 1; i <= inputToNum; i++) {
 
 console.log(result)
 
-// ['23.1.4] baekjoon 15552. 빠른 A+B
+// ['24.1.4] baekjoon 15552. 빠른 A+B
 const fs240104 = require('fs')
 const input240104 = fs240104.readFileSync('input.txt').toString().split('\n')
 
@@ -23,3 +23,10 @@ for (let i = 1; i <= Number(input240104[0]); i++) {
 }
 
 console.log(result5)
+
+// ['24.1.7] baekjoon 10818. 최소, 최대
+const fs240107 = require('fs')
+const input240107 = fs240107.readFileSync('/dev/stdin').toString().split('\n')
+
+const nums = input240107[1].split(' ').map(Number)
+console.log(`${Math.min(...nums)} ${Math.max(...nums)}`)
