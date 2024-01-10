@@ -36,7 +36,7 @@ const { min, max } = nums.reduce(
 
     return acc
   },
-  { min: 1000001, max: -1000001 }
+  { min: nums[0], max: nums[0] }
 )
 
 console.log(`${min} ${max}`)
