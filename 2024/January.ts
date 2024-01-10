@@ -29,4 +29,14 @@ const fs240107 = require('fs')
 const input240107 = fs240107.readFileSync('/dev/stdin').toString().split('\n')
 
 const nums = input240107[1].split(' ').map(Number)
-console.log(`${Math.min(...nums)} ${Math.max(...nums)}`)
+const { min, max } = nums.reduce(
+  (acc, cur) => {
+    if (cur < acc.min) acc['min'] = cur
+    else if (cur > acc.max) acc['max'] = cur
+
+    return acc
+  },
+  { min: 1000001, max: -1000001 }
+)
+
+console.log(`${min} ${max}`)
