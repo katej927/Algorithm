@@ -40,3 +40,14 @@ const { min, max } = nums.reduce(
 )
 
 console.log(`${min} ${max}`)
+
+// ['24.1.11] baekjoon 2562. 최댓값
+const fs240111 = require('fs')
+const input240111 = fs240111.readFileSync('input.txt').toString().trim().split('\n')
+
+const convertedNums = input240111.map(Number)
+
+const maxNum = Math.max(...convertedNums)
+const index = convertedNums.indexOf(maxNum) + 1
+
+console.log(maxNum + '\n' + index)
