@@ -51,3 +51,18 @@ const maxNum = Math.max(...convertedNums)
 const index = convertedNums.indexOf(maxNum) + 1
 
 console.log(maxNum + '\n' + index)
+
+// ['24.1.12] baekjoon 3052. 나머지
+const fs = require('fs')
+const input240112 = fs.readFileSync('/dev/stdin').toString().trim().split('\n')
+
+const nums240112 = input240112.map(Number)
+
+const remainders = nums240112.reduce((acc, cur, idx, src) => {
+  const curCount = acc.get(cur % 42)
+  acc.set(cur % 42, curCount ? curCount + 1 : 1)
+
+  return acc
+}, new Map())
+
+console.log(remainders.size)
