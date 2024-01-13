@@ -65,3 +65,23 @@ const remainders = nums.reduce((acc, cur) => {
 }, new Set())
 
 console.log(remainders.size)
+
+// ['24.1.13] baekjoon 4344. 평균은 넘겠지
+const fs240113 = require('fs')
+const input240113 = fs240113.readFileSync('input.txt').toString().split('\n')
+
+const nums240113 = input240113.map((num) => num.split(' '))
+
+for (let NumIdx = 1; NumIdx < nums240113.length; NumIdx++) {
+  const scoresIdx = nums240113[NumIdx]
+  let totalScores = 0
+  for (let scoreIdx = 1; scoreIdx < scoresIdx.length; scoreIdx++) {
+    console.log('totalScores', (totalScores += Number(scoresIdx[scoreIdx])))
+  }
+  const average = totalScores / scoresIdx[0]
+  let CountAboveAverage = 0
+
+  for (let scoreIdx = 1; scoreIdx < scoresIdx.length; scoreIdx++) {
+    console.log()
+  }
+}
