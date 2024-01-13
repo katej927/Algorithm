@@ -58,11 +58,10 @@ const input240112 = fs.readFileSync('/dev/stdin').toString().trim().split('\n')
 
 const nums240112 = input240112.map(Number)
 
-const remainders = nums240112.reduce((acc, cur) => {
-  const curCount = acc.get(cur % 42)
-  acc.set(cur % 42, curCount ? curCount + 1 : 1)
+const remainders = nums.reduce((acc, cur) => {
+  acc.add(cur % 42)
 
   return acc
-}, new Map())
+}, new Set())
 
 console.log(remainders.size)
