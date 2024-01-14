@@ -72,16 +72,27 @@ const input240113 = fs240113.readFileSync('input.txt').toString().split('\n')
 
 const nums240113 = input240113.map((num) => num.split(' '))
 
-for (let NumIdx = 1; NumIdx < nums240113.length; NumIdx++) {
-  const scoresIdx = nums240113[NumIdx]
-  let totalScores = 0
-  for (let scoreIdx = 1; scoreIdx < scoresIdx.length; scoreIdx++) {
-    console.log('totalScores', (totalScores += Number(scoresIdx[scoreIdx])))
-  }
-  const average = totalScores / scoresIdx[0]
-  let CountAboveAverage = 0
+let result240113 = ''
 
-  for (let scoreIdx = 1; scoreIdx < scoresIdx.length; scoreIdx++) {
-    console.log()
+for (let numIdx = 1; numIdx < nums.length; numIdx++) {
+  const scores = nums[numIdx]
+  let totalScores = 0
+
+  for (let scoreIdx = 1; scoreIdx < scores.length; scoreIdx++) {
+    totalScores += Number(scores[scoreIdx])
   }
+
+  const average = totalScores / Number(scores[0])
+  let countAboveAverage = 0
+
+  for (let scoreIdx = 1; scoreIdx < scores.length; scoreIdx++) {
+    const score = scores[scoreIdx]
+    if (average < score) {
+      countAboveAverage++
+    }
+  }
+
+  const ratio = (countAboveAverage / Number(scores[0])) * 100
+  result240113 += ratio.toFixed(3) + '%' + '\n'
 }
+console.log(result240113)
