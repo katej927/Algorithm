@@ -68,31 +68,24 @@ console.log(remainders.size)
 
 // ['24.1.13] baekjoon 4344. 평균은 넘겠지
 const fs240113 = require('fs')
-const input240113 = fs240113.readFileSync('input.txt').toString().split('\n')
+const testCases = fs240113.readFileSync('input.txt').toString().split('\n')
 
-const nums240113 = input240113.map((num) => num.split(' '))
+const testCasesNum = Number(testCases[0])
+for (let testCaseIdx = 1; testCaseIdx <= testCasesNum; testCaseIdx++) {
+  const testCase = testCases[testCaseIdx].split(' ').map(Number)
 
-let result240113 = ''
+  const denominator = testCase.shift()
+  const totalScores = testCase.reduce((acc, cur) => {
+    acc += cur
+    return acc
+  }, 0)
 
-for (let numIdx = 1; numIdx < nums.length; numIdx++) {
-  const scores = nums[numIdx]
-  let totalScores = 0
+  const avg = totalScores / denominator
 
-  for (let scoreIdx = 1; scoreIdx < scores.length; scoreIdx++) {
-    totalScores += Number(scores[scoreIdx])
-  }
+  const CountAboveAvg = testCase.reduce((acc, cur) => {
+    if (cur > avg) acc++
+    return acc
+  }, 0)
 
-  const average = totalScores / Number(scores[0])
-  let countAboveAverage = 0
-
-  for (let scoreIdx = 1; scoreIdx < scores.length; scoreIdx++) {
-    const score = scores[scoreIdx]
-    if (average < score) {
-      countAboveAverage++
-    }
-  }
-
-  const ratio = (countAboveAverage / Number(scores[0])) * 100
-  result240113 += ratio.toFixed(3) + '%' + '\n'
+  console.log(`${((CountAboveAvg / denominator) * 100).toFixed(3)}%`)
 }
-console.log(result240113)
