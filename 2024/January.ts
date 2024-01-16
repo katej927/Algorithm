@@ -89,3 +89,18 @@ for (let testCaseIdx = 1; testCaseIdx <= testCasesNum; testCaseIdx++) {
 
   console.log(`${((CountAboveAvg / denominator) * 100).toFixed(3)}%`)
 }
+
+// ['24.1.16] baekjoon 1546. 평균
+const fs240116 = require('fs')
+const input240116 = fs240116.readFileSync('input.txt').toString().split('\n')
+
+const subjectNumber = Number(input240116[0])
+const scores = input240116[1].split(' ').map(Number)
+const maxScore = Math.max(...scores)
+
+const sumConvertedScores = scores.reduce((acc, cur) => {
+  acc += (cur / maxScore) * 100
+  return acc
+}, 0)
+
+console.log(sumConvertedScores / subjectNumber)
