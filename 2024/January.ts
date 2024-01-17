@@ -104,3 +104,15 @@ const sumConvertedScores = scores.reduce((acc, cur) => {
 }, 0)
 
 console.log(sumConvertedScores / subjectNumber)
+
+// ['24.1.17] baekjoon 11720. 숫자의 합
+const fs240117 = require('fs')
+const input240117 = fs240117.readFileSync('input.txt').toString().split('\n')
+
+const numsInString = input240117[1].split('')
+const total = numsInString.reduce((acc, cur) => {
+  acc += Number(cur)
+  return acc
+}, 0)
+
+console.log(total)
