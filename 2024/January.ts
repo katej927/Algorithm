@@ -116,3 +116,19 @@ const total = numsInString.reduce((acc, cur) => {
 }, 0)
 
 console.log(total)
+
+// ['24.1.17] baekjoon 2675. 문자열 반복
+const fs2401172 = require('fs')
+const input2401172 = fs2401172.readFileSync('input.txt').toString()
+
+let result2401172 = ''
+
+const targets = input2401172.slice(1).trim().split('\n')
+for (let target of targets) {
+  for (let idx = 2; idx < target.length; idx++) {
+    const repeatedLetters = target[idx].repeat(target[0])
+    result2401172 += repeatedLetters
+  }
+  console.log(result2401172)
+  result2401172 = ''
+}
