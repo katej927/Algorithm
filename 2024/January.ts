@@ -139,3 +139,20 @@ const input240120 = fs240120.readFileSync('input.txt', 'utf8').trim().split(' ')
 
 const reversedNums = input240120.map((el) => Number(el.split('').reverse().join('')))
 console.log(Math.max(...reversedNums))
+
+// ['24.1.20] baekjoon 1316. 그룹 단어 체커
+const fs2401202 = require('fs')
+const input2401202 = fs2401202.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const words = input2401202.slice(1)
+
+words.reduce((acc, curWord) => {
+  let isExist = new Set()
+  let accLetter
+  for (let letter of curWord) {
+    if (accLetter === letter) continue
+    else {
+      isExist.add(accLetter)
+    }
+  }
+}, 0)
