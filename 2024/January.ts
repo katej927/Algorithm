@@ -132,3 +132,10 @@ targets.forEach((target) => {
   }
   console.log(eachResult)
 })
+
+// ['24.1.20] baekjoon 2908. 상수
+const fs240120 = require('fs')
+const input240120 = fs240120.readFileSync('input.txt', 'utf8').trim().split(' ')
+
+const reversedNums = input240120.map((el) => Number(el.split('').reverse().join('')))
+console.log(Math.max(...reversedNums))
