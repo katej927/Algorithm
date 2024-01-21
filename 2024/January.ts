@@ -146,13 +146,28 @@ const input2401202 = fs2401202.readFileSync('input.txt', 'utf8').trim().split('\
 
 const words = input2401202.slice(1)
 
-words.reduce((acc, curWord) => {
-  let isExist = new Set()
+const result1 = words.reduce((acc, curWord) => {
+  let existedLetters = new Set()
   let accLetter
   for (let letter of curWord) {
     if (accLetter === letter) continue
     else {
-      isExist.add(accLetter)
+      const isExist = existedLetters.has(letter)
+      if (isExist) {
+        acc -= 1
+        break
+      } else {
+        existedLetters.add(letter)
+        accLetter = letter
+      }
     }
   }
+  acc += 1
+
+  existedLetters.clear()
+  accLetter = undefined
+
+  return acc
 }, 0)
+
+console.log(result1)
