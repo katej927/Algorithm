@@ -171,3 +171,13 @@ const result1 = words.reduce((acc, curWord) => {
 }, 0)
 
 console.log(result1)
+
+// ['24.1.22] baekjoon 1152. 단어의 개수
+const fs240122 = require('fs')
+const input240122 = fs240122.readFileSync('input.txt', 'utf8').trim()
+
+if (!input240122) return console.log(0)
+
+const splitedInput = input240122.toLowerCase().split(' ')
+
+console.log(splitedInput.length)
