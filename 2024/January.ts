@@ -213,3 +213,34 @@ var characterReplacement = function (s, k) {
   const afterReverse = convertResult(s.split('').reverse().join(''), k)
   return Math.max(berforeReverse, afterReverse)
 }
+const TESTCASES = [
+  {
+    params: { s: 'ABAB', k: 2 },
+    result: 4,
+  },
+  {
+    params: { s: 'AABABBA', k: 1 },
+    result: 4,
+  },
+  {
+    params: { s: 'BAAA', k: 0 },
+    result: 3,
+  },
+  {
+    params: { s: 'ABBB', k: 2 },
+    result: 4,
+  },
+]
+
+;(function () {
+  for (const {
+    params: { s, k },
+    result,
+  } of TESTCASES) {
+    console.log(s, k)
+    const res = characterReplacement(s, k)
+    const isSuceed = res === result
+
+    console.log(`${isSuceed ? 'SUCCESS' : 'FAILURE'}`)
+  }
+})()
