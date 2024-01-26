@@ -181,3 +181,35 @@ if (!input240122) return console.log(0)
 const splitedInput = input240122.toLowerCase().split(' ')
 
 console.log(splitedInput.length)
+
+// ['24.1.26] leetcode 424. Longest Repeating Character Replacement
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var convertResult = function (s, k) {
+  let count = Array.from(Array(s.length), () => 1)
+
+  for (let i = 0; i < s.length; i++) {
+    const targetLetter = s[i]
+    let changeChance = k
+    for (let j = i + 1; j < s.length; j++) {
+      const checkLetter = s[j]
+      if (targetLetter !== checkLetter) {
+        if (changeChance) {
+          changeChance -= 1
+          count[i] += 1
+        } else {
+          break
+        }
+      } else count[i] += 1
+    }
+  }
+  return Math.max(...count)
+}
+var characterReplacement = function (s, k) {
+  const berforeReverse = convertResult(s, k)
+  const afterReverse = convertResult(s.split('').reverse().join(''), k)
+  return Math.max(berforeReverse, afterReverse)
+}
