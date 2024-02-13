@@ -36,3 +36,14 @@ const TESTCASE = [
     console.log(`${isSucceed ? 'SUCCESS' : 'FAILURE'}`)
   }
 })()
+
+// ['24.2.13] baekjoon 2752. 세수정렬
+const fs13 = require('fs')
+const input13 = fs13.readFileSync('input.txt', 'utf8').trim()
+
+console.log(
+  input13
+    .split(' ')
+    .sort((a, b) => Number(a) - Number(b))
+    .join(' ')
+)
