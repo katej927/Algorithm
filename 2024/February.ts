@@ -47,3 +47,15 @@ console.log(
     .sort((a, b) => Number(a) - Number(b))
     .join(' ')
 )
+
+// ['24.2.14] baekjoon 2750. 수 정렬하기
+const fs14 = require('fs')
+const input14 = fs14.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+console.log(
+  input14
+    .slice(1)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .join('\n')
+)
