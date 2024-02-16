@@ -48,14 +48,28 @@ console.log(
     .join(' ')
 )
 
-// ['24.2.14] baekjoon 2750. 수 정렬하기
+// ['24.2.14] baekjoon 2750. 수 정렬하기 (by selection sort)
 const fs14 = require('fs')
 const input14 = fs14.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-console.log(
-  input14
-    .slice(1)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .join('\n')
-)
+let arr = input14.slice(1).map(Number)
+
+const selectionSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    let minIdx = i
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[minIdx] > arr[j]) {
+        minIdx = j
+      }
+    }
+
+    let tmp = arr[minIdx]
+    arr[minIdx] = arr[i]
+    arr[i] = tmp
+  }
+}
+
+selectionSort(arr)
+
+console.log(arr.join('\n'))
