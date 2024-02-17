@@ -81,3 +81,16 @@ const input17 = fs17.readFileSync('/dev/stdin', 'utf8').trim().split('\n')
 const arr17 = input17.slice(1).map(Number)
 
 console.log(arr17.sort((a, b) => a - b).join('\n'))
+
+// ['24.2.17] baekjoon 11004. K번째 수
+const fs172 = require('fs')
+const input172 = fs172.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const k = Number(input172[0].split(' ')[1]) - 1
+
+const sortedA = input172[1]
+  .split(' ')
+  .map(Number)
+  .sort((a, b) => a - b)
+
+console.log(sortedA[k])
