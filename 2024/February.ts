@@ -73,3 +73,11 @@ const selectionSort = (arr) => {
 selectionSort(arr)
 
 console.log(arr.join('\n'))
+
+// ['24.2.17] baekjoon 2751. 수 정렬하기 2
+const fs17 = require('fs')
+const input17 = fs17.readFileSync('/dev/stdin', 'utf8').trim().split('\n')
+
+const arr17 = input17.slice(1).map(Number)
+
+console.log(arr17.sort((a, b) => a - b).join('\n'))
