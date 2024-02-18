@@ -94,3 +94,18 @@ const sortedA = input172[1]
   .sort((a, b) => a - b)
 
 console.log(sortedA[Number(k) - 1])
+
+// ['24.2.18] baekjoon 11650. 좌표 정렬하기
+const fs18 = require('fs')
+const input18 = fs18.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const splitedXY = input18.slice(1).map((xy) => xy.split(' '))
+const sorted = splitedXY.sort((a, b) => {
+  const [ax, ay] = a
+  const [bx, by] = b
+
+  if (ax === bx) return ay - by
+  return ax - bx
+})
+
+console.log(sorted.map((xy) => xy.join(' ')).join('\n'))
