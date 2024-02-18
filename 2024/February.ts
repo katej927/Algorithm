@@ -86,11 +86,11 @@ console.log(arr17.sort((a, b) => a - b).join('\n'))
 const fs172 = require('fs')
 const input172 = fs172.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const k = Number(input172[0].split(' ')[1]) - 1
+const [n, k] = input172[0].split(' ')
 
 const sortedA = input172[1]
   .split(' ')
   .map(Number)
   .sort((a, b) => a - b)
 
-console.log(sortedA[k])
+console.log(sortedA[Number(k) - 1])
