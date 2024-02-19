@@ -109,3 +109,19 @@ const sorted = splitedXY.sort((a, b) => {
 })
 
 console.log(sorted.map((xy) => xy.join(' ')).join('\n'))
+
+// ['24.2.19] baekjoon 11651. 좌표 정렬하기 2
+const fs19 = require('fs')
+const input19 = fs19.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const positions = input19.slice(1).map((position) => position.split(' '))
+
+const sortedXY = positions.sort((a, b) => {
+  const [ax, ay] = a
+  const [bx, by] = b
+
+  if (ay === by) return ax - bx
+  return ay - by
+})
+
+console.log(sortedXY.map((xy) => xy.join(' ')).join('\n'))
