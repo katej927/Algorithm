@@ -125,3 +125,14 @@ const sortedXY = positions.sort((a, b) => {
 })
 
 console.log(sortedXY.map((xy) => xy.join(' ')).join('\n'))
+
+// ['24.2.20] baekjoon 1181. 단어 정렬
+const fs20 = require('fs')
+const input20: string[] = fs20.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const uniqueWords = [...new Set(input20.slice(1))]
+const sorted20 = uniqueWords.sort((a: string, b: string) => {
+  if (a.length === b.length) return a.localeCompare(b)
+  else return a.length - b.length
+})
+console.log(sorted20.join('\n'))
