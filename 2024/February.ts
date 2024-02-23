@@ -136,3 +136,22 @@ const sorted20 = uniqueWords.sort((a: string, b: string) => {
   else return a.length - b.length
 })
 console.log(sorted20.join('\n'))
+
+// ['24.2.23] baekjoon 18870. 좌표 압축
+const fs23 = require('fs')
+const input23 = fs23.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const coordinates = input23[1].split(' ').map(Number)
+const idxedCoordinates = coordinates.map((coordinate, idx) => [idx, coordinate])
+console.log(
+  idxedCoordinates
+    .sort((a, b) => a[1] - b[1])
+    .map(([originalIdx, coordinate], idx, src) => {
+      if (coordinate === src[idx - 1]?.[1]) {
+        const sameCoordinateIdx = src.findIndex((idxedCoordinates) => idxedCoordinates[1] === coordinate)
+
+        return [originalIdx, sameCoordinateIdx]
+      }
+      return [originalIdx, idx]
+    })
+)
