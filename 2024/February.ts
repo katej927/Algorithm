@@ -141,28 +141,17 @@ console.log(sorted20.join('\n'))
 const fs23 = require('fs')
 const input23 = fs23.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const idxedCoordinates = input23[1].split(' ').map((coordinate, idx) => [idx, Number(coordinate)])
-const sortedIdxedCoordinates = idxedCoordinates.sort((a, b) => a[1] - b[1])
+const arr23: number[] = input23[1].split(' ').map(Number)
+const sortedUniqueArr = [...new Set(arr23)].sort((a, b) => a - b)
 
-let currentMin = {
-  value: sortedIdxedCoordinates[0][1],
-  order: 0,
-}
-
-const idxedCompressedCoordinates = sortedIdxedCoordinates.map(([originalIdx, coordinate]) => {
-  if (coordinate === currentMin.value) return [originalIdx, currentMin.order]
-  else if (coordinate > currentMin.value) {
-    currentMin = {
-      value: coordinate,
-      order: ++currentMin.order,
-    }
-    return [originalIdx, currentMin.order]
-  }
-})
+let maps = sortedUniqueArr.reduce((acc, cur, idx) => {
+  acc.set(cur, idx)
+  return acc
+}, new Map())
 
 console.log(
-  idxedCompressedCoordinates
-    .sort((a, b) => a[0] - b[0])
-    .map((el) => el[1])
-    .join(' ')
+  arr23.reduce((acc, cur, idx) => {
+    acc += `${maps.get(cur)} `
+    return acc
+  }, '')
 )
