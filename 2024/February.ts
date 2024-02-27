@@ -150,8 +150,33 @@ let maps = sortedUniqueArr.reduce((acc, cur, idx) => {
 }, new Map())
 
 console.log(
-  arr23.reduce((acc, cur, idx) => {
+  arr23.reduce((acc, cur) => {
     acc += `${maps.get(cur)} `
+    return acc
+  }, '')
+)
+
+// ['24.2.27] baekjoon 10814. 나이순 정렬
+const fs27 = require('fs')
+const input27 = fs27.readFileSync('input.txt', 'utf8').trim()
+
+const infos = input27.split('\n').slice(1)
+const indexedMaps = infos.reduce((acc, cur, idx) => {
+  const [age, name] = cur.split(' ')
+
+  acc.set(idx, { age: Number(age), name })
+  return acc
+}, new Map())
+
+const sortedIndexedMaps = [...indexedMaps.entries()].sort((a, b) => {
+  if (a[1]['age'] === b[1]['age']) return a[0] - b[0]
+  return a[1]['age'] - b[1]['age']
+})
+
+console.log(
+  sortedIndexedMaps.reduce((acc, cur) => {
+    const { age, name } = cur[1]
+    acc += `${age} ${name}` + '\n'
     return acc
   }, '')
 )
