@@ -160,23 +160,21 @@ console.log(
 const fs27 = require('fs')
 const input27 = fs27.readFileSync('input.txt', 'utf8').trim()
 
-const infos = input27.split('\n').slice(1)
-const indexedMaps = infos.reduce((acc, cur, idx) => {
+const infos = input27.slice(1)
+const splitedInfos = infos.reduce((acc, cur, idx) => {
   const [age, name] = cur.split(' ')
 
-  acc.set(idx, { age: Number(age), name })
+  acc.push([Number(age), name])
   return acc
-}, new Map())
-
-const sortedIndexedMaps = [...indexedMaps.entries()].sort((a, b) => {
-  if (a[1]['age'] === b[1]['age']) return a[0] - b[0]
-  return a[1]['age'] - b[1]['age']
-})
+}, [])
 
 console.log(
-  sortedIndexedMaps.reduce((acc, cur) => {
-    const { age, name } = cur[1]
-    acc += `${age} ${name}` + '\n'
-    return acc
-  }, '')
+  splitedInfos
+    .sort((a, b) => a[0] - b[0])
+    .reduce((acc, cur) => {
+      const [age, name] = cur
+
+      acc += `${age} ${name}` + '\n'
+      return acc
+    }, '')
 )
