@@ -178,3 +178,14 @@ console.log(
       return acc
     }, '')
 )
+
+// ['24.2.28] baekjoon 1427. 소트인사이드
+const fs28 = require('fs')
+const input28 = fs28.readFileSync('input.txt', 'utf8').trim()
+
+console.log(
+  `${input28}`
+    .split('')
+    .sort((a, b) => b.localeCompare(a))
+    .join('')
+)
