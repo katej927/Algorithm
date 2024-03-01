@@ -183,9 +183,17 @@ console.log(
 const fs28 = require('fs')
 const input28 = fs28.readFileSync('input.txt', 'utf8').trim()
 
-console.log(
-  `${input28}`
-    .split('')
-    .sort((a, b) => b.localeCompare(a))
-    .join('')
-)
+const count = Array(10).fill(0)
+
+for (let eachNumber of input28) {
+  count[eachNumber]++
+}
+
+let answer = ''
+for (let i = 0; i <= 9; i++) {
+  for (let j = 0; j < count[i]; j++) {
+    answer += i
+  }
+}
+
+console.log(answer)
