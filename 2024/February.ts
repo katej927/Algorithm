@@ -190,7 +190,7 @@ for (let eachNumber of input28) {
 }
 
 let answer = ''
-for (let i = 0; i <= 9; i++) {
+for (let i = 9; i >= 0; i--) {
   for (let j = 0; j < count[i]; j++) {
     answer += i
   }
