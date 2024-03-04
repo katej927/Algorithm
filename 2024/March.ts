@@ -7,12 +7,16 @@ const coinsToNumber = input3.slice(1).map(Number)
 
 let portions = Array(Number(coinsCount)).fill(0)
 
-for (let i = 0; i < coinsToNumber.length; i++) {
+for (let i = coinsToNumber.length - 1; i >= 0; i--) {
   const currentCountingCoin = coinsToNumber[i]
   let portion = 0
 
   if (currentCountingCoin > total) {
     continue
   }
-  for (let j = 0; j < coinsToNumber.length; j++) {}
+  for (let j = i; j >= 0; j--) {
+    if (total % coinsToNumber[j] === 0) {
+      portions[i] += Math.floor(total / coinsToNumber[j])
+    }
+  }
 }
