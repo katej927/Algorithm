@@ -14,3 +14,16 @@ const result = coinsToNumber.reduce((acc, cur) => {
 }, 0)
 
 console.log(result)
+
+// ['24.3.9] baekjoon 11399. ATM
+const fs9 = require('fs')
+const input9 = fs9.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const timeToNumber = input9[1].split(' ').map(Number)
+console.log(
+  timeToNumber.sort().reduce((acc, cur) => {
+    acc += cur + acc
+
+    return acc
+  }, 0)
+)
