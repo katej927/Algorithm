@@ -20,10 +20,13 @@ const fs9 = require('fs')
 const input9 = fs9.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const timeToNumber = input9[1].split(' ').map(Number)
-console.log(
-  timeToNumber.sort().reduce((acc, cur) => {
-    acc += cur + acc
+let result9 = 0
+timeToNumber
+  .sort((a, b) => a - b)
+  .reduce((acc, cur) => {
+    acc += cur
+    result9 += acc
 
     return acc
   }, 0)
-)
+console.log(result9)
