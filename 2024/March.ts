@@ -30,3 +30,9 @@ timeToNumber
     return acc
   }, 0)
 console.log(result9)
+
+// ['24.3.13] baekjoon 1541. 잃어버린 괄호
+const fs13 = require('fs')
+const input13 = fs13.readFileSync('input.txt', 'utf8').trim()
+
+console.log(new Function(`return (${input13.split('-').join(')-(')})`)())
