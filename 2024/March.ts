@@ -35,11 +35,16 @@ console.log(result9)
 const fs13 = require('fs')
 const input13 = fs13.readFileSync('input.txt', 'utf8').trim()
 
-const parsedToNumber = input13.split('-').map((el) =>
-  el
-    .split('+')
-    .map((el) => parseInt(el, 10))
-    .join('+')
-)
+const splitedByMinus = input13.split('-')
+console.log(
+  splitedByMinus.reduce((acc, cur, idx) => {
+    const splitedByPlus = cur.split('+').reduce((acc, cur) => Number(acc) + Number(cur))
 
-console.log(new Function(`return (${parsedToNumber.join(')-(')})`)())
+    const numberedCur = Number(splitedByPlus)
+
+    if (idx == 0) return numberedCur
+
+    acc -= numberedCur
+    return acc
+  }, 0)
+)
