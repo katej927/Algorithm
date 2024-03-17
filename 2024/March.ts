@@ -48,3 +48,17 @@ console.log(
     return acc
   }, 0)
 )
+
+// ['24.3.17] baekjoon 2839. 설탕 배달
+const fs17 = require('fs')
+const input17 = fs17.readFileSync('input.txt', 'utf8').trim()
+
+let count = 0
+
+count += Math.floor(input17 / 5)
+if ((input17 % 5) % 3) {
+  console.log(input17 % 3 ? -1 : input17 / 3)
+} else {
+  count += (input17 % 5) / 3
+  console.log(count)
+}
