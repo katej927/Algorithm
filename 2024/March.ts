@@ -53,24 +53,22 @@ console.log(
 const fs17 = require('fs')
 const input17 = fs17.readFileSync('input.txt', 'utf8').trim()
 
-let count1 = 0
+let target = Number(input17)
+let count = 0
+let flag = false
 
-const portion = Math.floor(input17 / 5)
-count1 += portion
-
-const loop = (portion) => {
-  if (portion == 0) {
-    return -1
-  } else if ((input17 - 5 * portion) % 3) {
-    console.log('2번째 if', portion)
-    count1 = 0
-    return loop(portion - 1)
-  } else {
-    console.log('3번째 if', portion)
-    count1 += portion
-    count1 += (input17 - 5 * portion) / 3
-    return count1
+while (target >= 0) {
+  if (target == 0 || target % 5 == 0) {
+    count += Math.floor(target / 5)
+    console.log(count)
+    flag = true
+    break
   }
+
+  target -= 3
+  count += 1
 }
 
-console.log(loop(portion))
+if (target < 0) {
+  console.log(-1)
+}
