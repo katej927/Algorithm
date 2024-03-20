@@ -72,3 +72,14 @@ while (target >= 0) {
 if (target < 0) {
   console.log(-1)
 }
+
+// ['24.3.20] baekjoon 16953. A → B
+const fs20 = require('fs')
+const input20 = fs20.readFileSync('input.txt', 'utf8').trim()
+
+let [A, B] = input20.split(' ')
+
+if (Number(B) % 2) {
+  B = String(B).slice(0, -1)
+} else {
+}
