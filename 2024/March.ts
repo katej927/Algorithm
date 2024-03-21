@@ -78,8 +78,26 @@ const fs20 = require('fs')
 const input20 = fs20.readFileSync('input.txt', 'utf8').trim()
 
 let [A, B] = input20.split(' ')
+let count20 = 1
+let flag20 = false
 
-if (Number(B) % 2) {
-  B = String(B).slice(0, -1)
-} else {
+while (B > Number(A)) {
+  if (Number(B) % 2) {
+    if (B.toString().slice(-1) == 1) {
+      B = String(B).slice(0, -1)
+      count20++
+    } else {
+      console.log(-1)
+      flag20 = true
+      break
+    }
+  } else {
+    B = B / 2
+    count20++
+  }
+}
+
+if (!flag20) {
+  if (B == Number(A)) console.log(count20)
+  else console.log(-1)
 }
