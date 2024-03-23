@@ -101,3 +101,21 @@ if (!flag20) {
   if (B == Number(A)) console.log(count20)
   else console.log(-1)
 }
+
+// ['24.3.23] baekjoon 1789. 수들의 합
+const fs = require('fs')
+const input = fs.readFileSync('input.txt', 'utf8').trim()
+
+let S = Number(input)
+let count23 = 0
+
+for (let i = 1; i < S; i++) {
+  if (S <= i) {
+    count23++
+    break
+  }
+  S -= i
+  count23++
+}
+
+console.log(count23)
