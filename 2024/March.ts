@@ -109,7 +109,7 @@ const input = fs.readFileSync('input.txt', 'utf8').trim()
 let S = Number(input)
 let count23 = 0
 
-for (let i = 1; i < S; i++) {
+for (let i = 1; i <= S; i++) {
   if (S <= i) {
     count23++
     break
