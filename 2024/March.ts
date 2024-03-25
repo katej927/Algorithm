@@ -108,14 +108,11 @@ const input = fs.readFileSync('input.txt', 'utf8').trim()
 
 let S = Number(input)
 let count23 = 0
+let sum = 0
 
-for (let i = 1; i <= S; i++) {
-  if (S <= i) {
-    count23++
-    break
-  }
-  S -= i
-  count23++
+while (sum <= S) {
+  count++
+  sum += count
 }
 
 console.log(count23)
