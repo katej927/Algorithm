@@ -111,8 +111,8 @@ let count23 = 0
 let sum = 0
 
 while (sum <= S) {
-  count++
-  sum += count
+  count23++
+  sum += count23
 }
 
 console.log(count23)
