@@ -119,17 +119,13 @@ console.log(count23)
 
 // ['24.3.30] baekjoon 1946. 신입 사원
 const fs30 = require('fs')
-const input30 = fs30.readFileSync('input.txt', 'utf8').trim()
-const splitedInput = input30.split('\n')
-const rankings = splitedInput.slice(2, 7).sort()
+const input30 = fs30.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-let minInterviewRanking = Number(splitedInput[1])
-let count30 = 0
+const testCase = Number(input30[0])
+let line = 1
 
-for (const ranking of rankings) {
-  const [doc, interview] = ranking.split(' ')
-  if (minInterviewRanking > Number(interview)) {
-    minInterviewRanking = Number(interview)
-    count30++
-  }
+for (let tc = 0; tc < testCase; tc++) {
+  const n = Number(input30[line])
+  let arr = []
+  for (let i = line + 1; i <= line + n; i++) {}
 }
