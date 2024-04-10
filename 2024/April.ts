@@ -1,22 +1,21 @@
 // ['24.4.6] baekjoon 13305. 주유소
 const fs6 = require('fs')
-const input6 = fs6.readFileSync('/dev/stdin', 'utf8').trim().split('\n')
+const input6 = fs6.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const distance = input6[1].split(' ').map(Number)
-const price = input6[2].split(' ').slice(0, -1).map(Number)
-const sortedPrice = [...price].sort((a, b) => b - a)
+const cityCount = Number(input6[0])
+const distances = input6[1].split(' ').map(BigInt)
+const prices: bigint[] = input6[2].split(' ').map(BigInt)
 
-let curMinPriceIdx = 0
-const result6 = price.reduce((totalPrice, curPrice, idx) => {
-  const curMinPrice = sortedPrice[curMinPriceIdx]
-  if (curMinPrice > curPrice) {
-    curMinPriceIdx = sortedPrice.findIndex((price) => price === curPrice)
-    const newCurMinPrice = sortedPrice[curMinPriceIdx]
-    totalPrice += distance[idx] * newCurMinPrice
-  } else {
-    totalPrice += distance[idx] * curMinPrice
+let minPrice = prices[0]
+let totalPrice = BigInt(0)
+
+for (let i = 0; i < cityCount - 1; i++) {
+  const curPrice = prices[i]
+  if (curPrice < minPrice) {
+    minPrice = curPrice
   }
-  return totalPrice
-}, 0)
 
-console.log(result6)
+  totalPrice += distances[i] * minPrice
+}
+
+console.log(totalPrice.toString())
