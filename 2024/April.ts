@@ -19,3 +19,13 @@ for (let i = 0; i < cityCount - 1; i++) {
 }
 
 console.log(totalPrice.toString())
+
+// ['24.4.11] baekjoon 1931. 회의실 배정
+const fs11 = require('fs')
+const input11 = fs11.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const totalCount = Number(input11[0])
+const times = input11.slice(1).map((el) => el.split(' ').map(Number))
+const sortedTimes = times.sort(([aStart], [bStart]) => aStart - bStart)
+
+for (let i = 0; i < sortedTimes.length; i++) {}
