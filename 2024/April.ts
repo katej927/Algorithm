@@ -28,4 +28,13 @@ const totalCount = Number(input11[0])
 const times = input11.slice(1).map((el) => el.split(' ').map(Number))
 const sortedTimes = times.sort(([aStart], [bStart]) => aStart - bStart)
 
-for (let i = 0; i < sortedTimes.length; i++) {}
+let count = new Array(totalCount).fill(0)
+
+for (let i = 0; i < sortedTimes.length; i++) {
+  const [start, end] = sortedTimes[i]
+
+  let foundIdx = sortedTimes.findIndex(([newStart, newEnd]) => newStart >= end)
+  if (foundIdx > -1) {
+    count[i] += 1
+  }
+}
