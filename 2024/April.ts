@@ -33,8 +33,14 @@ let count = new Array(totalCount).fill(0)
 for (let i = 0; i < sortedTimes.length; i++) {
   const [start, end] = sortedTimes[i]
 
-  let foundIdx = sortedTimes.findIndex(([newStart, newEnd]) => newStart >= end)
-  if (foundIdx > -1) {
-    count[i] += 1
+  let foundIdx = i
+  let curEnd = end
+  while (foundIdx !== -1) {
+    foundIdx = sortedTimes.findIndex(([newStart, newEnd]) => newStart >= curEnd)
+
+    if (foundIdx > -1) {
+      count[i] += 1
+      curEnd = sortedTimes[foundIdx][1]
+    }
   }
 }
