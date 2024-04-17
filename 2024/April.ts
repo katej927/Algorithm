@@ -28,7 +28,7 @@ const totalCount = Number(input11[0])
 const times = input11.slice(1).map((el) => el.split(' ').map(Number))
 const sortedTimes = times.sort(([, aEnd], [, bEnd]) => aEnd - bEnd)
 
-let minEnd = sortedTimes[0][1]
+let minEnd = -1
 console.log(
   sortedTimes.reduce((acc, [curStart, curEnd]) => {
     if (minEnd <= curStart) {
@@ -36,5 +36,5 @@ console.log(
       acc++
     }
     return acc
-  }, 1)
+  }, 0)
 )
