@@ -26,21 +26,15 @@ const input11 = fs11.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const totalCount = Number(input11[0])
 const times = input11.slice(1).map((el) => el.split(' ').map(Number))
-const sortedTimes = times.sort(([aStart], [bStart]) => aStart - bStart)
+const sortedTimes = times.sort(([, aEnd], [, bEnd]) => aEnd - bEnd)
 
-let count = new Array(totalCount).fill(0)
-
-for (let i = 0; i < sortedTimes.length; i++) {
-  const [start, end] = sortedTimes[i]
-
-  let foundIdx = i
-  let curEnd = end
-  while (foundIdx !== -1) {
-    foundIdx = sortedTimes.findIndex(([newStart, newEnd]) => newStart >= curEnd)
-
-    if (foundIdx > -1) {
-      count[i] += 1
-      curEnd = sortedTimes[foundIdx][1]
+let minEnd = sortedTimes[0][1]
+console.log(
+  sortedTimes.reduce((acc, [curStart, curEnd]) => {
+    if (minEnd <= curStart) {
+      minEnd = curEnd
+      acc++
     }
-  }
-}
+    return acc
+  }, 1)
+)
