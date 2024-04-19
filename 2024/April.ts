@@ -26,7 +26,10 @@ const input11 = fs11.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const totalCount = Number(input11[0])
 const times = input11.slice(1).map((el) => el.split(' ').map(Number))
-const sortedTimes = times.sort(([, aEnd], [, bEnd]) => aEnd - bEnd)
+const sortedTimes = times.sort(([aStart, aEnd], [bStart, bEnd]) => {
+  if (aEnd === bEnd) return aStart - bStart
+  return aEnd - bEnd
+})
 
 let minEnd = -1
 console.log(
