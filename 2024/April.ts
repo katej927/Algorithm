@@ -41,3 +41,27 @@ console.log(
     return acc
   }, 0)
 )
+
+// ['24.4.20] baekjoon 11509. 풍선 맞추기
+const fs20 = require('fs')
+const input20 = fs20.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const count = Number(input20[0])
+const heights = input20[1].split(' ').map(Number)
+
+let arrowCount = 1
+let curIdx
+let curArrowHeight = count
+
+while (curArrowHeight >= 1) {
+  const poppedIdx = heights.findIndex((height) => height === curArrowHeight)
+  if (poppedIdx > -1) {
+    curArrowHeight--
+
+    if (poppedIdx < curIdx) {
+      arrowCount++
+    }
+
+    curIdx = poppedIdx
+  }
+}
