@@ -63,5 +63,5 @@ while (curArrowHeight >= 1) {
     }
 
     curIdx = poppedIdx
-  }
+  } else curArrowHeight--
 }
