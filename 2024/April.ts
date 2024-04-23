@@ -54,20 +54,18 @@ let curIdx
 let curArrowHeight = count
 
 while (curArrowHeight >= 1) {
-  const poppedIdx = heights.lastIndexOf(curArrowHeight)
-  if (poppedIdx > -1) {
-    curArrowHeight--
+  for (let i = 0; i < count; i++) {
+    const curHeight = heights[i]
+    const isPopped = curHeight === curArrowHeight
 
-    const countSameHeight = heights.filter((height) => height === curArrowHeight).length - 1
-    if (countSameHeight > 0) {
-      arrowCount += countSameHeight
+    if (isPopped) {
+      if (i < curIdx) {
+        arrowCount++
+      }
+      curIdx = i
     }
-    if (poppedIdx < curIdx) {
-      arrowCount++
-    }
-
-    curIdx = poppedIdx
-  } else curArrowHeight--
+  }
+  curArrowHeight--
 }
 
 console.log(arrowCount)
