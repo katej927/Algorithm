@@ -49,23 +49,4 @@ const input20 = fs20.readFileSync('input.txt', 'utf8').trim().split('\n')
 const count = Number(input20[0])
 const heights = input20[1].split(' ').map(Number)
 
-let arrowCount = 1
-let curIdx
-let curArrowHeight = count
-
-while (curArrowHeight >= 1) {
-  for (let i = 0; i < count; i++) {
-    const curHeight = heights[i]
-    const isPopped = curHeight === curArrowHeight
-
-    if (isPopped) {
-      if (i < curIdx) {
-        arrowCount++
-      }
-      curIdx = i
-    }
-  }
-  curArrowHeight--
-}
-
-console.log(arrowCount)
+let arrows = Array(count).fill(0)
