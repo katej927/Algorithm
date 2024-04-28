@@ -50,3 +50,18 @@ const count = Number(input20[0])
 const heights = input20[1].split(' ').map(Number)
 
 let arrows = Array(count).fill(0)
+
+let arrowCount = 0
+
+for (let i = 0; i < count; i++) {
+  const currentHeight = heights[i]
+
+  if (arrows[currentHeight - 1] === 0) {
+    arrowCount++
+    arrows[currentHeight - 1]++
+    arrows[currentHeight - 2]++
+  } else {
+  }
+
+  console.log('currentHeight', currentHeight, 'arrowCount', arrowCount, 'arrows', arrows)
+}
