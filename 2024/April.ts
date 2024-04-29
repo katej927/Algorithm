@@ -59,9 +59,8 @@ for (let i = 0; i < count; i++) {
   if (arrows[currentHeight - 1] === 0) {
     arrowCount++
     arrows[currentHeight - 1]++
-    arrows[currentHeight - 2]++
-  } else {
   }
-
-  console.log('currentHeight', currentHeight, 'arrowCount', arrowCount, 'arrows', arrows)
+  if (arrows[currentHeight - 2] === 0) {
+    arrows[currentHeight - 2]++
+  }
 }
