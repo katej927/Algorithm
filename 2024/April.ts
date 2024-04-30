@@ -49,18 +49,18 @@ const input20 = fs20.readFileSync('input.txt', 'utf8').trim().split('\n')
 const count = Number(input20[0])
 const heights = input20[1].split(' ').map(Number)
 
-let arrows = Array(count).fill(0)
+let arrows = Array(count + 1).fill(0)
 
 let arrowCount = 0
 
 for (let i = 0; i < count; i++) {
   const currentHeight = heights[i]
 
-  if (arrows[currentHeight - 1] === 0) {
+  if (arrows[currentHeight] > 0) {
+    arrows[currentHeight] = 0
+  } else {
     arrowCount++
+    arrows[currentHeight]++
     arrows[currentHeight - 1]++
-  }
-  if (arrows[currentHeight - 2] === 0) {
-    arrows[currentHeight - 2]++
   }
 }
