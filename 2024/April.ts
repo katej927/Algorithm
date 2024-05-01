@@ -53,14 +53,13 @@ let arrows = Array(count + 1).fill(0)
 
 let arrowCount = 0
 
-for (let i = 0; i < count; i++) {
-  const currentHeight = heights[i]
-
+for (let currentHeight of heights) {
   if (arrows[currentHeight] > 0) {
-    arrows[currentHeight] = 0
+    arrows[currentHeight] -= 1
+    arrows[currentHeight - 1]++
   } else {
     arrowCount++
-    arrows[currentHeight]++
     arrows[currentHeight - 1]++
   }
 }
+console.log(arrowCount)
