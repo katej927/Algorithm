@@ -6,16 +6,22 @@ const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 const targetCount = input.map(Number)[0]
 const targets = input.map(Number).slice(1)
 
-let fibonaccis = [0, 1]
-let fibonaccisTargetIdx = 2
+let fibonaccis = [1, 0]
 let loop = true
 
 while (loop) {
-  const lastFibonacci = fibonaccis[fibonaccisTargetIdx - 1] + fibonaccis[fibonaccisTargetIdx - 2]
+  const lastFibonacci = fibonaccis[0] + fibonaccis[1]
+
   if (lastFibonacci > 100) {
     loop = false
   } else {
-    fibonaccis.push(lastFibonacci)
-    fibonaccisTargetIdx++
+    fibonaccis.unshift(lastFibonacci)
   }
 }
+
+let leftNumber = 100
+let startIdx = 0
+let result = []
+let flag = true
+
+while (flag) {}
