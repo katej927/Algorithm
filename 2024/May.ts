@@ -31,3 +31,10 @@ for (const target of targets) {
 
   console.log(matchedFibonaccis.reverse().join(' '))
 }
+
+// ['24.5.8] baekjoon 19939. 박 터뜨리기
+const fs8 = require('fs')
+const input8 = fs8.readFileSync('input.txt', 'utf8').trim()
+
+const [ballCount, teamCount] = input8.split(' ').map(Number)
+let teamsBallCount = Array(teamCount).fill(0)
