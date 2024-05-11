@@ -38,3 +38,5 @@ const input8 = fs8.readFileSync('input.txt', 'utf8').trim()
 
 const [ballCount, teamCount] = input8.split(' ').map(Number)
 let teamsBallCount = Array(teamCount).fill(0)
+let lowestGap
+let leftBallCount = ballCount
