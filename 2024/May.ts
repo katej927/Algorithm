@@ -40,3 +40,11 @@ const [ballCount, teamCount] = input8.split(' ').map(Number)
 let teamsBallCount = Array(teamCount).fill(0)
 let lowestGap
 let leftBallCount = ballCount
+
+// ['24.5.13] baekjoon 17609. 회문
+const fs = require('fs')
+const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const texts = input.slice(1)
+const text = 'abcba'
+const halfIdx = text.length % 2 ? Math.floor(text.length / 2) - 1 : text.length / 2 - 1
