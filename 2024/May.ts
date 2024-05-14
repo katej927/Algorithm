@@ -47,4 +47,8 @@ const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const texts = input.slice(1)
 const text = 'abcba'
-const halfIdx = text.length % 2 ? Math.floor(text.length / 2) - 1 : text.length / 2 - 1
+
+const countEachText = text.split('').reduce((acc, cur) => {
+  acc[cur] = acc[cur] ? acc[cur] + 1 : 1
+  return acc
+}, {})
