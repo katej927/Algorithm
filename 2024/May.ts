@@ -48,7 +48,23 @@ const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 const texts = input.slice(1)
 const text = 'abcba'
 
-const countEachText = text.split('').reduce((acc, cur) => {
+const countEachText: Record<string, number> = text.split('').reduce((acc, cur) => {
   acc[cur] = acc[cur] ? acc[cur] + 1 : 1
   return acc
 }, {})
+
+let oddStringCount = 0
+for (const [key, value] of Object.entries(countEachText)) {
+  const isOdd = value % 2
+  oddStringCount = isOdd ? ++oddStringCount : oddStringCount
+
+  console.log('key', key, 'value', value, 'oddStringCount', oddStringCount)
+}
+
+const isPalindrome = () => {}
+
+if (oddStringCount === 0) {
+} else if (oddStringCount === 1) {
+} else {
+  console.log(2)
+}
