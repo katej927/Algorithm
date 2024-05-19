@@ -46,7 +46,7 @@ const fs = require('fs')
 const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const texts = input.slice(1)
-const text = 'abcba'
+const text = 'xabba'
 
 const countEachText: Record<string, number> = text.split('').reduce((acc, cur) => {
   acc[cur] = acc[cur] ? acc[cur] + 1 : 1
@@ -54,17 +54,29 @@ const countEachText: Record<string, number> = text.split('').reduce((acc, cur) =
 }, {})
 
 let oddStringCount = 0
+let oddString
 for (const [key, value] of Object.entries(countEachText)) {
   const isOdd = value % 2
-  oddStringCount = isOdd ? ++oddStringCount : oddStringCount
-
-  console.log('key', key, 'value', value, 'oddStringCount', oddStringCount)
+  if (isOdd) {
+    oddStringCount = ++oddStringCount
+    oddString = key
+  } else {
+    oddStringCount = oddStringCount
+  }
 }
 
-const isPalindrome = () => {}
+const isPalindrome = (str) => {
+  const middleIdx = Math.ceil(str.length / 2)
+  const prevWord = str.slice(0, middleIdx).split('').reverse().join('')
+  const backWord = str.slice(middleIdx)
+
+  return prevWord === backWord
+}
 
 if (oddStringCount === 0) {
+  console.log(isPalindrome(text) ? 0 : 2)
 } else if (oddStringCount === 1) {
+  const replacedText = text.replace(oddString, '')
 } else {
   console.log(2)
 }
