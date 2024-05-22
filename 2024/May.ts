@@ -48,35 +48,18 @@ const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 const texts = input.slice(1)
 const text = 'xabba'
 
-const countEachText: Record<string, number> = text.split('').reduce((acc, cur) => {
-  acc[cur] = acc[cur] ? acc[cur] + 1 : 1
-  return acc
-}, {})
-
-let oddStringCount = 0
-let oddString
-for (const [key, value] of Object.entries(countEachText)) {
-  const isOdd = value % 2
-  if (isOdd) {
-    oddStringCount = ++oddStringCount
-    oddString = key
-  } else {
-    oddStringCount = oddStringCount
-  }
+const isPalindrome = (target) => {
+  return target === target.split('').reverse().join('')
 }
 
-const isPalindrome = (str) => {
-  const middleIdx = Math.ceil(str.length / 2)
-  const prevWord = str.slice(0, middleIdx).split('').reverse().join('')
-  const backWord = str.slice(middleIdx)
-
-  return prevWord === backWord
-}
-
-if (oddStringCount === 0) {
-  console.log(isPalindrome(text) ? 0 : 2)
-} else if (oddStringCount === 1) {
-  const replacedText = text.replace(oddString, '')
+if (isPalindrome(text)) {
+  console.log(0)
 } else {
-  console.log(2)
+  let found = false
+  for (let i = 0; i < Math.floor(text.length / 2); i++) {
+    if (text[i] != text[text.length - 1 - i]) {
+      if (text.slice(0, i) + text.slice(i + 1)) found = true
+      else if (text.slice(0, text.length - 1 - i) + text.slice(text.length - i)) found = true
+    }
+  }
 }
