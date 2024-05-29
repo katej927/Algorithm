@@ -45,26 +45,8 @@ let leftBallCount = ballCount
 const fs28 = require('fs')
 const input28 = fs28.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const isPalindrome = (target) => {
-  return target === target.split('').reverse().join('')
-}
+const texts = input28.slice(1)
+const text = input28[7]
 
-for (let text of input28.slice(1)) {
-  if (isPalindrome(text)) {
-    console.log(0)
-  } else {
-    let found = false
-    for (let i = 0; i < Math.floor(text.length / 2); i++) {
-      if (text[i] != text[text.length - 1 - i]) {
-        if (isPalindrome(text.slice(0, i) + text.slice(i + 1))) {
-          found = true
-          break
-        } else if (isPalindrome(text.slice(0, text.length - 1 - i) + text.slice(text.length - i))) {
-          found = true
-          break
-        }
-      }
-    }
-    console.log(found ? 1 : 2)
-  }
-}
+let leftIdx = 0
+let rightIdx = text.length - 1
