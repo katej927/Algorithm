@@ -42,11 +42,38 @@ let lowestGap
 let leftBallCount = ballCount
 
 // ['24.5.13] baekjoon 17609. 회문
-const fs28 = require('fs')
-const input28 = fs28.readFileSync('input.txt', 'utf8').trim().split('\n')
+const fs = require('fs')
+const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const texts = input28.slice(1)
-const text = input28[7]
+const isPalindrome = (str, left, right) => {
+  while (left < right) {
+    if (str[left] !== str[right]) return false
+    left++
+    right--
+  }
+  return true
+}
 
-let leftIdx = 0
-let rightIdx = text.length - 1
+const texts = input.slice(1)
+
+for (let text of texts) {
+  console.log('text', text)
+  let leftIdx = 0
+  let rightIdx = text.length - 1
+
+  let isCompleted = false
+
+  while (leftIdx < rightIdx) {
+    if (text[leftIdx] !== text[rightIdx]) {
+      if (isPalindrome(text, leftIdx + 1, rightIdx) || isPalindrome(text, leftIdx, rightIdx - 1)) console.log(1)
+      else console.log(2)
+
+      isCompleted = true
+      break
+    }
+
+    leftIdx++
+    rightIdx--
+  }
+  if (!isCompleted) console.log(0)
+}
