@@ -6,6 +6,7 @@ const [length1, width, height] = input1[0].split(' ')
 const boxSize = length1 * width * height
 
 let leftedSize = boxSize
+let result = 0
 
 const cubeSizes = input1
   .slice(2)
@@ -13,9 +14,22 @@ const cubeSizes = input1
   .reverse()
 
 for (let [size, count] of cubeSizes) {
-  const currentCubeSize = (2 ** size) ** 3
-  const usedCurrentCubeCount = leftedSize / currentCubeSize - count
-  leftedSize = leftedSize - currentCubeSize * usedCurrentCubeCount
+  count = Number(count)
 
-  console.log('(2**size)**3', (2 ** size) ** 3, 'leftedSize', leftedSize)
+  const currentCubeSize = (2 ** size) ** 3
+  const dividedCount = leftedSize / currentCubeSize
+  const canCurrentCountCover = dividedCount <= count
+  let usedCurrentCubeCount
+
+  if (canCurrentCountCover) {
+    usedCurrentCubeCount = dividedCount
+    result += dividedCount
+  } else {
+    usedCurrentCubeCount = count
+    result += count
+  }
+
+  leftedSize = leftedSize - currentCubeSize * usedCurrentCubeCount
+  if (leftedSize === 0) break
 }
+console.log('result', leftedSize ? -1 : result)
