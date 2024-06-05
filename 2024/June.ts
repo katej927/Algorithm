@@ -17,19 +17,13 @@ for (let [size, count] of cubeSizes) {
   count = Number(count)
 
   const currentCubeSize = (2 ** size) ** 3
-  const dividedCount = leftedSize / currentCubeSize
-  const canCurrentCountCover = dividedCount <= count
-  let usedCurrentCubeCount
+  const dividedCount = Math.floor(leftedSize / currentCubeSize)
+  const usedCurrentCubeCount = Math.min(dividedCount, count)
 
-  if (canCurrentCountCover) {
-    usedCurrentCubeCount = dividedCount
-    result += dividedCount
-  } else {
-    usedCurrentCubeCount = count
-    result += count
-  }
+  result += usedCurrentCubeCount
 
   leftedSize = leftedSize - currentCubeSize * usedCurrentCubeCount
+
   if (leftedSize === 0) break
 }
 console.log('result', leftedSize ? -1 : result)
