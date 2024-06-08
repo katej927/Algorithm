@@ -19,3 +19,6 @@ function nearestSquare(x) {
 }
 
 let size = Math.min(nearestSquare(length1), nearestSquare(width), nearestSquare(height))
+
+let res = 0
+let used = 0
