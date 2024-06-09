@@ -22,3 +22,8 @@ let size = Math.min(nearestSquare(length1), nearestSquare(width), nearestSquare(
 
 let res = 0
 let used = 0
+
+for (let i = size; i >= 0; i--) {
+  used *= 8
+  let cur = 2 ** i
+}
