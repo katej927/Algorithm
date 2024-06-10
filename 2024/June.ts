@@ -1,29 +1,13 @@
 // ['24.6.1] baekjoon 1493. 박스 채우기
-let fs = require('fs')
-let input = fs.readFileSync('input.txt').toString().split('\n')
+const fs1 = require('fs')
+const input1 = fs1.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-const [boxSize, NumberOfCubeType] = input
+const [boxInfo] = input1
 
-let [length1, width, height] = boxSize.split(' ').map(Number)
+const [length1, width, height] = boxInfo.split(' ').map(Number)
+const boxSize = length1 * width * height
 
-const cubeList = input.slice(2)
-const cubes = cubeList.map((cubeInfo) => {
-  const [, currentCubeCount] = cubeInfo.split(' ')
-  return Number(currentCubeCount)
+const cubeCounts = input1.slice(2).map((cubeInfo) => {
+  const [, cubeCount] = cubeInfo.split(' ')
+  return Number(cubeCount)
 })
-
-function nearestSquare(x) {
-  let i = 1
-  while (2 ** i <= x) ++i
-  return i - 1
-}
-
-let size = Math.min(nearestSquare(length1), nearestSquare(width), nearestSquare(height))
-
-let res = 0
-let used = 0
-
-for (let i = size; i >= 0; i--) {
-  used *= 8
-  let cur = 2 ** i
-}
