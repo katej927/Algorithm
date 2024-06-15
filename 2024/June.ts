@@ -50,3 +50,7 @@ function binarySearch(arr, target, start, end) {
   // 중간점의 값보다 찾고자 하는 값이 큰 경우 오른쪽 확인
   else return binarySearch(arr, target, mid + 1, end)
 }
+
+let n = 10
+let target = 7
+let arr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
