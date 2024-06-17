@@ -54,3 +54,5 @@ function binarySearch(arr, target, start, end) {
 let n = 10
 let target = 7
 let arr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+let result = binarySearch(arr, target, 0, n - 1)
