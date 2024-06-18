@@ -39,20 +39,20 @@ for (let i = size; i >= 0; i--) {
 
 console.log(usedVolume === boxSize ? countOfUsedCube : -1)
 
-// ['24.6.14] fast campus. 이진탐색 재귀함수 예시
-function binarySearch(arr, target, start, end) {
-  if (start > end) return -1
-  let mid = parseInt(String((start + end) / 2))
-  // 찾은 경우 중간점 인덱스 반환
-  if (arr[mid] == target) return mid
-  // 중간점의 값보다 찾고자 하는 값이 작은 경우 왼쪽 확인
-  else if (arr[mid] > target) return binarySearch(arr, target, start, mid - 1)
-  // 중간점의 값보다 찾고자 하는 값이 큰 경우 오른쪽 확인
-  else return binarySearch(arr, target, mid + 1, end)
-}
-
+// ['24.6.14] fast campus. 이진탐색 재귀함수 예시 1
 let n = 10
 let target = 7
 let arr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
-let result = binarySearch(arr, target, 0, n - 1)
+const binarySearch = (start, end) => {
+  if (start > end) return -1
+  const mid = Math.floor((end + start) / 2)
+
+  if (arr[mid] === target) return mid
+  else if (arr[mid] > target) return binarySearch(start, mid - 1)
+  else return binarySearch(mid + 1, end)
+}
+
+let result = binarySearch(0, n - 1)
+
+console.log(result !== -1 ? `${result}번째 인덱스입니다.` : '원소가 존재하지 않습니다.')
