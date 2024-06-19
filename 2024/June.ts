@@ -39,7 +39,7 @@ for (let i = size; i >= 0; i--) {
 
 console.log(usedVolume === boxSize ? countOfUsedCube : -1)
 
-// ['24.6.14] fast campus. 이진탐색 재귀함수 예시 1
+// ['24.6.14] fast campus. 이진탐색 재귀함수 예시 (재귀 함수)
 let n = 10
 let target = 7
 let arr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -56,3 +56,21 @@ const binarySearch = (start, end) => {
 let result = binarySearch(0, n - 1)
 
 console.log(result !== -1 ? `${result}번째 인덱스입니다.` : '원소가 존재하지 않습니다.')
+
+// ['24.6.19] fast campus. 이진탐색 재귀함수 예시 (반복문)
+let n2 = 10
+let target2 = 7
+let arr2 = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+const binarySearch2 = (start, end) => {
+  while (start <= end) {
+    const mid = Math.floor((start + end) / 2)
+    if (arr2[mid] === target2) return mid
+    else if (arr2[mid] > target2) return (end = mid - 1)
+    else return (start = mid + 1)
+  }
+  return -1
+}
+
+const result2 = binarySearch2(0, n2 - 1)
+console.log(result === -1 ? `없습니다.` : `${result2 + 1}번째 원소 입니다.`)
