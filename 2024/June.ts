@@ -77,5 +77,10 @@ console.log(result === -1 ? `없습니다.` : `${result2 + 1}번째 원소 입�
 
 // ['24.6.20] fast campus. 하한선 함수
 function lowerBound(arr, target, start, end) {
-  while (start < end) {}
+  while (start < end) {
+    const mid = Math.floor((start + end) / 2)
+    if (target <= arr[mid]) end = mid
+    else start = mid + 1
+  }
+  return end
 }
