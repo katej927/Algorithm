@@ -74,3 +74,8 @@ const binarySearch2 = (start, end) => {
 
 const result2 = binarySearch2(0, n2 - 1)
 console.log(result === -1 ? `없습니다.` : `${result2 + 1}번째 원소 입니다.`)
+
+// ['24.6.20] fast campus. 하한선 함수
+function lowerBound(arr, target, start, end) {
+  while (start < end) {}
+}
