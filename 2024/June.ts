@@ -84,3 +84,14 @@ function lowerBound(arr, target, start, end) {
   }
   return end
 }
+
+// ['24.6.22] fast campus. 상한선 함수
+function upperBound(arr, target, start, end) {
+  while (start < end) {
+    const mid = Math.floor((start + end) / 2)
+
+    if (target < arr[mid]) end = mid
+    else start = mid + 1
+  }
+  return end
+}
