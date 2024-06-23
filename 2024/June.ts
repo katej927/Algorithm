@@ -95,3 +95,10 @@ function upperBound(arr, target, start, end) {
   }
   return end
 }
+
+function countByRange(arr, leftValue, rightValue) {
+  let leftIndex = lowerBound(arr, leftValue, 0, arr.length - 1)
+  let rightIndex = upperBound(arr, rightValue, 0, arr.length - 1)
+
+  return rightIndex - leftIndex
+}
