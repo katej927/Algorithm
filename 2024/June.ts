@@ -102,3 +102,7 @@ function countByRange(arr, leftValue, rightValue) {
 
   return rightIndex - leftIndex
 }
+
+// ['24.6.24] fast campus. 파라메트릭 서치
+let fs = require('fs')
+let input = fs.readFileSync('/dev/stdin').toString().split('\n')
