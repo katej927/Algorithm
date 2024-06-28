@@ -104,7 +104,13 @@ function countByRange(arr, leftValue, rightValue) {
 }
 
 // ['24.6.24] fast campus. 파라메트릭 서치
-let fs = require('fs')
-let input = fs.readFileSync('/dev/stdin').toString().split('\n')
+const fs = require('fs')
+const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 
-let n1 = Number(input[0].split(' ')[0])
+const requests = input[1].split(' ').map(Number)
+const totalSum = Number(input[2])
+
+let tempSum = 1000000000
+let max = Math.max(...requests)
+
+while (tempSum >= totalSum) {}
