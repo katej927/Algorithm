@@ -113,4 +113,15 @@ const totalSum = Number(input[2])
 let tempSum = 1000000000
 let max = Math.max(...requests)
 
-while (tempSum >= totalSum) {}
+while (tempSum >= totalSum) {
+  tempSum = requests.reduce((acc, cur) => {
+    if (cur > max) acc += max
+    else acc += cur
+
+    return acc
+  }, 0)
+
+  if (tempSum > totalSum) --max
+}
+
+console.log(Math.min(Math.max(...requests), max))
