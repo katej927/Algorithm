@@ -103,9 +103,27 @@ function countByRange(arr, leftValue, rightValue) {
   return rightIndex - leftIndex
 }
 
-// ['24.6.24] fast campus. 파라메트릭 서치
+// ['24.6.24] baekjoon 2512. 예산
 const fs = require('fs')
 const input = fs.readFileSync('input.txt', 'utf8').trim().split('\n')
 
 const requests = input[1].split(' ').map(Number)
 const totalSum = Number(input[2])
+
+let start = 1
+let end = Math.max(...requests)
+let result1 = 0
+
+while (start <= end) {
+  const mid = Math.floor((start + end) / 2)
+  const tempSum = requests.reduce((acc, cur) => (acc += Math.min(cur, mid)), 0)
+
+  if (tempSum <= totalSum) {
+    start++
+    result = mid
+  } else {
+    end--
+  }
+}
+
+console.log(result1)
