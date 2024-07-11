@@ -16,7 +16,7 @@ while (start <= end) {
 
   for (let curTreeHeight of treeHeights) {
     const newRestHeight = mid <= curTreeHeight ? curTreeHeight - mid : 0
-    restHeight = +newRestHeight
+    restHeight += newRestHeight
   }
 
   if (restHeight === targetHeight) {
