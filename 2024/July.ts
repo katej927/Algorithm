@@ -5,9 +5,9 @@ const input = fs.readFileSync('/dev/stdin', 'utf8').trim().split('\n')
 const [treeCount, targetHeight] = input[0].split(' ').map(Number)
 const treeHeights = input[1].split(' ').map(Number)
 
-let start = Math.min(...treeHeights)
+let start = 0
 let end = Math.max(...treeHeights)
-let result
+let result = 0
 
 while (start <= end) {
   const mid = Math.floor((start + end) / 2)
