@@ -27,3 +27,32 @@ while (start <= end) {
 }
 
 console.log(result)
+
+// ['24.7.15] baekjoon 1654. 랜선 자르기
+const fs15 = require('fs')
+const input15 = fs15.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const [k, n] = input15[0].split(' ').map(Number)
+const cableLengths = input.slice(1).map(Number)
+
+let start15 = 1
+let end15 = Math.max(...cableLengths)
+let result15 = 1
+
+while (start15 <= end15) {
+  const mid = Math.floor((start15 + end15) / 2)
+
+  const cableTotalCount = cableLengths.reduce((acc, cur) => {
+    acc += Math.floor(cur / mid)
+    return acc
+  }, 0)
+
+  if (n <= cableTotalCount) {
+    result15 = mid
+    start15 = mid + 1
+  } else {
+    end15 = mid - 1
+  }
+}
+
+console.log(result15)
