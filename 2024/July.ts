@@ -56,3 +56,18 @@ while (start15 <= end15) {
 }
 
 console.log(result15)
+
+// ['24.7.15] baekjoon 10816. 숫자 카드 2
+const fs16 = require('fs')
+const input16 = fs16.readFileSync('input.txt', 'utf8').trim().split('\n')
+
+const [cardsLength, cardsStr, , targetNumbersStr] = input16
+const sortedCards = cardsStr
+  .split(' ')
+  .map(Number)
+  .sort((a, b) => a - b)
+const targetNumbers = targetNumbersStr.split(' ').map(Number)
+
+let start16 = 0
+let end16 = cardsLength - 1
+let result16 = ''
