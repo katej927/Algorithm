@@ -71,18 +71,18 @@ const tmpTargetNumber = 3
 
 let startIdx = 0
 let endIdx = cardsLength - 1
-let countCurrentTargetNumber = 0
 
-while (startIdx <= endIdx) {
-  const midIdx = Math.floor((startIdx + endIdx) / 2)
-  const mid = sortedCards[midIdx]
+const lowerBound = () => {
+  while (startIdx < endIdx) {
+    const midIdx = Math.floor((startIdx + endIdx) / 2)
+    const mid = sortedCards[midIdx]
 
-  if (mid === tmpTargetNumber) {
-    countCurrentTargetNumber++
-    startIdx = midIdx + 1
-  } else if (mid < tmpTargetNumber) {
-    startIdx = midIdx + 1
-  } else {
-    endIdx = midIdx - 1
+    if (mid >= tmpTargetNumber) {
+      endIdx = midIdx
+    } else {
+      startIdx = midIdx + 1
+    }
   }
 }
+
+lowerBound()
