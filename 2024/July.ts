@@ -67,20 +67,16 @@ const sortedCards = cardsStr
   .map(Number)
   .sort((a, b) => a - b)
 const targetNumbers = targetNumbersStr.split(' ').map(Number)
-const tmpTargetNumber = 3
 
-let startIdx = 0
-let endIdx = 0
-
-const lowerBound = () => {
+const lowerBound = (targetNumber) => {
   let tmpStartIdx = 0
-  let tmpEndIdx = cardsLength - 1
+  let tmpEndIdx = Number(cardsLength)
 
   while (tmpStartIdx < tmpEndIdx) {
     const midIdx = Math.floor((tmpStartIdx + tmpEndIdx) / 2)
     const mid = sortedCards[midIdx]
 
-    if (tmpTargetNumber <= mid) {
+    if (targetNumber <= mid) {
       tmpEndIdx = midIdx
     } else {
       tmpStartIdx = midIdx + 1
@@ -90,15 +86,15 @@ const lowerBound = () => {
   return tmpEndIdx
 }
 
-const upperBound = () => {
+const upperBound = (targetNumber) => {
   let tmpStartIdx = 0
-  let tmpEndIdx = cardsLength - 1
+  let tmpEndIdx = Number(cardsLength)
 
   while (tmpStartIdx < tmpEndIdx) {
     const midIdx = Math.floor((tmpStartIdx + tmpEndIdx) / 2)
     const mid = sortedCards[midIdx]
 
-    if (tmpTargetNumber < mid) {
+    if (targetNumber < mid) {
       tmpEndIdx = midIdx
     } else {
       tmpStartIdx = midIdx + 1
@@ -108,5 +104,9 @@ const upperBound = () => {
   return tmpEndIdx
 }
 
-startIdx = lowerBound()
-endIdx = upperBound()
+const countRange = (targetNumber) => {
+  const startIdx = lowerBound(targetNumber)
+  const endIdx = upperBound(targetNumber)
+
+  return endIdx - startIdx
+}
