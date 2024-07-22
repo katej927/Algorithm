@@ -110,3 +110,9 @@ const countRange = (targetNumber) => {
 
   return endIdx - startIdx
 }
+
+const result16 = targetNumbers.reduce((acc, cur) => {
+  return (acc += countRange(cur) + ' ')
+}, '')
+
+console.log(result16.trimEnd())
