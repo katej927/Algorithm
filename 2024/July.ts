@@ -116,3 +116,16 @@ const result16 = targetNumbers.reduce((acc, cur) => {
 }, '')
 
 console.log(result16.trimEnd())
+
+// ['24.7.23] baekjoon 18353. 병사 배치하기
+const fs23 = require('fs')
+const input23 = fs23.readFileSync('input.txt', 'utf8').trim()
+
+const [, capasStr] = input23.split('\n')
+const capas = capasStr.split(' ').map(Number)
+const descifiedCapas = capas.sort((a, b) => b - a)
+console.log(capas.sort((a, b) => b - a))
+
+for (let i = 0; i < descifiedCapas.length; i++) {
+  for (let j = 0; j < capas.length; j++) {}
+}
