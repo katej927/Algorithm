@@ -123,9 +123,22 @@ const input23 = fs23.readFileSync('input.txt', 'utf8').trim()
 
 const [, capasStr] = input23.split('\n')
 const capas = capasStr.split(' ').map(Number)
-const descifiedCapas = capas.sort((a, b) => b - a)
-console.log(capas.sort((a, b) => b - a))
+const descifiedCapas = [...capas].sort((a, b) => b - a)
+
+let result23 = 0
 
 for (let i = 0; i < descifiedCapas.length; i++) {
-  for (let j = 0; j < capas.length; j++) {}
+  for (let j = i; j < capas.length; j++) {
+    if (descifiedCapas[i] === capas[j]) {
+      break
+    } else {
+      result23++
+      const unMatchedNumberIndex = {
+        capas: capas.indexOf(capas[j]),
+        descifiedCapas: descifiedCapas.indexOf(capas[j]),
+      }
+      capas.splice(unMatchedNumberIndex.capas, 1)
+      descifiedCapas.splice(unMatchedNumberIndex.descifiedCapas, 1)
+    }
+  }
 }
