@@ -121,24 +121,29 @@ console.log(result16.trimEnd())
 const fs23 = require('fs')
 const input23 = fs23.readFileSync('input.txt', 'utf8').trim()
 
-const [, capasStr] = input23.split('\n')
+const [, capasStr] = input.split('\n')
 const capas = capasStr.split(' ').map(Number)
 const descifiedCapas = [...capas].sort((a, b) => b - a)
 
-let result23 = 0
-
+let resultArr: number[] = []
 for (let i = 0; i < descifiedCapas.length; i++) {
-  for (let j = i; j < capas.length; j++) {
-    if (descifiedCapas[i] === capas[j]) {
-      break
-    } else {
-      result23++
-      const unMatchedNumberIndex = {
-        capas: capas.indexOf(capas[j]),
-        descifiedCapas: descifiedCapas.indexOf(capas[j]),
+  let currentResult = 0
+  for (let i = 0; i < descifiedCapas.length; i++) {
+    for (let j = i; j < capas.length; j++) {
+      if (descifiedCapas[i] === capas[j]) {
+        break
+      } else {
+        currentResult++
+        const unMatchedNumberIndex = {
+          capas: capas.indexOf(capas[j]),
+          descifiedCapas: descifiedCapas.indexOf(capas[j]),
+        }
+        capas.splice(unMatchedNumberIndex.capas, 1)
+        descifiedCapas.splice(unMatchedNumberIndex.descifiedCapas, 1)
+
+        j--
       }
-      capas.splice(unMatchedNumberIndex.capas, 1)
-      descifiedCapas.splice(unMatchedNumberIndex.descifiedCapas, 1)
     }
   }
+  resultArr.push(currentResult)
 }
